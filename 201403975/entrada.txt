@@ -1,0 +1,187 @@
+var variableSimple;
+var decVariable
+var expresion1 = 1 + 1;
+var expresion2 = 25 - 10.5
+var expresion3 = 36.8 * 'C';
+var expresion4 = 'e' / "hola"
+var expresion5 = 25 ** true;
+var expresion6 = false % 1
+var expresion7 = -25.35;
+var expresion8 = false == false
+var expresion9 = true =! expresion8;
+var expresion10 = 55 > 35
+var expresion11 = 10< 2;
+var expresion12 = !expresion9
+var expresion13 = 99 >= 99;
+var expresion14 = 85 <= 100
+var expresion15 = expresion10 && expresion11;
+var expresion16 = true || false
+var varCasteada1 = (int) 18.5;
+var varCasteada2 = (double) true
+var varCasteada3 = (string) 15;
+var varCasteada4 = (char) "F"
+var varCasteada5 = (double) 15.6++;
+var varCasteada6 = (string) 9--
+variableSimple = expresion1++;
+decVariable = expresion15 + "Hola"
+decVariable = null;
+decVariable = (int) true
+expresion2++;
+decVariable--
+expresion2 = null;
+expresion2 = 25 + (10* 4- 5) + 80** (20)
+variableSimple = null;
+variableSimple = 25++
+expresion11 = null;
+expresion11 = accesoArreglo1[3][2][1]
+
+if(x <50){
+    print("Menor que 50");
+}
+else {
+    print("Mayor que 100");
+}
+
+if(x >50){
+    print("Mayor que 50");
+}
+else if(x <= 50 && x > 0){
+    print("Menor que 50");
+    if(x > 25){
+        print("Numero mayor que 25");
+        #Mas sentencias
+    }
+    else {
+        print("Numero menor que 25")
+    }
+}
+else{
+    print("Numero negativo")
+}
+
+var edad = 18;
+
+switch(edad){
+    case 10:
+        print("Tengo 10 anios.");
+        #mas sentencias
+        break;
+    case 18:
+        print("Tengo 18 anios.");
+        #mas sentencias
+    case "25":
+        print("Tengo 25 anios en string.");
+        #mas sentencias
+        break
+    Default:
+        print("No se que edad tengo.:(");
+        #mas sentencias
+        break;
+}
+
+var color = "Verde";
+
+switch(color){
+    case "Rojo":
+        print("Red");
+        #mas sentencias
+        break;
+    case 18:
+        print("No es string no evalua?");
+        #mas sentencias
+    case "Amarillo":
+        print("Yellow");
+        #mas sentencias
+        break
+}
+
+var x = true;
+
+switch(x){
+    Default:
+        print("Por defecto");
+        #mas sentencias
+        break;
+}
+
+main(){
+    print("Hola soy un mensaje");
+    #*muchas mas instrucciones*#
+}
+
+while(x <100){
+    if(x > 50){
+        print("Mayor que 50");
+        #Mas sentencias
+    }
+    else {
+        print("Menor que 50")
+        #Mas sentencias
+    }
+    x++;
+    #Mas sentencias
+}
+
+for(var i = 0 ; i < 3 ; i++){
+    print("i = " + i)
+    #mas sentencias
+}
+
+for(i = 5; i > 2; i = i-1){
+    print("i = " + i)
+    #mas sentencias
+}
+
+#Ejemplo for con break
+for(var i = 0; i < 9; i++){
+    if(i == 5){
+        print("Me salgo del ciclo en el numero" + i);
+        break
+    }
+    print(i);
+}
+
+#------------------------------------------------------------------------
+#-------Del enunciado
+
+#-------Operadores Logicos
+var operadorOr = (false) || bandera==true
+var operadorAnd = flag1 && ("hola" == "hola");
+var nueva = !var1
+
+#-------Finalizacion y encapsulamiento de sentencias
+if(i==1){
+    var a=15;
+    print("Son el numero " +a)
+}
+
+#-------Declaracion de variables
+var numero; #null
+var cadena  = "hola" #string
+var var_1 = 'a'; #char
+var verdadero; #null
+
+var numero; #null, en ejecucion error ya esta arriba
+numero = 4; #int
+var verdadero; #null, ya existe
+verdadero = true; #boolean
+var valor = numero; #int 4
+valor = null #null
+valor = "cadena" #string cadena
+var cadena = "valor =" + valor; #cadena = "valor = cadena"
+
+#-------Casteos
+var edad = (int) 18.6; #Toma el valor entero de 18
+var letra = (char) 70 #Toma el valor 'F' que es 70 en ascii
+var numero1 = (double) 16; #Toma el valor 16.0
+
+#-------Inc y Dec
+var edad1 = 18.5
+edad++; #19.5
+edad--; #18.5
+
+var anio=2020;
+anio = 1 + anio++; #Aumenta anio y luego suma1
+anio = anio--;
+
+#-------Sentencias de control y ciclicas -> arriba
