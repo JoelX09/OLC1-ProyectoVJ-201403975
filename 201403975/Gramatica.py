@@ -5,9 +5,6 @@ Vacaciones Junio 2021
 
 # errores = []
 
-from sys import stdout
-
-
 reservadas = {
     'int'       : 'RINT',
     'double'    : 'RDOUBLE',
@@ -167,13 +164,14 @@ lexer = lex.lex()
 
 # Presedencia
 precedence = (
-    ('right', 'UMENOS'),
-    ('left', 'POR', 'DIV', 'MOD'),
-    ('left', 'MAS', 'MENOS'),
-    ('left', 'IGUALIGUAL', 'DIFERENTE', 'MAYORQUE', 'MAYORIGUAL', 'MENORQUE', 'MENORIGUAL'),
-    ('right', 'NEGACION'),
+    ('left', 'SOR'),
     ('left', 'SAND'),
-    ('left', 'SOR')
+    ('right', 'NEGACION'),
+    ('left', 'IGUALIGUAL', 'DIFERENTE', 'MAYORQUE', 'MAYORIGUAL', 'MENORQUE', 'MENORIGUAL'),
+    ('left', 'MAS', 'MENOS'),
+    ('left', 'POR', 'DIV', 'MOD'),
+    ('nonassoc', 'POT'),
+    ('right', 'UMENOS')
 )
 
 def p_init(t) :

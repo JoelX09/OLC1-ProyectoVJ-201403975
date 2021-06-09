@@ -2732,7 +2732,20 @@ state 73
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 44 (expresion -> MENOS expresion .)
+    MAS             reduce using rule 44 (expresion -> MENOS expresion .)
+    MENOS           reduce using rule 44 (expresion -> MENOS expresion .)
+    POR             reduce using rule 44 (expresion -> MENOS expresion .)
+    DIV             reduce using rule 44 (expresion -> MENOS expresion .)
     POT             reduce using rule 44 (expresion -> MENOS expresion .)
+    MOD             reduce using rule 44 (expresion -> MENOS expresion .)
+    IGUALIGUAL      reduce using rule 44 (expresion -> MENOS expresion .)
+    MAYORQUE        reduce using rule 44 (expresion -> MENOS expresion .)
+    MAYORIGUAL      reduce using rule 44 (expresion -> MENOS expresion .)
+    MENORQUE        reduce using rule 44 (expresion -> MENOS expresion .)
+    MENORIGUAL      reduce using rule 44 (expresion -> MENOS expresion .)
+    DIFERENTE       reduce using rule 44 (expresion -> MENOS expresion .)
+    SAND            reduce using rule 44 (expresion -> MENOS expresion .)
+    SOR             reduce using rule 44 (expresion -> MENOS expresion .)
     PTCOMA          reduce using rule 44 (expresion -> MENOS expresion .)
     RMAIN           reduce using rule 44 (expresion -> MENOS expresion .)
     RPRINT          reduce using rule 44 (expresion -> MENOS expresion .)
@@ -2757,34 +2770,21 @@ state 73
     RCASE           reduce using rule 44 (expresion -> MENOS expresion .)
     CORC            reduce using rule 44 (expresion -> MENOS expresion .)
     DOSPT           reduce using rule 44 (expresion -> MENOS expresion .)
-    MAS             shift and go to state 59
-    MENOS           shift and go to state 60
-    POR             shift and go to state 61
-    DIV             shift and go to state 62
-    MOD             shift and go to state 64
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
 
-  ! MAS             [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! MENOS           [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! POR             [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! DIV             [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! MOD             [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! IGUALIGUAL      [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! MAYORQUE        [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! MENORQUE        [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! DIFERENTE       [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! SAND            [ reduce using rule 44 (expresion -> MENOS expresion .) ]
-  ! SOR             [ reduce using rule 44 (expresion -> MENOS expresion .) ]
+  ! MAS             [ shift and go to state 59 ]
+  ! MENOS           [ shift and go to state 60 ]
+  ! POR             [ shift and go to state 61 ]
+  ! DIV             [ shift and go to state 62 ]
   ! POT             [ shift and go to state 63 ]
+  ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 74
@@ -2806,18 +2806,8 @@ state 74
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 45 (expresion -> NEGACION expresion .)
-    MAS             reduce using rule 45 (expresion -> NEGACION expresion .)
-    MENOS           reduce using rule 45 (expresion -> NEGACION expresion .)
-    POR             reduce using rule 45 (expresion -> NEGACION expresion .)
-    DIV             reduce using rule 45 (expresion -> NEGACION expresion .)
-    POT             reduce using rule 45 (expresion -> NEGACION expresion .)
-    MOD             reduce using rule 45 (expresion -> NEGACION expresion .)
-    IGUALIGUAL      reduce using rule 45 (expresion -> NEGACION expresion .)
-    MAYORQUE        reduce using rule 45 (expresion -> NEGACION expresion .)
-    MAYORIGUAL      reduce using rule 45 (expresion -> NEGACION expresion .)
-    MENORQUE        reduce using rule 45 (expresion -> NEGACION expresion .)
-    MENORIGUAL      reduce using rule 45 (expresion -> NEGACION expresion .)
-    DIFERENTE       reduce using rule 45 (expresion -> NEGACION expresion .)
+    SAND            reduce using rule 45 (expresion -> NEGACION expresion .)
+    SOR             reduce using rule 45 (expresion -> NEGACION expresion .)
     PTCOMA          reduce using rule 45 (expresion -> NEGACION expresion .)
     RMAIN           reduce using rule 45 (expresion -> NEGACION expresion .)
     RPRINT          reduce using rule 45 (expresion -> NEGACION expresion .)
@@ -2842,23 +2832,33 @@ state 74
     RCASE           reduce using rule 45 (expresion -> NEGACION expresion .)
     CORC            reduce using rule 45 (expresion -> NEGACION expresion .)
     DOSPT           reduce using rule 45 (expresion -> NEGACION expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
+    IGUALIGUAL      shift and go to state 65
+    MAYORQUE        shift and go to state 66
+    MAYORIGUAL      shift and go to state 67
+    MENORQUE        shift and go to state 68
+    MENORIGUAL      shift and go to state 69
+    DIFERENTE       shift and go to state 70
 
-  ! SAND            [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
-  ! SOR             [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
-  ! IGUALIGUAL      [ shift and go to state 65 ]
-  ! MAYORQUE        [ shift and go to state 66 ]
-  ! MAYORIGUAL      [ shift and go to state 67 ]
-  ! MENORQUE        [ shift and go to state 68 ]
-  ! MENORIGUAL      [ shift and go to state 69 ]
-  ! DIFERENTE       [ shift and go to state 70 ]
+  ! MAS             [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! MENOS           [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! POR             [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! DIV             [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! POT             [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! MOD             [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! IGUALIGUAL      [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! MAYORQUE        [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! MENORQUE        [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! DIFERENTE       [ reduce using rule 45 (expresion -> NEGACION expresion .) ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 75
@@ -3595,10 +3595,14 @@ state 99
     PARC            reduce using rule 30 (expresion -> expresion MAS expresion .)
     MAS             reduce using rule 30 (expresion -> expresion MAS expresion .)
     MENOS           reduce using rule 30 (expresion -> expresion MAS expresion .)
-    POR             reduce using rule 30 (expresion -> expresion MAS expresion .)
-    DIV             reduce using rule 30 (expresion -> expresion MAS expresion .)
-    POT             reduce using rule 30 (expresion -> expresion MAS expresion .)
-    MOD             reduce using rule 30 (expresion -> expresion MAS expresion .)
+    IGUALIGUAL      reduce using rule 30 (expresion -> expresion MAS expresion .)
+    MAYORQUE        reduce using rule 30 (expresion -> expresion MAS expresion .)
+    MAYORIGUAL      reduce using rule 30 (expresion -> expresion MAS expresion .)
+    MENORQUE        reduce using rule 30 (expresion -> expresion MAS expresion .)
+    MENORIGUAL      reduce using rule 30 (expresion -> expresion MAS expresion .)
+    DIFERENTE       reduce using rule 30 (expresion -> expresion MAS expresion .)
+    SAND            reduce using rule 30 (expresion -> expresion MAS expresion .)
+    SOR             reduce using rule 30 (expresion -> expresion MAS expresion .)
     PTCOMA          reduce using rule 30 (expresion -> expresion MAS expresion .)
     RMAIN           reduce using rule 30 (expresion -> expresion MAS expresion .)
     RPRINT          reduce using rule 30 (expresion -> expresion MAS expresion .)
@@ -3623,29 +3627,25 @@ state 99
     RCASE           reduce using rule 30 (expresion -> expresion MAS expresion .)
     CORC            reduce using rule 30 (expresion -> expresion MAS expresion .)
     DOSPT           reduce using rule 30 (expresion -> expresion MAS expresion .)
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! IGUALIGUAL      [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! MAYORQUE        [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! MENORQUE        [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! DIFERENTE       [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! SAND            [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
-  ! SOR             [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
+  ! POR             [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
+  ! DIV             [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
+  ! POT             [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
+  ! MOD             [ reduce using rule 30 (expresion -> expresion MAS expresion .) ]
   ! MAS             [ shift and go to state 59 ]
   ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 100
@@ -3669,10 +3669,14 @@ state 100
     PARC            reduce using rule 31 (expresion -> expresion MENOS expresion .)
     MAS             reduce using rule 31 (expresion -> expresion MENOS expresion .)
     MENOS           reduce using rule 31 (expresion -> expresion MENOS expresion .)
-    POR             reduce using rule 31 (expresion -> expresion MENOS expresion .)
-    DIV             reduce using rule 31 (expresion -> expresion MENOS expresion .)
-    POT             reduce using rule 31 (expresion -> expresion MENOS expresion .)
-    MOD             reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    IGUALIGUAL      reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    MAYORQUE        reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    MAYORIGUAL      reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    MENORQUE        reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    MENORIGUAL      reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    DIFERENTE       reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    SAND            reduce using rule 31 (expresion -> expresion MENOS expresion .)
+    SOR             reduce using rule 31 (expresion -> expresion MENOS expresion .)
     PTCOMA          reduce using rule 31 (expresion -> expresion MENOS expresion .)
     RMAIN           reduce using rule 31 (expresion -> expresion MENOS expresion .)
     RPRINT          reduce using rule 31 (expresion -> expresion MENOS expresion .)
@@ -3697,29 +3701,25 @@ state 100
     RCASE           reduce using rule 31 (expresion -> expresion MENOS expresion .)
     CORC            reduce using rule 31 (expresion -> expresion MENOS expresion .)
     DOSPT           reduce using rule 31 (expresion -> expresion MENOS expresion .)
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! IGUALIGUAL      [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! MAYORQUE        [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! MENORQUE        [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! DIFERENTE       [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! SAND            [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
-  ! SOR             [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
+  ! POR             [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
+  ! DIV             [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
+  ! POT             [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
+  ! MOD             [ reduce using rule 31 (expresion -> expresion MENOS expresion .) ]
   ! MAS             [ shift and go to state 59 ]
   ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 101
@@ -3741,10 +3741,19 @@ state 101
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 32 (expresion -> expresion POR expresion .)
+    MAS             reduce using rule 32 (expresion -> expresion POR expresion .)
+    MENOS           reduce using rule 32 (expresion -> expresion POR expresion .)
     POR             reduce using rule 32 (expresion -> expresion POR expresion .)
     DIV             reduce using rule 32 (expresion -> expresion POR expresion .)
-    POT             reduce using rule 32 (expresion -> expresion POR expresion .)
     MOD             reduce using rule 32 (expresion -> expresion POR expresion .)
+    IGUALIGUAL      reduce using rule 32 (expresion -> expresion POR expresion .)
+    MAYORQUE        reduce using rule 32 (expresion -> expresion POR expresion .)
+    MAYORIGUAL      reduce using rule 32 (expresion -> expresion POR expresion .)
+    MENORQUE        reduce using rule 32 (expresion -> expresion POR expresion .)
+    MENORIGUAL      reduce using rule 32 (expresion -> expresion POR expresion .)
+    DIFERENTE       reduce using rule 32 (expresion -> expresion POR expresion .)
+    SAND            reduce using rule 32 (expresion -> expresion POR expresion .)
+    SOR             reduce using rule 32 (expresion -> expresion POR expresion .)
     PTCOMA          reduce using rule 32 (expresion -> expresion POR expresion .)
     RMAIN           reduce using rule 32 (expresion -> expresion POR expresion .)
     RPRINT          reduce using rule 32 (expresion -> expresion POR expresion .)
@@ -3769,31 +3778,22 @@ state 101
     RCASE           reduce using rule 32 (expresion -> expresion POR expresion .)
     CORC            reduce using rule 32 (expresion -> expresion POR expresion .)
     DOSPT           reduce using rule 32 (expresion -> expresion POR expresion .)
-    MAS             shift and go to state 59
-    MENOS           shift and go to state 60
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    POT             shift and go to state 63
 
-  ! MAS             [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! MENOS           [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! IGUALIGUAL      [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! MAYORQUE        [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! MENORQUE        [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! DIFERENTE       [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! SAND            [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
-  ! SOR             [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
+  ! POT             [ reduce using rule 32 (expresion -> expresion POR expresion .) ]
+  ! MAS             [ shift and go to state 59 ]
+  ! MENOS           [ shift and go to state 60 ]
   ! POR             [ shift and go to state 61 ]
   ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
   ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 102
@@ -3815,10 +3815,19 @@ state 102
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 33 (expresion -> expresion DIV expresion .)
+    MAS             reduce using rule 33 (expresion -> expresion DIV expresion .)
+    MENOS           reduce using rule 33 (expresion -> expresion DIV expresion .)
     POR             reduce using rule 33 (expresion -> expresion DIV expresion .)
     DIV             reduce using rule 33 (expresion -> expresion DIV expresion .)
-    POT             reduce using rule 33 (expresion -> expresion DIV expresion .)
     MOD             reduce using rule 33 (expresion -> expresion DIV expresion .)
+    IGUALIGUAL      reduce using rule 33 (expresion -> expresion DIV expresion .)
+    MAYORQUE        reduce using rule 33 (expresion -> expresion DIV expresion .)
+    MAYORIGUAL      reduce using rule 33 (expresion -> expresion DIV expresion .)
+    MENORQUE        reduce using rule 33 (expresion -> expresion DIV expresion .)
+    MENORIGUAL      reduce using rule 33 (expresion -> expresion DIV expresion .)
+    DIFERENTE       reduce using rule 33 (expresion -> expresion DIV expresion .)
+    SAND            reduce using rule 33 (expresion -> expresion DIV expresion .)
+    SOR             reduce using rule 33 (expresion -> expresion DIV expresion .)
     PTCOMA          reduce using rule 33 (expresion -> expresion DIV expresion .)
     RMAIN           reduce using rule 33 (expresion -> expresion DIV expresion .)
     RPRINT          reduce using rule 33 (expresion -> expresion DIV expresion .)
@@ -3843,31 +3852,22 @@ state 102
     RCASE           reduce using rule 33 (expresion -> expresion DIV expresion .)
     CORC            reduce using rule 33 (expresion -> expresion DIV expresion .)
     DOSPT           reduce using rule 33 (expresion -> expresion DIV expresion .)
-    MAS             shift and go to state 59
-    MENOS           shift and go to state 60
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    POT             shift and go to state 63
 
-  ! MAS             [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! MENOS           [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! IGUALIGUAL      [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! MAYORQUE        [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! MENORQUE        [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! DIFERENTE       [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! SAND            [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
-  ! SOR             [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
+  ! POT             [ reduce using rule 33 (expresion -> expresion DIV expresion .) ]
+  ! MAS             [ shift and go to state 59 ]
+  ! MENOS           [ shift and go to state 60 ]
   ! POR             [ shift and go to state 61 ]
   ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
   ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 103
@@ -3888,21 +3888,21 @@ state 103
     (42) expresion -> expresion . SAND expresion
     (43) expresion -> expresion . SOR expresion
 
-  ! shift/reduce conflict for MAS resolved as shift
-  ! shift/reduce conflict for MENOS resolved as shift
-  ! shift/reduce conflict for POR resolved as shift
-  ! shift/reduce conflict for DIV resolved as shift
-  ! shift/reduce conflict for POT resolved as shift
-  ! shift/reduce conflict for MOD resolved as shift
-  ! shift/reduce conflict for IGUALIGUAL resolved as shift
-  ! shift/reduce conflict for MAYORQUE resolved as shift
-  ! shift/reduce conflict for MAYORIGUAL resolved as shift
-  ! shift/reduce conflict for MENORQUE resolved as shift
-  ! shift/reduce conflict for MENORIGUAL resolved as shift
-  ! shift/reduce conflict for DIFERENTE resolved as shift
-  ! shift/reduce conflict for SAND resolved as shift
-  ! shift/reduce conflict for SOR resolved as shift
     PARC            reduce using rule 34 (expresion -> expresion POT expresion .)
+    MAS             reduce using rule 34 (expresion -> expresion POT expresion .)
+    MENOS           reduce using rule 34 (expresion -> expresion POT expresion .)
+    POR             reduce using rule 34 (expresion -> expresion POT expresion .)
+    DIV             reduce using rule 34 (expresion -> expresion POT expresion .)
+    POT             reduce using rule 34 (expresion -> expresion POT expresion .)
+    MOD             reduce using rule 34 (expresion -> expresion POT expresion .)
+    IGUALIGUAL      reduce using rule 34 (expresion -> expresion POT expresion .)
+    MAYORQUE        reduce using rule 34 (expresion -> expresion POT expresion .)
+    MAYORIGUAL      reduce using rule 34 (expresion -> expresion POT expresion .)
+    MENORQUE        reduce using rule 34 (expresion -> expresion POT expresion .)
+    MENORIGUAL      reduce using rule 34 (expresion -> expresion POT expresion .)
+    DIFERENTE       reduce using rule 34 (expresion -> expresion POT expresion .)
+    SAND            reduce using rule 34 (expresion -> expresion POT expresion .)
+    SOR             reduce using rule 34 (expresion -> expresion POT expresion .)
     PTCOMA          reduce using rule 34 (expresion -> expresion POT expresion .)
     RMAIN           reduce using rule 34 (expresion -> expresion POT expresion .)
     RPRINT          reduce using rule 34 (expresion -> expresion POT expresion .)
@@ -3927,35 +3927,21 @@ state 103
     RCASE           reduce using rule 34 (expresion -> expresion POT expresion .)
     CORC            reduce using rule 34 (expresion -> expresion POT expresion .)
     DOSPT           reduce using rule 34 (expresion -> expresion POT expresion .)
-    MAS             shift and go to state 59
-    MENOS           shift and go to state 60
-    POR             shift and go to state 61
-    DIV             shift and go to state 62
-    POT             shift and go to state 63
-    MOD             shift and go to state 64
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
 
-  ! MAS             [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! MENOS           [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! POR             [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! DIV             [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! POT             [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! MOD             [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! IGUALIGUAL      [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! MAYORQUE        [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! MENORQUE        [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! DIFERENTE       [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! SAND            [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
-  ! SOR             [ reduce using rule 34 (expresion -> expresion POT expresion .) ]
+  ! MAS             [ shift and go to state 59 ]
+  ! MENOS           [ shift and go to state 60 ]
+  ! POR             [ shift and go to state 61 ]
+  ! DIV             [ shift and go to state 62 ]
+  ! POT             [ shift and go to state 63 ]
+  ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 104
@@ -3977,10 +3963,19 @@ state 104
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 35 (expresion -> expresion MOD expresion .)
+    MAS             reduce using rule 35 (expresion -> expresion MOD expresion .)
+    MENOS           reduce using rule 35 (expresion -> expresion MOD expresion .)
     POR             reduce using rule 35 (expresion -> expresion MOD expresion .)
     DIV             reduce using rule 35 (expresion -> expresion MOD expresion .)
-    POT             reduce using rule 35 (expresion -> expresion MOD expresion .)
     MOD             reduce using rule 35 (expresion -> expresion MOD expresion .)
+    IGUALIGUAL      reduce using rule 35 (expresion -> expresion MOD expresion .)
+    MAYORQUE        reduce using rule 35 (expresion -> expresion MOD expresion .)
+    MAYORIGUAL      reduce using rule 35 (expresion -> expresion MOD expresion .)
+    MENORQUE        reduce using rule 35 (expresion -> expresion MOD expresion .)
+    MENORIGUAL      reduce using rule 35 (expresion -> expresion MOD expresion .)
+    DIFERENTE       reduce using rule 35 (expresion -> expresion MOD expresion .)
+    SAND            reduce using rule 35 (expresion -> expresion MOD expresion .)
+    SOR             reduce using rule 35 (expresion -> expresion MOD expresion .)
     PTCOMA          reduce using rule 35 (expresion -> expresion MOD expresion .)
     RMAIN           reduce using rule 35 (expresion -> expresion MOD expresion .)
     RPRINT          reduce using rule 35 (expresion -> expresion MOD expresion .)
@@ -4005,31 +4000,22 @@ state 104
     RCASE           reduce using rule 35 (expresion -> expresion MOD expresion .)
     CORC            reduce using rule 35 (expresion -> expresion MOD expresion .)
     DOSPT           reduce using rule 35 (expresion -> expresion MOD expresion .)
-    MAS             shift and go to state 59
-    MENOS           shift and go to state 60
-    IGUALIGUAL      shift and go to state 65
-    MAYORQUE        shift and go to state 66
-    MAYORIGUAL      shift and go to state 67
-    MENORQUE        shift and go to state 68
-    MENORIGUAL      shift and go to state 69
-    DIFERENTE       shift and go to state 70
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    POT             shift and go to state 63
 
-  ! MAS             [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! MENOS           [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! IGUALIGUAL      [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! MAYORQUE        [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! MAYORIGUAL      [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! MENORQUE        [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! MENORIGUAL      [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! DIFERENTE       [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! SAND            [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
-  ! SOR             [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
+  ! POT             [ reduce using rule 35 (expresion -> expresion MOD expresion .) ]
+  ! MAS             [ shift and go to state 59 ]
+  ! MENOS           [ shift and go to state 60 ]
   ! POR             [ shift and go to state 61 ]
   ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
   ! MOD             [ shift and go to state 64 ]
+  ! IGUALIGUAL      [ shift and go to state 65 ]
+  ! MAYORQUE        [ shift and go to state 66 ]
+  ! MAYORIGUAL      [ shift and go to state 67 ]
+  ! MENORQUE        [ shift and go to state 68 ]
+  ! MENORIGUAL      [ shift and go to state 69 ]
+  ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 105
@@ -4051,18 +4037,14 @@ state 105
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    MAS             reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    MENOS           reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    POR             reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    DIV             reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    POT             reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    MOD             reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     IGUALIGUAL      reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     MAYORQUE        reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     MAYORIGUAL      reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     MENORQUE        reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     MENORIGUAL      reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     DIFERENTE       reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
+    SAND            reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
+    SOR             reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     PTCOMA          reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     RMAIN           reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     RPRINT          reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
@@ -4087,23 +4069,27 @@ state 105
     RCASE           reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     CORC            reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
     DOSPT           reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! SAND            [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
-  ! SOR             [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! MAS             [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! POR             [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! POT             [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MOD             [ reduce using rule 36 (expresion -> expresion IGUALIGUAL expresion .) ]
   ! IGUALIGUAL      [ shift and go to state 65 ]
   ! MAYORQUE        [ shift and go to state 66 ]
   ! MAYORIGUAL      [ shift and go to state 67 ]
   ! MENORQUE        [ shift and go to state 68 ]
   ! MENORIGUAL      [ shift and go to state 69 ]
   ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 106
@@ -4125,18 +4111,14 @@ state 106
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    MAS             reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    MENOS           reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    POR             reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    DIV             reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    POT             reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    MOD             reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     IGUALIGUAL      reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     MAYORQUE        reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     MAYORIGUAL      reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     MENORQUE        reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     MENORIGUAL      reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     DIFERENTE       reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
+    SAND            reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
+    SOR             reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     PTCOMA          reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     RMAIN           reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     RPRINT          reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
@@ -4161,23 +4143,27 @@ state 106
     RCASE           reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     CORC            reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
     DOSPT           reduce using rule 37 (expresion -> expresion MAYORQUE expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! SAND            [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
-  ! SOR             [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! MAS             [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MENOS           [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
+  ! POR             [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
+  ! DIV             [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
+  ! POT             [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MOD             [ reduce using rule 37 (expresion -> expresion MAYORQUE expresion .) ]
   ! IGUALIGUAL      [ shift and go to state 65 ]
   ! MAYORQUE        [ shift and go to state 66 ]
   ! MAYORIGUAL      [ shift and go to state 67 ]
   ! MENORQUE        [ shift and go to state 68 ]
   ! MENORIGUAL      [ shift and go to state 69 ]
   ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 107
@@ -4199,18 +4185,14 @@ state 107
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    MAS             reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    MENOS           reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    POR             reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    DIV             reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    POT             reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    MOD             reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     IGUALIGUAL      reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     MAYORQUE        reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     MAYORIGUAL      reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     MENORQUE        reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     MENORIGUAL      reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     DIFERENTE       reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
+    SAND            reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
+    SOR             reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     PTCOMA          reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     RMAIN           reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     RPRINT          reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
@@ -4235,23 +4217,27 @@ state 107
     RCASE           reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     CORC            reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
     DOSPT           reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! SAND            [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
-  ! SOR             [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! MAS             [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! POR             [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! POT             [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MOD             [ reduce using rule 38 (expresion -> expresion MAYORIGUAL expresion .) ]
   ! IGUALIGUAL      [ shift and go to state 65 ]
   ! MAYORQUE        [ shift and go to state 66 ]
   ! MAYORIGUAL      [ shift and go to state 67 ]
   ! MENORQUE        [ shift and go to state 68 ]
   ! MENORIGUAL      [ shift and go to state 69 ]
   ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 108
@@ -4273,18 +4259,14 @@ state 108
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    MAS             reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    MENOS           reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    POR             reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    DIV             reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    POT             reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    MOD             reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     IGUALIGUAL      reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     MAYORQUE        reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     MAYORIGUAL      reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     MENORQUE        reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     MENORIGUAL      reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     DIFERENTE       reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
+    SAND            reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
+    SOR             reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     PTCOMA          reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     RMAIN           reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     RPRINT          reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
@@ -4309,23 +4291,27 @@ state 108
     RCASE           reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     CORC            reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
     DOSPT           reduce using rule 39 (expresion -> expresion MENORQUE expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! SAND            [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
-  ! SOR             [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! MAS             [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
+  ! MENOS           [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
+  ! POR             [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
+  ! DIV             [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
+  ! POT             [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
+  ! MOD             [ reduce using rule 39 (expresion -> expresion MENORQUE expresion .) ]
   ! IGUALIGUAL      [ shift and go to state 65 ]
   ! MAYORQUE        [ shift and go to state 66 ]
   ! MAYORIGUAL      [ shift and go to state 67 ]
   ! MENORQUE        [ shift and go to state 68 ]
   ! MENORIGUAL      [ shift and go to state 69 ]
   ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 109
@@ -4347,18 +4333,14 @@ state 109
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    MAS             reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    MENOS           reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    POR             reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    DIV             reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    POT             reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    MOD             reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     IGUALIGUAL      reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     MAYORQUE        reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     MAYORIGUAL      reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     MENORQUE        reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     MENORIGUAL      reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     DIFERENTE       reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
+    SAND            reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
+    SOR             reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     PTCOMA          reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     RMAIN           reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     RPRINT          reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
@@ -4383,23 +4365,27 @@ state 109
     RCASE           reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     CORC            reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
     DOSPT           reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! SAND            [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
-  ! SOR             [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! MAS             [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! POR             [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! POT             [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MOD             [ reduce using rule 40 (expresion -> expresion MENORIGUAL expresion .) ]
   ! IGUALIGUAL      [ shift and go to state 65 ]
   ! MAYORQUE        [ shift and go to state 66 ]
   ! MAYORIGUAL      [ shift and go to state 67 ]
   ! MENORQUE        [ shift and go to state 68 ]
   ! MENORIGUAL      [ shift and go to state 69 ]
   ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 110
@@ -4421,18 +4407,14 @@ state 110
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    MAS             reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    MENOS           reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    POR             reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    DIV             reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    POT             reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    MOD             reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     IGUALIGUAL      reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     MAYORQUE        reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     MAYORIGUAL      reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     MENORQUE        reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     MENORIGUAL      reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     DIFERENTE       reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
+    SAND            reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
+    SOR             reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     PTCOMA          reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     RMAIN           reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     RPRINT          reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
@@ -4457,23 +4439,27 @@ state 110
     RCASE           reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     CORC            reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
     DOSPT           reduce using rule 41 (expresion -> expresion DIFERENTE expresion .)
-    SAND            shift and go to state 71
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
 
-  ! SAND            [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
-  ! SOR             [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
+  ! MAS             [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
+  ! MENOS           [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
+  ! POR             [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
+  ! DIV             [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
+  ! POT             [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
+  ! MOD             [ reduce using rule 41 (expresion -> expresion DIFERENTE expresion .) ]
   ! IGUALIGUAL      [ shift and go to state 65 ]
   ! MAYORQUE        [ shift and go to state 66 ]
   ! MAYORIGUAL      [ shift and go to state 67 ]
   ! MENORQUE        [ shift and go to state 68 ]
   ! MENORIGUAL      [ shift and go to state 69 ]
   ! DIFERENTE       [ shift and go to state 70 ]
+  ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 111
@@ -4495,19 +4481,8 @@ state 111
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MAS             reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MENOS           reduce using rule 42 (expresion -> expresion SAND expresion .)
-    POR             reduce using rule 42 (expresion -> expresion SAND expresion .)
-    DIV             reduce using rule 42 (expresion -> expresion SAND expresion .)
-    POT             reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MOD             reduce using rule 42 (expresion -> expresion SAND expresion .)
-    IGUALIGUAL      reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MAYORQUE        reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MAYORIGUAL      reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MENORQUE        reduce using rule 42 (expresion -> expresion SAND expresion .)
-    MENORIGUAL      reduce using rule 42 (expresion -> expresion SAND expresion .)
-    DIFERENTE       reduce using rule 42 (expresion -> expresion SAND expresion .)
     SAND            reduce using rule 42 (expresion -> expresion SAND expresion .)
+    SOR             reduce using rule 42 (expresion -> expresion SAND expresion .)
     PTCOMA          reduce using rule 42 (expresion -> expresion SAND expresion .)
     RMAIN           reduce using rule 42 (expresion -> expresion SAND expresion .)
     RPRINT          reduce using rule 42 (expresion -> expresion SAND expresion .)
@@ -4532,22 +4507,33 @@ state 111
     RCASE           reduce using rule 42 (expresion -> expresion SAND expresion .)
     CORC            reduce using rule 42 (expresion -> expresion SAND expresion .)
     DOSPT           reduce using rule 42 (expresion -> expresion SAND expresion .)
-    SOR             shift and go to state 72
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
+    IGUALIGUAL      shift and go to state 65
+    MAYORQUE        shift and go to state 66
+    MAYORIGUAL      shift and go to state 67
+    MENORQUE        shift and go to state 68
+    MENORIGUAL      shift and go to state 69
+    DIFERENTE       shift and go to state 70
 
-  ! SOR             [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
-  ! IGUALIGUAL      [ shift and go to state 65 ]
-  ! MAYORQUE        [ shift and go to state 66 ]
-  ! MAYORIGUAL      [ shift and go to state 67 ]
-  ! MENORQUE        [ shift and go to state 68 ]
-  ! MENORIGUAL      [ shift and go to state 69 ]
-  ! DIFERENTE       [ shift and go to state 70 ]
+  ! MAS             [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! MENOS           [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! POR             [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! DIV             [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! POT             [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! MOD             [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! IGUALIGUAL      [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! MAYORQUE        [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! MENORQUE        [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
+  ! DIFERENTE       [ reduce using rule 42 (expresion -> expresion SAND expresion .) ]
   ! SAND            [ shift and go to state 71 ]
+  ! SOR             [ shift and go to state 72 ]
 
 
 state 112
@@ -4569,19 +4555,6 @@ state 112
     (43) expresion -> expresion . SOR expresion
 
     PARC            reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MAS             reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MENOS           reduce using rule 43 (expresion -> expresion SOR expresion .)
-    POR             reduce using rule 43 (expresion -> expresion SOR expresion .)
-    DIV             reduce using rule 43 (expresion -> expresion SOR expresion .)
-    POT             reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MOD             reduce using rule 43 (expresion -> expresion SOR expresion .)
-    IGUALIGUAL      reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MAYORQUE        reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MAYORIGUAL      reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MENORQUE        reduce using rule 43 (expresion -> expresion SOR expresion .)
-    MENORIGUAL      reduce using rule 43 (expresion -> expresion SOR expresion .)
-    DIFERENTE       reduce using rule 43 (expresion -> expresion SOR expresion .)
-    SAND            reduce using rule 43 (expresion -> expresion SOR expresion .)
     SOR             reduce using rule 43 (expresion -> expresion SOR expresion .)
     PTCOMA          reduce using rule 43 (expresion -> expresion SOR expresion .)
     RMAIN           reduce using rule 43 (expresion -> expresion SOR expresion .)
@@ -4607,20 +4580,33 @@ state 112
     RCASE           reduce using rule 43 (expresion -> expresion SOR expresion .)
     CORC            reduce using rule 43 (expresion -> expresion SOR expresion .)
     DOSPT           reduce using rule 43 (expresion -> expresion SOR expresion .)
+    MAS             shift and go to state 59
+    MENOS           shift and go to state 60
+    POR             shift and go to state 61
+    DIV             shift and go to state 62
+    POT             shift and go to state 63
+    MOD             shift and go to state 64
+    IGUALIGUAL      shift and go to state 65
+    MAYORQUE        shift and go to state 66
+    MAYORIGUAL      shift and go to state 67
+    MENORQUE        shift and go to state 68
+    MENORIGUAL      shift and go to state 69
+    DIFERENTE       shift and go to state 70
+    SAND            shift and go to state 71
 
-  ! MAS             [ shift and go to state 59 ]
-  ! MENOS           [ shift and go to state 60 ]
-  ! POR             [ shift and go to state 61 ]
-  ! DIV             [ shift and go to state 62 ]
-  ! POT             [ shift and go to state 63 ]
-  ! MOD             [ shift and go to state 64 ]
-  ! IGUALIGUAL      [ shift and go to state 65 ]
-  ! MAYORQUE        [ shift and go to state 66 ]
-  ! MAYORIGUAL      [ shift and go to state 67 ]
-  ! MENORQUE        [ shift and go to state 68 ]
-  ! MENORIGUAL      [ shift and go to state 69 ]
-  ! DIFERENTE       [ shift and go to state 70 ]
-  ! SAND            [ shift and go to state 71 ]
+  ! MAS             [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! MENOS           [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! POR             [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! DIV             [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! POT             [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! MOD             [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! IGUALIGUAL      [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! MAYORQUE        [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! MENORQUE        [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! DIFERENTE       [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
+  ! SAND            [ reduce using rule 43 (expresion -> expresion SOR expresion .) ]
   ! SOR             [ shift and go to state 72 ]
 
 
@@ -6298,20 +6284,6 @@ WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for MENOS in state 51 resolved as shift
 WARNING: shift/reduce conflict for MENOS in state 86 resolved as shift
-WARNING: shift/reduce conflict for MAS in state 103 resolved as shift
-WARNING: shift/reduce conflict for MENOS in state 103 resolved as shift
-WARNING: shift/reduce conflict for POR in state 103 resolved as shift
-WARNING: shift/reduce conflict for DIV in state 103 resolved as shift
-WARNING: shift/reduce conflict for POT in state 103 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 103 resolved as shift
-WARNING: shift/reduce conflict for IGUALIGUAL in state 103 resolved as shift
-WARNING: shift/reduce conflict for MAYORQUE in state 103 resolved as shift
-WARNING: shift/reduce conflict for MAYORIGUAL in state 103 resolved as shift
-WARNING: shift/reduce conflict for MENORQUE in state 103 resolved as shift
-WARNING: shift/reduce conflict for MENORIGUAL in state 103 resolved as shift
-WARNING: shift/reduce conflict for DIFERENTE in state 103 resolved as shift
-WARNING: shift/reduce conflict for SAND in state 103 resolved as shift
-WARNING: shift/reduce conflict for SOR in state 103 resolved as shift
 WARNING: shift/reduce conflict for RBREAK in state 115 resolved as shift
 WARNING: shift/reduce conflict for RMAIN in state 115 resolved as shift
 WARNING: shift/reduce conflict for RPRINT in state 115 resolved as shift

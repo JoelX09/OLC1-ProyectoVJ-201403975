@@ -1,0 +1,2396 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    RBOOLEAN
+    RCHAR
+    RDOUBLE
+    RINT
+    RSTRING
+
+Grammar
+
+Rule 0     S' -> init
+Rule 1     init -> instrucciones
+Rule 2     instrucciones -> instrucciones instruccion
+Rule 3     instrucciones -> instruccion
+Rule 4     ptc -> PTCOMA
+Rule 5     ptc -> <empty>
+Rule 6     instruccion -> variables ptc
+Rule 7     instruccion -> imprimir ptc
+Rule 8     instruccion -> error
+Rule 9     variables -> RVAR ID
+Rule 10    variables -> RVAR ID IGUAL expresion
+Rule 11    variables -> ID IGUAL expresion
+Rule 12    variables -> ID IGUAL RNULL
+Rule 13    expresion -> expresion MAS expresion
+Rule 14    expresion -> expresion MENOS expresion
+Rule 15    expresion -> expresion POR expresion
+Rule 16    expresion -> expresion DIV expresion
+Rule 17    expresion -> expresion POT expresion
+Rule 18    expresion -> expresion MOD expresion
+Rule 19    expresion -> expresion MENORQUE expresion
+Rule 20    expresion -> expresion MAYORQUE expresion
+Rule 21    expresion -> expresion MENORIGUAL expresion
+Rule 22    expresion -> expresion MAYORIGUAL expresion
+Rule 23    expresion -> expresion IGUALIGUAL expresion
+Rule 24    expresion -> expresion DIFERENTE expresion
+Rule 25    expresion -> expresion AND expresion
+Rule 26    expresion -> expresion OR expresion
+Rule 27    expresion -> MENOS expresion
+Rule 28    expresion -> NOT expresion
+Rule 29    expresion -> PARA expresion PARC
+Rule 30    expresion -> ID
+Rule 31    expresion -> ENTERO
+Rule 32    expresion -> DECIMAL
+Rule 33    expresion -> CADENA
+Rule 34    expresion -> CHARACTER
+Rule 35    expresion -> RTRUE
+Rule 36    expresion -> RFALSE
+Rule 37    imprimir -> RPRINT PARA expresion PARC
+
+Terminals, with rules where they appear
+
+AND                  : 25
+CADENA               : 33
+CHARACTER            : 34
+DECIMAL              : 32
+DIFERENTE            : 24
+DIV                  : 16
+ENTERO               : 31
+ID                   : 9 10 11 12 30
+IGUAL                : 10 11 12
+IGUALIGUAL           : 23
+MAS                  : 13
+MAYORIGUAL           : 22
+MAYORQUE             : 20
+MENORIGUAL           : 21
+MENORQUE             : 19
+MENOS                : 14 27
+MOD                  : 18
+NOT                  : 28
+OR                   : 26
+PARA                 : 29 37
+PARC                 : 29 37
+POR                  : 15
+POT                  : 17
+PTCOMA               : 4
+RBOOLEAN             : 
+RCHAR                : 
+RDOUBLE              : 
+RFALSE               : 36
+RINT                 : 
+RNULL                : 12
+RPRINT               : 37
+RSTRING              : 
+RTRUE                : 35
+RVAR                 : 9 10
+error                : 8
+
+Nonterminals, with rules where they appear
+
+expresion            : 10 11 13 13 14 14 15 15 16 16 17 17 18 18 19 19 20 20 21 21 22 22 23 23 24 24 25 25 26 26 27 28 29 37
+imprimir             : 7
+init                 : 0
+instruccion          : 2 3
+instrucciones        : 1 2
+ptc                  : 6 7
+variables            : 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . init
+    (1) init -> . instrucciones
+    (2) instrucciones -> . instrucciones instruccion
+    (3) instrucciones -> . instruccion
+    (6) instruccion -> . variables ptc
+    (7) instruccion -> . imprimir ptc
+    (8) instruccion -> . error
+    (9) variables -> . RVAR ID
+    (10) variables -> . RVAR ID IGUAL expresion
+    (11) variables -> . ID IGUAL expresion
+    (12) variables -> . ID IGUAL RNULL
+    (37) imprimir -> . RPRINT PARA expresion PARC
+
+    error           shift and go to state 6
+    RVAR            shift and go to state 7
+    ID              shift and go to state 8
+    RPRINT          shift and go to state 9
+
+    init                           shift and go to state 1
+    instrucciones                  shift and go to state 2
+    instruccion                    shift and go to state 3
+    variables                      shift and go to state 4
+    imprimir                       shift and go to state 5
+
+state 1
+
+    (0) S' -> init .
+
+
+
+state 2
+
+    (1) init -> instrucciones .
+    (2) instrucciones -> instrucciones . instruccion
+    (6) instruccion -> . variables ptc
+    (7) instruccion -> . imprimir ptc
+    (8) instruccion -> . error
+    (9) variables -> . RVAR ID
+    (10) variables -> . RVAR ID IGUAL expresion
+    (11) variables -> . ID IGUAL expresion
+    (12) variables -> . ID IGUAL RNULL
+    (37) imprimir -> . RPRINT PARA expresion PARC
+
+    $end            reduce using rule 1 (init -> instrucciones .)
+    error           shift and go to state 6
+    RVAR            shift and go to state 7
+    ID              shift and go to state 8
+    RPRINT          shift and go to state 9
+
+    instruccion                    shift and go to state 10
+    variables                      shift and go to state 4
+    imprimir                       shift and go to state 5
+
+state 3
+
+    (3) instrucciones -> instruccion .
+
+    error           reduce using rule 3 (instrucciones -> instruccion .)
+    RVAR            reduce using rule 3 (instrucciones -> instruccion .)
+    ID              reduce using rule 3 (instrucciones -> instruccion .)
+    RPRINT          reduce using rule 3 (instrucciones -> instruccion .)
+    $end            reduce using rule 3 (instrucciones -> instruccion .)
+
+
+state 4
+
+    (6) instruccion -> variables . ptc
+    (4) ptc -> . PTCOMA
+    (5) ptc -> .
+
+    PTCOMA          shift and go to state 12
+    error           reduce using rule 5 (ptc -> .)
+    RVAR            reduce using rule 5 (ptc -> .)
+    ID              reduce using rule 5 (ptc -> .)
+    RPRINT          reduce using rule 5 (ptc -> .)
+    $end            reduce using rule 5 (ptc -> .)
+
+    ptc                            shift and go to state 11
+
+state 5
+
+    (7) instruccion -> imprimir . ptc
+    (4) ptc -> . PTCOMA
+    (5) ptc -> .
+
+    PTCOMA          shift and go to state 12
+    error           reduce using rule 5 (ptc -> .)
+    RVAR            reduce using rule 5 (ptc -> .)
+    ID              reduce using rule 5 (ptc -> .)
+    RPRINT          reduce using rule 5 (ptc -> .)
+    $end            reduce using rule 5 (ptc -> .)
+
+    ptc                            shift and go to state 13
+
+state 6
+
+    (8) instruccion -> error .
+
+    error           reduce using rule 8 (instruccion -> error .)
+    RVAR            reduce using rule 8 (instruccion -> error .)
+    ID              reduce using rule 8 (instruccion -> error .)
+    RPRINT          reduce using rule 8 (instruccion -> error .)
+    $end            reduce using rule 8 (instruccion -> error .)
+
+
+state 7
+
+    (9) variables -> RVAR . ID
+    (10) variables -> RVAR . ID IGUAL expresion
+
+    ID              shift and go to state 14
+
+
+state 8
+
+    (11) variables -> ID . IGUAL expresion
+    (12) variables -> ID . IGUAL RNULL
+
+    IGUAL           shift and go to state 15
+
+
+state 9
+
+    (37) imprimir -> RPRINT . PARA expresion PARC
+
+    PARA            shift and go to state 16
+
+
+state 10
+
+    (2) instrucciones -> instrucciones instruccion .
+
+    error           reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    RVAR            reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    ID              reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    RPRINT          reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    $end            reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+
+
+state 11
+
+    (6) instruccion -> variables ptc .
+
+    error           reduce using rule 6 (instruccion -> variables ptc .)
+    RVAR            reduce using rule 6 (instruccion -> variables ptc .)
+    ID              reduce using rule 6 (instruccion -> variables ptc .)
+    RPRINT          reduce using rule 6 (instruccion -> variables ptc .)
+    $end            reduce using rule 6 (instruccion -> variables ptc .)
+
+
+state 12
+
+    (4) ptc -> PTCOMA .
+
+    error           reduce using rule 4 (ptc -> PTCOMA .)
+    RVAR            reduce using rule 4 (ptc -> PTCOMA .)
+    ID              reduce using rule 4 (ptc -> PTCOMA .)
+    RPRINT          reduce using rule 4 (ptc -> PTCOMA .)
+    $end            reduce using rule 4 (ptc -> PTCOMA .)
+
+
+state 13
+
+    (7) instruccion -> imprimir ptc .
+
+    error           reduce using rule 7 (instruccion -> imprimir ptc .)
+    RVAR            reduce using rule 7 (instruccion -> imprimir ptc .)
+    ID              reduce using rule 7 (instruccion -> imprimir ptc .)
+    RPRINT          reduce using rule 7 (instruccion -> imprimir ptc .)
+    $end            reduce using rule 7 (instruccion -> imprimir ptc .)
+
+
+state 14
+
+    (9) variables -> RVAR ID .
+    (10) variables -> RVAR ID . IGUAL expresion
+
+    PTCOMA          reduce using rule 9 (variables -> RVAR ID .)
+    error           reduce using rule 9 (variables -> RVAR ID .)
+    RVAR            reduce using rule 9 (variables -> RVAR ID .)
+    ID              reduce using rule 9 (variables -> RVAR ID .)
+    RPRINT          reduce using rule 9 (variables -> RVAR ID .)
+    $end            reduce using rule 9 (variables -> RVAR ID .)
+    IGUAL           shift and go to state 17
+
+
+state 15
+
+    (11) variables -> ID IGUAL . expresion
+    (12) variables -> ID IGUAL . RNULL
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    RNULL           shift and go to state 20
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 19
+
+state 16
+
+    (37) imprimir -> RPRINT PARA . expresion PARC
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 30
+
+state 17
+
+    (10) variables -> RVAR ID IGUAL . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 31
+
+state 18
+
+    (30) expresion -> ID .
+
+    MAS             reduce using rule 30 (expresion -> ID .)
+    MENOS           reduce using rule 30 (expresion -> ID .)
+    POR             reduce using rule 30 (expresion -> ID .)
+    DIV             reduce using rule 30 (expresion -> ID .)
+    POT             reduce using rule 30 (expresion -> ID .)
+    MOD             reduce using rule 30 (expresion -> ID .)
+    MENORQUE        reduce using rule 30 (expresion -> ID .)
+    MAYORQUE        reduce using rule 30 (expresion -> ID .)
+    MENORIGUAL      reduce using rule 30 (expresion -> ID .)
+    MAYORIGUAL      reduce using rule 30 (expresion -> ID .)
+    IGUALIGUAL      reduce using rule 30 (expresion -> ID .)
+    DIFERENTE       reduce using rule 30 (expresion -> ID .)
+    AND             reduce using rule 30 (expresion -> ID .)
+    OR              reduce using rule 30 (expresion -> ID .)
+    PTCOMA          reduce using rule 30 (expresion -> ID .)
+    error           reduce using rule 30 (expresion -> ID .)
+    RVAR            reduce using rule 30 (expresion -> ID .)
+    ID              reduce using rule 30 (expresion -> ID .)
+    RPRINT          reduce using rule 30 (expresion -> ID .)
+    $end            reduce using rule 30 (expresion -> ID .)
+    PARC            reduce using rule 30 (expresion -> ID .)
+
+
+state 19
+
+    (11) variables -> ID IGUAL expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    PTCOMA          reduce using rule 11 (variables -> ID IGUAL expresion .)
+    error           reduce using rule 11 (variables -> ID IGUAL expresion .)
+    RVAR            reduce using rule 11 (variables -> ID IGUAL expresion .)
+    ID              reduce using rule 11 (variables -> ID IGUAL expresion .)
+    RPRINT          reduce using rule 11 (variables -> ID IGUAL expresion .)
+    $end            reduce using rule 11 (variables -> ID IGUAL expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    AND             shift and go to state 44
+    OR              shift and go to state 45
+
+
+state 20
+
+    (12) variables -> ID IGUAL RNULL .
+
+    PTCOMA          reduce using rule 12 (variables -> ID IGUAL RNULL .)
+    error           reduce using rule 12 (variables -> ID IGUAL RNULL .)
+    RVAR            reduce using rule 12 (variables -> ID IGUAL RNULL .)
+    ID              reduce using rule 12 (variables -> ID IGUAL RNULL .)
+    RPRINT          reduce using rule 12 (variables -> ID IGUAL RNULL .)
+    $end            reduce using rule 12 (variables -> ID IGUAL RNULL .)
+
+
+state 21
+
+    (27) expresion -> MENOS . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 46
+
+state 22
+
+    (28) expresion -> NOT . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 47
+
+state 23
+
+    (29) expresion -> PARA . expresion PARC
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 48
+
+state 24
+
+    (31) expresion -> ENTERO .
+
+    MAS             reduce using rule 31 (expresion -> ENTERO .)
+    MENOS           reduce using rule 31 (expresion -> ENTERO .)
+    POR             reduce using rule 31 (expresion -> ENTERO .)
+    DIV             reduce using rule 31 (expresion -> ENTERO .)
+    POT             reduce using rule 31 (expresion -> ENTERO .)
+    MOD             reduce using rule 31 (expresion -> ENTERO .)
+    MENORQUE        reduce using rule 31 (expresion -> ENTERO .)
+    MAYORQUE        reduce using rule 31 (expresion -> ENTERO .)
+    MENORIGUAL      reduce using rule 31 (expresion -> ENTERO .)
+    MAYORIGUAL      reduce using rule 31 (expresion -> ENTERO .)
+    IGUALIGUAL      reduce using rule 31 (expresion -> ENTERO .)
+    DIFERENTE       reduce using rule 31 (expresion -> ENTERO .)
+    AND             reduce using rule 31 (expresion -> ENTERO .)
+    OR              reduce using rule 31 (expresion -> ENTERO .)
+    PTCOMA          reduce using rule 31 (expresion -> ENTERO .)
+    error           reduce using rule 31 (expresion -> ENTERO .)
+    RVAR            reduce using rule 31 (expresion -> ENTERO .)
+    ID              reduce using rule 31 (expresion -> ENTERO .)
+    RPRINT          reduce using rule 31 (expresion -> ENTERO .)
+    $end            reduce using rule 31 (expresion -> ENTERO .)
+    PARC            reduce using rule 31 (expresion -> ENTERO .)
+
+
+state 25
+
+    (32) expresion -> DECIMAL .
+
+    MAS             reduce using rule 32 (expresion -> DECIMAL .)
+    MENOS           reduce using rule 32 (expresion -> DECIMAL .)
+    POR             reduce using rule 32 (expresion -> DECIMAL .)
+    DIV             reduce using rule 32 (expresion -> DECIMAL .)
+    POT             reduce using rule 32 (expresion -> DECIMAL .)
+    MOD             reduce using rule 32 (expresion -> DECIMAL .)
+    MENORQUE        reduce using rule 32 (expresion -> DECIMAL .)
+    MAYORQUE        reduce using rule 32 (expresion -> DECIMAL .)
+    MENORIGUAL      reduce using rule 32 (expresion -> DECIMAL .)
+    MAYORIGUAL      reduce using rule 32 (expresion -> DECIMAL .)
+    IGUALIGUAL      reduce using rule 32 (expresion -> DECIMAL .)
+    DIFERENTE       reduce using rule 32 (expresion -> DECIMAL .)
+    AND             reduce using rule 32 (expresion -> DECIMAL .)
+    OR              reduce using rule 32 (expresion -> DECIMAL .)
+    PTCOMA          reduce using rule 32 (expresion -> DECIMAL .)
+    error           reduce using rule 32 (expresion -> DECIMAL .)
+    RVAR            reduce using rule 32 (expresion -> DECIMAL .)
+    ID              reduce using rule 32 (expresion -> DECIMAL .)
+    RPRINT          reduce using rule 32 (expresion -> DECIMAL .)
+    $end            reduce using rule 32 (expresion -> DECIMAL .)
+    PARC            reduce using rule 32 (expresion -> DECIMAL .)
+
+
+state 26
+
+    (33) expresion -> CADENA .
+
+    MAS             reduce using rule 33 (expresion -> CADENA .)
+    MENOS           reduce using rule 33 (expresion -> CADENA .)
+    POR             reduce using rule 33 (expresion -> CADENA .)
+    DIV             reduce using rule 33 (expresion -> CADENA .)
+    POT             reduce using rule 33 (expresion -> CADENA .)
+    MOD             reduce using rule 33 (expresion -> CADENA .)
+    MENORQUE        reduce using rule 33 (expresion -> CADENA .)
+    MAYORQUE        reduce using rule 33 (expresion -> CADENA .)
+    MENORIGUAL      reduce using rule 33 (expresion -> CADENA .)
+    MAYORIGUAL      reduce using rule 33 (expresion -> CADENA .)
+    IGUALIGUAL      reduce using rule 33 (expresion -> CADENA .)
+    DIFERENTE       reduce using rule 33 (expresion -> CADENA .)
+    AND             reduce using rule 33 (expresion -> CADENA .)
+    OR              reduce using rule 33 (expresion -> CADENA .)
+    PTCOMA          reduce using rule 33 (expresion -> CADENA .)
+    error           reduce using rule 33 (expresion -> CADENA .)
+    RVAR            reduce using rule 33 (expresion -> CADENA .)
+    ID              reduce using rule 33 (expresion -> CADENA .)
+    RPRINT          reduce using rule 33 (expresion -> CADENA .)
+    $end            reduce using rule 33 (expresion -> CADENA .)
+    PARC            reduce using rule 33 (expresion -> CADENA .)
+
+
+state 27
+
+    (34) expresion -> CHARACTER .
+
+    MAS             reduce using rule 34 (expresion -> CHARACTER .)
+    MENOS           reduce using rule 34 (expresion -> CHARACTER .)
+    POR             reduce using rule 34 (expresion -> CHARACTER .)
+    DIV             reduce using rule 34 (expresion -> CHARACTER .)
+    POT             reduce using rule 34 (expresion -> CHARACTER .)
+    MOD             reduce using rule 34 (expresion -> CHARACTER .)
+    MENORQUE        reduce using rule 34 (expresion -> CHARACTER .)
+    MAYORQUE        reduce using rule 34 (expresion -> CHARACTER .)
+    MENORIGUAL      reduce using rule 34 (expresion -> CHARACTER .)
+    MAYORIGUAL      reduce using rule 34 (expresion -> CHARACTER .)
+    IGUALIGUAL      reduce using rule 34 (expresion -> CHARACTER .)
+    DIFERENTE       reduce using rule 34 (expresion -> CHARACTER .)
+    AND             reduce using rule 34 (expresion -> CHARACTER .)
+    OR              reduce using rule 34 (expresion -> CHARACTER .)
+    PTCOMA          reduce using rule 34 (expresion -> CHARACTER .)
+    error           reduce using rule 34 (expresion -> CHARACTER .)
+    RVAR            reduce using rule 34 (expresion -> CHARACTER .)
+    ID              reduce using rule 34 (expresion -> CHARACTER .)
+    RPRINT          reduce using rule 34 (expresion -> CHARACTER .)
+    $end            reduce using rule 34 (expresion -> CHARACTER .)
+    PARC            reduce using rule 34 (expresion -> CHARACTER .)
+
+
+state 28
+
+    (35) expresion -> RTRUE .
+
+    MAS             reduce using rule 35 (expresion -> RTRUE .)
+    MENOS           reduce using rule 35 (expresion -> RTRUE .)
+    POR             reduce using rule 35 (expresion -> RTRUE .)
+    DIV             reduce using rule 35 (expresion -> RTRUE .)
+    POT             reduce using rule 35 (expresion -> RTRUE .)
+    MOD             reduce using rule 35 (expresion -> RTRUE .)
+    MENORQUE        reduce using rule 35 (expresion -> RTRUE .)
+    MAYORQUE        reduce using rule 35 (expresion -> RTRUE .)
+    MENORIGUAL      reduce using rule 35 (expresion -> RTRUE .)
+    MAYORIGUAL      reduce using rule 35 (expresion -> RTRUE .)
+    IGUALIGUAL      reduce using rule 35 (expresion -> RTRUE .)
+    DIFERENTE       reduce using rule 35 (expresion -> RTRUE .)
+    AND             reduce using rule 35 (expresion -> RTRUE .)
+    OR              reduce using rule 35 (expresion -> RTRUE .)
+    PTCOMA          reduce using rule 35 (expresion -> RTRUE .)
+    error           reduce using rule 35 (expresion -> RTRUE .)
+    RVAR            reduce using rule 35 (expresion -> RTRUE .)
+    ID              reduce using rule 35 (expresion -> RTRUE .)
+    RPRINT          reduce using rule 35 (expresion -> RTRUE .)
+    $end            reduce using rule 35 (expresion -> RTRUE .)
+    PARC            reduce using rule 35 (expresion -> RTRUE .)
+
+
+state 29
+
+    (36) expresion -> RFALSE .
+
+    MAS             reduce using rule 36 (expresion -> RFALSE .)
+    MENOS           reduce using rule 36 (expresion -> RFALSE .)
+    POR             reduce using rule 36 (expresion -> RFALSE .)
+    DIV             reduce using rule 36 (expresion -> RFALSE .)
+    POT             reduce using rule 36 (expresion -> RFALSE .)
+    MOD             reduce using rule 36 (expresion -> RFALSE .)
+    MENORQUE        reduce using rule 36 (expresion -> RFALSE .)
+    MAYORQUE        reduce using rule 36 (expresion -> RFALSE .)
+    MENORIGUAL      reduce using rule 36 (expresion -> RFALSE .)
+    MAYORIGUAL      reduce using rule 36 (expresion -> RFALSE .)
+    IGUALIGUAL      reduce using rule 36 (expresion -> RFALSE .)
+    DIFERENTE       reduce using rule 36 (expresion -> RFALSE .)
+    AND             reduce using rule 36 (expresion -> RFALSE .)
+    OR              reduce using rule 36 (expresion -> RFALSE .)
+    PTCOMA          reduce using rule 36 (expresion -> RFALSE .)
+    error           reduce using rule 36 (expresion -> RFALSE .)
+    RVAR            reduce using rule 36 (expresion -> RFALSE .)
+    ID              reduce using rule 36 (expresion -> RFALSE .)
+    RPRINT          reduce using rule 36 (expresion -> RFALSE .)
+    $end            reduce using rule 36 (expresion -> RFALSE .)
+    PARC            reduce using rule 36 (expresion -> RFALSE .)
+
+
+state 30
+
+    (37) imprimir -> RPRINT PARA expresion . PARC
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    PARC            shift and go to state 49
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    AND             shift and go to state 44
+    OR              shift and go to state 45
+
+
+state 31
+
+    (10) variables -> RVAR ID IGUAL expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    PTCOMA          reduce using rule 10 (variables -> RVAR ID IGUAL expresion .)
+    error           reduce using rule 10 (variables -> RVAR ID IGUAL expresion .)
+    RVAR            reduce using rule 10 (variables -> RVAR ID IGUAL expresion .)
+    ID              reduce using rule 10 (variables -> RVAR ID IGUAL expresion .)
+    RPRINT          reduce using rule 10 (variables -> RVAR ID IGUAL expresion .)
+    $end            reduce using rule 10 (variables -> RVAR ID IGUAL expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    AND             shift and go to state 44
+    OR              shift and go to state 45
+
+
+state 32
+
+    (13) expresion -> expresion MAS . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 50
+
+state 33
+
+    (14) expresion -> expresion MENOS . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 51
+
+state 34
+
+    (15) expresion -> expresion POR . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 52
+
+state 35
+
+    (16) expresion -> expresion DIV . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 53
+
+state 36
+
+    (17) expresion -> expresion POT . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 54
+
+state 37
+
+    (18) expresion -> expresion MOD . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 55
+
+state 38
+
+    (19) expresion -> expresion MENORQUE . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 56
+
+state 39
+
+    (20) expresion -> expresion MAYORQUE . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 57
+
+state 40
+
+    (21) expresion -> expresion MENORIGUAL . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 58
+
+state 41
+
+    (22) expresion -> expresion MAYORIGUAL . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 59
+
+state 42
+
+    (23) expresion -> expresion IGUALIGUAL . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 60
+
+state 43
+
+    (24) expresion -> expresion DIFERENTE . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 61
+
+state 44
+
+    (25) expresion -> expresion AND . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 62
+
+state 45
+
+    (26) expresion -> expresion OR . expresion
+    (13) expresion -> . expresion MAS expresion
+    (14) expresion -> . expresion MENOS expresion
+    (15) expresion -> . expresion POR expresion
+    (16) expresion -> . expresion DIV expresion
+    (17) expresion -> . expresion POT expresion
+    (18) expresion -> . expresion MOD expresion
+    (19) expresion -> . expresion MENORQUE expresion
+    (20) expresion -> . expresion MAYORQUE expresion
+    (21) expresion -> . expresion MENORIGUAL expresion
+    (22) expresion -> . expresion MAYORIGUAL expresion
+    (23) expresion -> . expresion IGUALIGUAL expresion
+    (24) expresion -> . expresion DIFERENTE expresion
+    (25) expresion -> . expresion AND expresion
+    (26) expresion -> . expresion OR expresion
+    (27) expresion -> . MENOS expresion
+    (28) expresion -> . NOT expresion
+    (29) expresion -> . PARA expresion PARC
+    (30) expresion -> . ID
+    (31) expresion -> . ENTERO
+    (32) expresion -> . DECIMAL
+    (33) expresion -> . CADENA
+    (34) expresion -> . CHARACTER
+    (35) expresion -> . RTRUE
+    (36) expresion -> . RFALSE
+
+    MENOS           shift and go to state 21
+    NOT             shift and go to state 22
+    PARA            shift and go to state 23
+    ID              shift and go to state 18
+    ENTERO          shift and go to state 24
+    DECIMAL         shift and go to state 25
+    CADENA          shift and go to state 26
+    CHARACTER       shift and go to state 27
+    RTRUE           shift and go to state 28
+    RFALSE          shift and go to state 29
+
+    expresion                      shift and go to state 63
+
+state 46
+
+    (27) expresion -> MENOS expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 27 (expresion -> MENOS expresion .)
+    MENOS           reduce using rule 27 (expresion -> MENOS expresion .)
+    POR             reduce using rule 27 (expresion -> MENOS expresion .)
+    DIV             reduce using rule 27 (expresion -> MENOS expresion .)
+    POT             reduce using rule 27 (expresion -> MENOS expresion .)
+    MOD             reduce using rule 27 (expresion -> MENOS expresion .)
+    MENORQUE        reduce using rule 27 (expresion -> MENOS expresion .)
+    MAYORQUE        reduce using rule 27 (expresion -> MENOS expresion .)
+    MENORIGUAL      reduce using rule 27 (expresion -> MENOS expresion .)
+    MAYORIGUAL      reduce using rule 27 (expresion -> MENOS expresion .)
+    IGUALIGUAL      reduce using rule 27 (expresion -> MENOS expresion .)
+    DIFERENTE       reduce using rule 27 (expresion -> MENOS expresion .)
+    AND             reduce using rule 27 (expresion -> MENOS expresion .)
+    OR              reduce using rule 27 (expresion -> MENOS expresion .)
+    PTCOMA          reduce using rule 27 (expresion -> MENOS expresion .)
+    error           reduce using rule 27 (expresion -> MENOS expresion .)
+    RVAR            reduce using rule 27 (expresion -> MENOS expresion .)
+    ID              reduce using rule 27 (expresion -> MENOS expresion .)
+    RPRINT          reduce using rule 27 (expresion -> MENOS expresion .)
+    $end            reduce using rule 27 (expresion -> MENOS expresion .)
+    PARC            reduce using rule 27 (expresion -> MENOS expresion .)
+
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! POR             [ shift and go to state 34 ]
+  ! DIV             [ shift and go to state 35 ]
+  ! POT             [ shift and go to state 36 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 47
+
+    (28) expresion -> NOT expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    AND             reduce using rule 28 (expresion -> NOT expresion .)
+    OR              reduce using rule 28 (expresion -> NOT expresion .)
+    PTCOMA          reduce using rule 28 (expresion -> NOT expresion .)
+    error           reduce using rule 28 (expresion -> NOT expresion .)
+    RVAR            reduce using rule 28 (expresion -> NOT expresion .)
+    ID              reduce using rule 28 (expresion -> NOT expresion .)
+    RPRINT          reduce using rule 28 (expresion -> NOT expresion .)
+    $end            reduce using rule 28 (expresion -> NOT expresion .)
+    PARC            reduce using rule 28 (expresion -> NOT expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+
+  ! MAS             [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! MENOS           [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! POR             [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! DIV             [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! POT             [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! MOD             [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! MENORQUE        [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! MAYORQUE        [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! IGUALIGUAL      [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! DIFERENTE       [ reduce using rule 28 (expresion -> NOT expresion .) ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 48
+
+    (29) expresion -> PARA expresion . PARC
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    PARC            shift and go to state 64
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    AND             shift and go to state 44
+    OR              shift and go to state 45
+
+
+state 49
+
+    (37) imprimir -> RPRINT PARA expresion PARC .
+
+    PTCOMA          reduce using rule 37 (imprimir -> RPRINT PARA expresion PARC .)
+    error           reduce using rule 37 (imprimir -> RPRINT PARA expresion PARC .)
+    RVAR            reduce using rule 37 (imprimir -> RPRINT PARA expresion PARC .)
+    ID              reduce using rule 37 (imprimir -> RPRINT PARA expresion PARC .)
+    RPRINT          reduce using rule 37 (imprimir -> RPRINT PARA expresion PARC .)
+    $end            reduce using rule 37 (imprimir -> RPRINT PARA expresion PARC .)
+
+
+state 50
+
+    (13) expresion -> expresion MAS expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MENORQUE        reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MAYORQUE        reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MENORIGUAL      reduce using rule 13 (expresion -> expresion MAS expresion .)
+    MAYORIGUAL      reduce using rule 13 (expresion -> expresion MAS expresion .)
+    IGUALIGUAL      reduce using rule 13 (expresion -> expresion MAS expresion .)
+    DIFERENTE       reduce using rule 13 (expresion -> expresion MAS expresion .)
+    AND             reduce using rule 13 (expresion -> expresion MAS expresion .)
+    OR              reduce using rule 13 (expresion -> expresion MAS expresion .)
+    PTCOMA          reduce using rule 13 (expresion -> expresion MAS expresion .)
+    error           reduce using rule 13 (expresion -> expresion MAS expresion .)
+    RVAR            reduce using rule 13 (expresion -> expresion MAS expresion .)
+    ID              reduce using rule 13 (expresion -> expresion MAS expresion .)
+    RPRINT          reduce using rule 13 (expresion -> expresion MAS expresion .)
+    $end            reduce using rule 13 (expresion -> expresion MAS expresion .)
+    PARC            reduce using rule 13 (expresion -> expresion MAS expresion .)
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! POR             [ reduce using rule 13 (expresion -> expresion MAS expresion .) ]
+  ! DIV             [ reduce using rule 13 (expresion -> expresion MAS expresion .) ]
+  ! POT             [ reduce using rule 13 (expresion -> expresion MAS expresion .) ]
+  ! MOD             [ reduce using rule 13 (expresion -> expresion MAS expresion .) ]
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 51
+
+    (14) expresion -> expresion MENOS expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MENORQUE        reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MAYORQUE        reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MENORIGUAL      reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    MAYORIGUAL      reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    IGUALIGUAL      reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    DIFERENTE       reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    AND             reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    OR              reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    PTCOMA          reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    error           reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    RVAR            reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    ID              reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    RPRINT          reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    $end            reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    PARC            reduce using rule 14 (expresion -> expresion MENOS expresion .)
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! POR             [ reduce using rule 14 (expresion -> expresion MENOS expresion .) ]
+  ! DIV             [ reduce using rule 14 (expresion -> expresion MENOS expresion .) ]
+  ! POT             [ reduce using rule 14 (expresion -> expresion MENOS expresion .) ]
+  ! MOD             [ reduce using rule 14 (expresion -> expresion MENOS expresion .) ]
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 52
+
+    (15) expresion -> expresion POR expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 15 (expresion -> expresion POR expresion .)
+    MENOS           reduce using rule 15 (expresion -> expresion POR expresion .)
+    POR             reduce using rule 15 (expresion -> expresion POR expresion .)
+    DIV             reduce using rule 15 (expresion -> expresion POR expresion .)
+    MOD             reduce using rule 15 (expresion -> expresion POR expresion .)
+    MENORQUE        reduce using rule 15 (expresion -> expresion POR expresion .)
+    MAYORQUE        reduce using rule 15 (expresion -> expresion POR expresion .)
+    MENORIGUAL      reduce using rule 15 (expresion -> expresion POR expresion .)
+    MAYORIGUAL      reduce using rule 15 (expresion -> expresion POR expresion .)
+    IGUALIGUAL      reduce using rule 15 (expresion -> expresion POR expresion .)
+    DIFERENTE       reduce using rule 15 (expresion -> expresion POR expresion .)
+    AND             reduce using rule 15 (expresion -> expresion POR expresion .)
+    OR              reduce using rule 15 (expresion -> expresion POR expresion .)
+    PTCOMA          reduce using rule 15 (expresion -> expresion POR expresion .)
+    error           reduce using rule 15 (expresion -> expresion POR expresion .)
+    RVAR            reduce using rule 15 (expresion -> expresion POR expresion .)
+    ID              reduce using rule 15 (expresion -> expresion POR expresion .)
+    RPRINT          reduce using rule 15 (expresion -> expresion POR expresion .)
+    $end            reduce using rule 15 (expresion -> expresion POR expresion .)
+    PARC            reduce using rule 15 (expresion -> expresion POR expresion .)
+    POT             shift and go to state 36
+
+  ! POT             [ reduce using rule 15 (expresion -> expresion POR expresion .) ]
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! POR             [ shift and go to state 34 ]
+  ! DIV             [ shift and go to state 35 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 53
+
+    (16) expresion -> expresion DIV expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 16 (expresion -> expresion DIV expresion .)
+    MENOS           reduce using rule 16 (expresion -> expresion DIV expresion .)
+    POR             reduce using rule 16 (expresion -> expresion DIV expresion .)
+    DIV             reduce using rule 16 (expresion -> expresion DIV expresion .)
+    MOD             reduce using rule 16 (expresion -> expresion DIV expresion .)
+    MENORQUE        reduce using rule 16 (expresion -> expresion DIV expresion .)
+    MAYORQUE        reduce using rule 16 (expresion -> expresion DIV expresion .)
+    MENORIGUAL      reduce using rule 16 (expresion -> expresion DIV expresion .)
+    MAYORIGUAL      reduce using rule 16 (expresion -> expresion DIV expresion .)
+    IGUALIGUAL      reduce using rule 16 (expresion -> expresion DIV expresion .)
+    DIFERENTE       reduce using rule 16 (expresion -> expresion DIV expresion .)
+    AND             reduce using rule 16 (expresion -> expresion DIV expresion .)
+    OR              reduce using rule 16 (expresion -> expresion DIV expresion .)
+    PTCOMA          reduce using rule 16 (expresion -> expresion DIV expresion .)
+    error           reduce using rule 16 (expresion -> expresion DIV expresion .)
+    RVAR            reduce using rule 16 (expresion -> expresion DIV expresion .)
+    ID              reduce using rule 16 (expresion -> expresion DIV expresion .)
+    RPRINT          reduce using rule 16 (expresion -> expresion DIV expresion .)
+    $end            reduce using rule 16 (expresion -> expresion DIV expresion .)
+    PARC            reduce using rule 16 (expresion -> expresion DIV expresion .)
+    POT             shift and go to state 36
+
+  ! POT             [ reduce using rule 16 (expresion -> expresion DIV expresion .) ]
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! POR             [ shift and go to state 34 ]
+  ! DIV             [ shift and go to state 35 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 54
+
+    (17) expresion -> expresion POT expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 17 (expresion -> expresion POT expresion .)
+    MENOS           reduce using rule 17 (expresion -> expresion POT expresion .)
+    POR             reduce using rule 17 (expresion -> expresion POT expresion .)
+    DIV             reduce using rule 17 (expresion -> expresion POT expresion .)
+    POT             reduce using rule 17 (expresion -> expresion POT expresion .)
+    MOD             reduce using rule 17 (expresion -> expresion POT expresion .)
+    MENORQUE        reduce using rule 17 (expresion -> expresion POT expresion .)
+    MAYORQUE        reduce using rule 17 (expresion -> expresion POT expresion .)
+    MENORIGUAL      reduce using rule 17 (expresion -> expresion POT expresion .)
+    MAYORIGUAL      reduce using rule 17 (expresion -> expresion POT expresion .)
+    IGUALIGUAL      reduce using rule 17 (expresion -> expresion POT expresion .)
+    DIFERENTE       reduce using rule 17 (expresion -> expresion POT expresion .)
+    AND             reduce using rule 17 (expresion -> expresion POT expresion .)
+    OR              reduce using rule 17 (expresion -> expresion POT expresion .)
+    PTCOMA          reduce using rule 17 (expresion -> expresion POT expresion .)
+    error           reduce using rule 17 (expresion -> expresion POT expresion .)
+    RVAR            reduce using rule 17 (expresion -> expresion POT expresion .)
+    ID              reduce using rule 17 (expresion -> expresion POT expresion .)
+    RPRINT          reduce using rule 17 (expresion -> expresion POT expresion .)
+    $end            reduce using rule 17 (expresion -> expresion POT expresion .)
+    PARC            reduce using rule 17 (expresion -> expresion POT expresion .)
+
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! POR             [ shift and go to state 34 ]
+  ! DIV             [ shift and go to state 35 ]
+  ! POT             [ shift and go to state 36 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 55
+
+    (18) expresion -> expresion MOD expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MAS             reduce using rule 18 (expresion -> expresion MOD expresion .)
+    MENOS           reduce using rule 18 (expresion -> expresion MOD expresion .)
+    POR             reduce using rule 18 (expresion -> expresion MOD expresion .)
+    DIV             reduce using rule 18 (expresion -> expresion MOD expresion .)
+    MOD             reduce using rule 18 (expresion -> expresion MOD expresion .)
+    MENORQUE        reduce using rule 18 (expresion -> expresion MOD expresion .)
+    MAYORQUE        reduce using rule 18 (expresion -> expresion MOD expresion .)
+    MENORIGUAL      reduce using rule 18 (expresion -> expresion MOD expresion .)
+    MAYORIGUAL      reduce using rule 18 (expresion -> expresion MOD expresion .)
+    IGUALIGUAL      reduce using rule 18 (expresion -> expresion MOD expresion .)
+    DIFERENTE       reduce using rule 18 (expresion -> expresion MOD expresion .)
+    AND             reduce using rule 18 (expresion -> expresion MOD expresion .)
+    OR              reduce using rule 18 (expresion -> expresion MOD expresion .)
+    PTCOMA          reduce using rule 18 (expresion -> expresion MOD expresion .)
+    error           reduce using rule 18 (expresion -> expresion MOD expresion .)
+    RVAR            reduce using rule 18 (expresion -> expresion MOD expresion .)
+    ID              reduce using rule 18 (expresion -> expresion MOD expresion .)
+    RPRINT          reduce using rule 18 (expresion -> expresion MOD expresion .)
+    $end            reduce using rule 18 (expresion -> expresion MOD expresion .)
+    PARC            reduce using rule 18 (expresion -> expresion MOD expresion .)
+    POT             shift and go to state 36
+
+  ! POT             [ reduce using rule 18 (expresion -> expresion MOD expresion .) ]
+  ! MAS             [ shift and go to state 32 ]
+  ! MENOS           [ shift and go to state 33 ]
+  ! POR             [ shift and go to state 34 ]
+  ! DIV             [ shift and go to state 35 ]
+  ! MOD             [ shift and go to state 37 ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 56
+
+    (19) expresion -> expresion MENORQUE expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MENORQUE        reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    MAYORQUE        reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    MENORIGUAL      reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    MAYORIGUAL      reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    IGUALIGUAL      reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    DIFERENTE       reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    AND             reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    OR              reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    PTCOMA          reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    error           reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    RVAR            reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    ID              reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    RPRINT          reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    $end            reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    PARC            reduce using rule 19 (expresion -> expresion MENORQUE expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! MAS             [ reduce using rule 19 (expresion -> expresion MENORQUE expresion .) ]
+  ! MENOS           [ reduce using rule 19 (expresion -> expresion MENORQUE expresion .) ]
+  ! POR             [ reduce using rule 19 (expresion -> expresion MENORQUE expresion .) ]
+  ! DIV             [ reduce using rule 19 (expresion -> expresion MENORQUE expresion .) ]
+  ! POT             [ reduce using rule 19 (expresion -> expresion MENORQUE expresion .) ]
+  ! MOD             [ reduce using rule 19 (expresion -> expresion MENORQUE expresion .) ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 57
+
+    (20) expresion -> expresion MAYORQUE expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MENORQUE        reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    MAYORQUE        reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    MENORIGUAL      reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    MAYORIGUAL      reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    IGUALIGUAL      reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    DIFERENTE       reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    AND             reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    OR              reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    PTCOMA          reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    error           reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    RVAR            reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    ID              reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    RPRINT          reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    $end            reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    PARC            reduce using rule 20 (expresion -> expresion MAYORQUE expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! MAS             [ reduce using rule 20 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MENOS           [ reduce using rule 20 (expresion -> expresion MAYORQUE expresion .) ]
+  ! POR             [ reduce using rule 20 (expresion -> expresion MAYORQUE expresion .) ]
+  ! DIV             [ reduce using rule 20 (expresion -> expresion MAYORQUE expresion .) ]
+  ! POT             [ reduce using rule 20 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MOD             [ reduce using rule 20 (expresion -> expresion MAYORQUE expresion .) ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 58
+
+    (21) expresion -> expresion MENORIGUAL expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MENORQUE        reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    MAYORQUE        reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    MENORIGUAL      reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    MAYORIGUAL      reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    IGUALIGUAL      reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    DIFERENTE       reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    AND             reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    OR              reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    PTCOMA          reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    error           reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    RVAR            reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    ID              reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    RPRINT          reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    $end            reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    PARC            reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! MAS             [ reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! POR             [ reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! POT             [ reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MOD             [ reduce using rule 21 (expresion -> expresion MENORIGUAL expresion .) ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 59
+
+    (22) expresion -> expresion MAYORIGUAL expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MENORQUE        reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    MAYORQUE        reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    MENORIGUAL      reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    MAYORIGUAL      reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    IGUALIGUAL      reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    DIFERENTE       reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    AND             reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    OR              reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    PTCOMA          reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    error           reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    RVAR            reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    ID              reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    RPRINT          reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    $end            reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    PARC            reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! MAS             [ reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! POR             [ reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! POT             [ reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MOD             [ reduce using rule 22 (expresion -> expresion MAYORIGUAL expresion .) ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 60
+
+    (23) expresion -> expresion IGUALIGUAL expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MENORQUE        reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    MAYORQUE        reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    MENORIGUAL      reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    MAYORIGUAL      reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    IGUALIGUAL      reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    DIFERENTE       reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    AND             reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    OR              reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    PTCOMA          reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    error           reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    RVAR            reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    ID              reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    RPRINT          reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    $end            reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    PARC            reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! MAS             [ reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MENOS           [ reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! POR             [ reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! DIV             [ reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! POT             [ reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MOD             [ reduce using rule 23 (expresion -> expresion IGUALIGUAL expresion .) ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 61
+
+    (24) expresion -> expresion DIFERENTE expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    MENORQUE        reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    MAYORQUE        reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    MENORIGUAL      reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    MAYORIGUAL      reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    IGUALIGUAL      reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    DIFERENTE       reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    AND             reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    OR              reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    PTCOMA          reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    error           reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    RVAR            reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    ID              reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    RPRINT          reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    $end            reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    PARC            reduce using rule 24 (expresion -> expresion DIFERENTE expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+
+  ! MAS             [ reduce using rule 24 (expresion -> expresion DIFERENTE expresion .) ]
+  ! MENOS           [ reduce using rule 24 (expresion -> expresion DIFERENTE expresion .) ]
+  ! POR             [ reduce using rule 24 (expresion -> expresion DIFERENTE expresion .) ]
+  ! DIV             [ reduce using rule 24 (expresion -> expresion DIFERENTE expresion .) ]
+  ! POT             [ reduce using rule 24 (expresion -> expresion DIFERENTE expresion .) ]
+  ! MOD             [ reduce using rule 24 (expresion -> expresion DIFERENTE expresion .) ]
+  ! MENORQUE        [ shift and go to state 38 ]
+  ! MAYORQUE        [ shift and go to state 39 ]
+  ! MENORIGUAL      [ shift and go to state 40 ]
+  ! MAYORIGUAL      [ shift and go to state 41 ]
+  ! IGUALIGUAL      [ shift and go to state 42 ]
+  ! DIFERENTE       [ shift and go to state 43 ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 62
+
+    (25) expresion -> expresion AND expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    AND             reduce using rule 25 (expresion -> expresion AND expresion .)
+    OR              reduce using rule 25 (expresion -> expresion AND expresion .)
+    PTCOMA          reduce using rule 25 (expresion -> expresion AND expresion .)
+    error           reduce using rule 25 (expresion -> expresion AND expresion .)
+    RVAR            reduce using rule 25 (expresion -> expresion AND expresion .)
+    ID              reduce using rule 25 (expresion -> expresion AND expresion .)
+    RPRINT          reduce using rule 25 (expresion -> expresion AND expresion .)
+    $end            reduce using rule 25 (expresion -> expresion AND expresion .)
+    PARC            reduce using rule 25 (expresion -> expresion AND expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+
+  ! MAS             [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! MENOS           [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! POR             [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! DIV             [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! POT             [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! MOD             [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! MENORQUE        [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! MAYORQUE        [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! IGUALIGUAL      [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! DIFERENTE       [ reduce using rule 25 (expresion -> expresion AND expresion .) ]
+  ! AND             [ shift and go to state 44 ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 63
+
+    (26) expresion -> expresion OR expresion .
+    (13) expresion -> expresion . MAS expresion
+    (14) expresion -> expresion . MENOS expresion
+    (15) expresion -> expresion . POR expresion
+    (16) expresion -> expresion . DIV expresion
+    (17) expresion -> expresion . POT expresion
+    (18) expresion -> expresion . MOD expresion
+    (19) expresion -> expresion . MENORQUE expresion
+    (20) expresion -> expresion . MAYORQUE expresion
+    (21) expresion -> expresion . MENORIGUAL expresion
+    (22) expresion -> expresion . MAYORIGUAL expresion
+    (23) expresion -> expresion . IGUALIGUAL expresion
+    (24) expresion -> expresion . DIFERENTE expresion
+    (25) expresion -> expresion . AND expresion
+    (26) expresion -> expresion . OR expresion
+
+    OR              reduce using rule 26 (expresion -> expresion OR expresion .)
+    PTCOMA          reduce using rule 26 (expresion -> expresion OR expresion .)
+    error           reduce using rule 26 (expresion -> expresion OR expresion .)
+    RVAR            reduce using rule 26 (expresion -> expresion OR expresion .)
+    ID              reduce using rule 26 (expresion -> expresion OR expresion .)
+    RPRINT          reduce using rule 26 (expresion -> expresion OR expresion .)
+    $end            reduce using rule 26 (expresion -> expresion OR expresion .)
+    PARC            reduce using rule 26 (expresion -> expresion OR expresion .)
+    MAS             shift and go to state 32
+    MENOS           shift and go to state 33
+    POR             shift and go to state 34
+    DIV             shift and go to state 35
+    POT             shift and go to state 36
+    MOD             shift and go to state 37
+    MENORQUE        shift and go to state 38
+    MAYORQUE        shift and go to state 39
+    MENORIGUAL      shift and go to state 40
+    MAYORIGUAL      shift and go to state 41
+    IGUALIGUAL      shift and go to state 42
+    DIFERENTE       shift and go to state 43
+    AND             shift and go to state 44
+
+  ! MAS             [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! MENOS           [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! POR             [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! DIV             [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! POT             [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! MOD             [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! MENORQUE        [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! MAYORQUE        [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! MENORIGUAL      [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! MAYORIGUAL      [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! IGUALIGUAL      [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! DIFERENTE       [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! AND             [ reduce using rule 26 (expresion -> expresion OR expresion .) ]
+  ! OR              [ shift and go to state 45 ]
+
+
+state 64
+
+    (29) expresion -> PARA expresion PARC .
+
+    MAS             reduce using rule 29 (expresion -> PARA expresion PARC .)
+    MENOS           reduce using rule 29 (expresion -> PARA expresion PARC .)
+    POR             reduce using rule 29 (expresion -> PARA expresion PARC .)
+    DIV             reduce using rule 29 (expresion -> PARA expresion PARC .)
+    POT             reduce using rule 29 (expresion -> PARA expresion PARC .)
+    MOD             reduce using rule 29 (expresion -> PARA expresion PARC .)
+    MENORQUE        reduce using rule 29 (expresion -> PARA expresion PARC .)
+    MAYORQUE        reduce using rule 29 (expresion -> PARA expresion PARC .)
+    MENORIGUAL      reduce using rule 29 (expresion -> PARA expresion PARC .)
+    MAYORIGUAL      reduce using rule 29 (expresion -> PARA expresion PARC .)
+    IGUALIGUAL      reduce using rule 29 (expresion -> PARA expresion PARC .)
+    DIFERENTE       reduce using rule 29 (expresion -> PARA expresion PARC .)
+    AND             reduce using rule 29 (expresion -> PARA expresion PARC .)
+    OR              reduce using rule 29 (expresion -> PARA expresion PARC .)
+    PTCOMA          reduce using rule 29 (expresion -> PARA expresion PARC .)
+    error           reduce using rule 29 (expresion -> PARA expresion PARC .)
+    RVAR            reduce using rule 29 (expresion -> PARA expresion PARC .)
+    ID              reduce using rule 29 (expresion -> PARA expresion PARC .)
+    RPRINT          reduce using rule 29 (expresion -> PARA expresion PARC .)
+    $end            reduce using rule 29 (expresion -> PARA expresion PARC .)
+    PARC            reduce using rule 29 (expresion -> PARA expresion PARC .)
+

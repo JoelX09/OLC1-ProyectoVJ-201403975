@@ -185,3 +185,5 @@ anio = 1 + anio++; #Aumenta anio y luego suma1
 anio = anio--;
 
 #-------Sentencias de control y ciclicas -> arriba
+
+#value = self.expresion.interpretar(tree, table #valor)
