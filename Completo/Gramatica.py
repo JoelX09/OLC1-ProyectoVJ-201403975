@@ -141,6 +141,7 @@ from Expresiones.Relacional import Relacional
 from Expresiones.Logica import Logica
 from Instrucciones.Declaracion import Declaracion
 from Expresiones.Identificador import Identificador
+from Instrucciones.Asignacion import Asignacion
 
 # Presedencia
 precedence = (
@@ -202,14 +203,14 @@ def p_variables_soloDec(t):
 
 def p_variables_decAsig(t):
     'variables : RVAR ID IGUAL expresion' 
-    print('Se declaro la var ' + str(t[2])) #Debugger 08/06 - 38:00
-    t[0] = Declaracion(t[2],t.lineno(2), find_column(input, t.slice[2]),t[4])
+    #print('Se declaro la var ' + str(t[2])) #Debugger 08/06 - 38:00
+    t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]),t[4])
     
 
 def p_variables_asig(t):
     'variables : ID IGUAL expresion'
-    print('A la variable ' + str(t[1]) + ' se le asigno el valor ' + str(t[3].getVal()))
-    t[0] = t[1]
+    #print('A la variable ' + str(t[1]) + ' se le asigno el valor ')# + str(t[3].getVal()))
+    t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
 
 def p_variables_asigNulo(t):
     'variables : ID IGUAL RNULL'
