@@ -24,7 +24,9 @@ tokens  = [
     'PTCOMA',
     'PARA',
     'PARC',
+    'INC',
     'MAS',
+    'DEC',
     'MENOS',
     'POT',
     'POR',
@@ -51,7 +53,9 @@ tokens  = [
 t_PTCOMA        = r';'
 t_PARA          = r'\('
 t_PARC          = r'\)'
+t_INC           = r'\+\+'
 t_MAS           = r'\+'
+t_DEC           = r'--'
 t_MENOS         = r'-'
 t_POT           = r'\*\*'
 t_POR           = r'\*'
@@ -142,6 +146,7 @@ from Expresiones.Logica import Logica
 from Instrucciones.Declaracion import Declaracion
 from Expresiones.Identificador import Identificador
 from Instrucciones.Asignacion import Asignacion
+from Instrucciones.IncDec import Incdec
 
 # Presedencia
 precedence = (
@@ -195,6 +200,22 @@ def p_instruccion_error(t):
     t[0] = ""
 
 
+#-----------------------------Inc y Dec-----------------------------#
+def p_inc(t):
+    'incdec : INC'
+    t[0] = 1
+    #print('Se reconocio un inc')
+
+def p_dec(t):
+    'incdec :  DEC'
+    t[0] = 2
+    #print('Se reconocio un dec')
+
+def p_no_incdec(t):
+    'incdec : '
+    t[0] = None
+
+
 #-----------------------------Variables-----------------------------#
 def p_variables_soloDec(t):
     'variables : RVAR ID'
@@ -217,6 +238,10 @@ def p_variables_asigNulo(t):
     print('A la variable ' + str(t[1]) + ' se le asigno el valor null')
     t[0] = t[1]
 
+def p_incdec_variable(t):
+    'variables : ID incdec'
+    #print("Inc o dec la variable: " + str(t[1]))
+    t[0] = Incdec(t[1], t[2], t.lineno(1), find_column(input, t.slice[1]))
 
 #----------------------------Expresiones----------------------------#
 def p_expresion_binaria(t):
@@ -283,32 +308,32 @@ def p_expresion_agrupacion(t):
     t[0] = t[2]
 
 def p_expresion_id(t):
-    '''expresion : ID'''
-    t[0] = Identificador(t[1], t.lineno(1), find_column(input, t.slice[1]))
+    '''expresion : ID incdec'''
+    t[0] = Identificador(t[1], t[2], t.lineno(1), find_column(input, t.slice[1]))
 
 def p_expresion_entero(t):
-    '''expresion : ENTERO'''
-    t[0] = Primitivos(TIPO.ENTERO,t[1], t.lineno(1), find_column(input, t.slice[1]))
+    '''expresion : ENTERO incdec'''
+    t[0] = Primitivos(TIPO.ENTERO,t[1], t[2], t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_decimal(t):
-    '''expresion : DECIMAL'''
-    t[0] = Primitivos(TIPO.DECIMAL, t[1], t.lineno(1), find_column(input, t.slice[1]))
+    '''expresion : DECIMAL incdec'''
+    t[0] = Primitivos(TIPO.DECIMAL, t[1], t[2], t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_cadena(t):
     '''expresion : CADENA'''
-    t[0] = Primitivos(TIPO.CADENA,str(t[1]).replace('\\n', '\n'), t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Primitivos(TIPO.CADENA, str(t[1]).replace('\\n', '\n'), None, t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_caracter(t):
     '''expresion : CHARACTER'''
-    t[0] = Primitivos(TIPO.CHARACTER,str(t[1]).replace('\\n', '\n'), t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Primitivos(TIPO.CHARACTER, str(t[1]).replace('\\n', '\n'), None, t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_booleano_true(t):
     'expresion : RTRUE'
-    t[0] = Primitivos(TIPO.BOOLEANO, True, t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Primitivos(TIPO.BOOLEANO, True,  None, t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_booleano_false(t):
     'expresion : RFALSE'
-    t[0] = Primitivos(TIPO.BOOLEANO, False, t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Primitivos(TIPO.BOOLEANO, False,  None, t.lineno(1), find_column(input, t.slice[1]))
 
 # Mejor aqui o la produccion
 # def p_primitivo_nulo(t):

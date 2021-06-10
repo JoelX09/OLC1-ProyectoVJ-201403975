@@ -23,6 +23,12 @@ class Simbolo:
 
     def setValor(self, valor):
         self.valor = valor
+
+    def incValor(self):
+        self.valor = self.valor + 1
+
+    def decValor(self):
+        self.valor = self.valor - 1
     
     def getFila(self):
         return self.fila

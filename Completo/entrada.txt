@@ -20,3 +20,23 @@ print(true || false)
 print(false)
 var bandera = 100;
 print(banDERA)
+print("-------------------------------")
+var anio = 2020
+print("anio "+ anio)
+anio = 1 + anio ++
+print("anio "+ anio)
+anio = anio --
+print("anio "+ anio)
+print("-------------------------------")
+var edad = 18.5
+edad++
+print(edad)
+edad--
+print(edad)
+cad1++ #Error por el tipo
+print("-------------------------------")
+var miedad = 24;
+print(miedad)
+var nuevaedad = miedad++
+print("Tengo " + miedad)
+print("Cumplo " + nuevaedad )
