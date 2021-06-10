@@ -7,6 +7,8 @@ var variable = 5 + 5;
 print(variable)
 print(VaRiaBle)
 var cad1 = "Soy una cadena\nUn salto de linea."
+var nueva = cad1 + " -> " + variable
+print(nueva + cad1)
 var cad2 = variable + cad1;
 print(cad2)
 print(cad2 + cad1);
@@ -28,15 +30,37 @@ print("anio "+ anio)
 anio = anio --
 print("anio "+ anio)
 print("-------------------------------")
-var edad = 18.5
-edad++
-print(edad)
-edad--
-print(edad)
-cad1++ #Error por el tipo
+var edad1 = 18.5
+edad1++
+print(edad1)
+edad1--
+print(edad1)
+#cad1++ #Error por el tipo
 print("-------------------------------")
 var miedad = 24;
 print(miedad)
 var nuevaedad = miedad++
 print("Tengo " + miedad)
 print("Cumplo " + nuevaedad )
+print(miedad)
+print(nuevaedad)
+print("-------------------------------")
+var edad = (INT) 18.6 #Puse lower()
+print(edad)
+var letra = (char) 70
+print(letra)
+var numero = (double) 16
+print(numero)
+print("-------------------------------")
+var valor1 = 'F'
+print(valor1)
+var valor2 = 64
+print(valor2)
+valor1 = (char) valor2
+print(valor1)
+print("-------------------------------")
+var string1 = "Cadena"
+print(string1)
+var numero1 = 16.9
+print(numero1)
+string1 = (int) numero1 #Error de asignacion de int a string

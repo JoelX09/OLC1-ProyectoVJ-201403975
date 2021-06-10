@@ -107,7 +107,7 @@ def t_CHARACTER(t):
 
 # Comentario simple // ...
 def t_COMENTARIO_SIMPLE(t):
-    r'\#.*\n'
+    r'\#.*[^\r]' #Lo cambie
     t.lexer.lineno += 1
 
 # Caracteres ignorados
@@ -147,6 +147,7 @@ from Instrucciones.Declaracion import Declaracion
 from Expresiones.Identificador import Identificador
 from Instrucciones.Asignacion import Asignacion
 from Instrucciones.IncDec import Incdec
+from Instrucciones.Casteo import Casteo
 
 # Presedencia
 precedence = (
@@ -227,12 +228,22 @@ def p_variables_decAsig(t):
     #print('Se declaro la var ' + str(t[2])) #Debugger 08/06 - 38:00
     t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]),t[4])
     
+def p_variables_decCasteo(t):
+    'variables : RVAR ID IGUAL casteo'
+    #print('Se declaro la variable ' + str(t[2]) + ' con el valor casteado ' + str(t[4]))
+    t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]),t[4])
 
 def p_variables_asig(t):
     'variables : ID IGUAL expresion'
     #print('A la variable ' + str(t[1]) + ' se le asigno el valor ')# + str(t[3].getVal()))
     t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
 
+def p_variables_asigCasteo(t):
+    'variables : ID IGUAL casteo'
+    #print('A la variable ' + str(t[1]) + ' se le asigno el valor casteado ' + str(t[3]))
+    t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
+
+#Pendiente
 def p_variables_asigNulo(t):
     'variables : ID IGUAL RNULL'
     print('A la variable ' + str(t[1]) + ' se le asigno el valor null')
@@ -242,6 +253,29 @@ def p_incdec_variable(t):
     'variables : ID incdec'
     #print("Inc o dec la variable: " + str(t[1]))
     t[0] = Incdec(t[1], t[2], t.lineno(1), find_column(input, t.slice[1]))
+
+
+#------------------------------Casteo-------------------------------#
+def p_casteo(t):
+    'casteo : PARA tipo PARC expresion'
+    #print('Se casteo a ' + str(t[2]) + ' la expresion ' + str(t[4]))
+    t[0] = Casteo(t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
+
+def p_tipo(t):
+    '''tipo : RINT
+            | RDOUBLE
+            | RCHAR
+            | RSTRING
+    '''
+    if t[1].lower() == 'int':
+        t[0] = TIPO.ENTERO
+    elif t[1].lower() == 'double':
+        t[0] = TIPO.DECIMAL
+    elif t[1].lower() == 'char':
+        t[0] = TIPO.CHARACTER
+    elif t[1].lower() == 'string':
+        t[0] = TIPO.CADENA
+
 
 #----------------------------Expresiones----------------------------#
 def p_expresion_binaria(t):
