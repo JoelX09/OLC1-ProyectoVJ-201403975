@@ -1,3 +1,4 @@
+from Instrucciones.Break import Break
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
@@ -24,6 +25,7 @@ class If(Instruccion):
                     if isinstance(result, Excepcion) : #Reporte el if y nos recuperamos dentro del if
                         tree.getExcepciones().append(result)
                         tree.updateConsola(result.toString())
+                    if isinstance(result, Break): return result #Return para que se salga definitivamente
             else:               #ELSE
                 if self.instruccionesElse != None:
                     nuevaTabla = TablaSimbolos(table)       #NUEVO ENTORNO
@@ -31,10 +33,12 @@ class If(Instruccion):
                         result = instruccion.interpretar(tree, nuevaTabla) #EJECUTA INSTRUCCION ADENTRO DEL IF
                         if isinstance(result, Excepcion) :
                             tree.getExcepciones().append(result)
-                            tree.updateConsola(result.toString()) 
+                            tree.updateConsola(result.toString())
+                        if isinstance(result, Break): return result #Return para que se salga definitivament
                 elif self.elseIf != None:
                     result = self.elseIf.interpretar(tree, table)
                     if isinstance(result, Excepcion): return result
+                    if isinstance(result, Break): return result #Return para que se salga definitivament
 
         else:
             return Excepcion("Semantico", "Tipo de dato no booleano en IF.", self.fila, self.columna)

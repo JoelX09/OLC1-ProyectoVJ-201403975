@@ -19,6 +19,7 @@ reservadas = {
     'null'      : 'RNULL',
     'if'        : 'RIF',
     'else'      : 'RELSE',
+    'while'     : 'RWHILE',
     'break'     : 'RBREAK',
     'print'     : 'RPRINT'
 }
@@ -156,6 +157,8 @@ from Instrucciones.Asignacion import Asignacion
 from Instrucciones.IncDec import Incdec
 from Instrucciones.Casteo import Casteo
 from Instrucciones.If import If
+from Instrucciones.While import While
+from Instrucciones.Break import Break
 
 # Presedencia
 precedence = (
@@ -205,6 +208,14 @@ def p_instruccion_imprimir(t) :
 
 def p_instruccion_if(t):
     'instruccion : if'
+    t[0] = t[1]
+
+def p_instruccion_while(t):
+    'instruccion : while'
+    t[0] = t[1]
+
+def p_instruccion_break(t):
+    'instruccion : break ptc'
     t[0] = t[1]
 
 def p_instruccion_error(t):
@@ -401,18 +412,19 @@ def p_if_anidado(t):
     t[0] = If(t[3], t[6], None, t[9], t.lineno(1), find_column(input, t.slice[1]))
 
 
+#-------------------------------While-------------------------------#
+def p_while(t):
+    'while : RWHILE PARA expresion PARC LLAVEA instrucciones LLAVEC'
+    #print('Sentencia while por la expresion: ' + str(t[3]))
+    t[0] = While(t[3], t[6], t.lineno(1), find_column(input, t.slice[1]))
+
+    
 #--------------------Sentencias de Transferencia--------------------#
 #-------------------------------Break-------------------------------#
-# def p_break(t):
-#     '''
-#     break : RBREAK ptc
-#     '''
-#     #print('Se reconocio un break')
-#     t[0] = t[1]
-
-# def p_break1(t):
-#     'break : '
-#     t[0] = None
+def p_break(t):
+    'break : RBREAK'
+    #print('Se reconocio un break')
+    t[0] = Break(t.lineno(1), find_column(input, t.slice[1]))
 
 
 #-----------------------------Imprimir------------------------------#
@@ -462,5 +474,9 @@ for instruccion in ast.getInstrucciones(): # REALIZAR LAS ACCIONES
     if isinstance(value, Excepcion) :
         ast.getExcepciones().append(value)
         ast.updateConsola(value.toString())
+    if isinstance(value, Break): 
+        err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
+        ast.getExcepciones().append(err)
+        ast.updateConsola(err.toString())
 
 print(ast.getConsola())
