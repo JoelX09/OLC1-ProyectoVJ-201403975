@@ -2,7 +2,6 @@ from TS.Excepcion import Excepcion
 from Abstract.Instruccion import Instruccion
 from TS.Simbolo import Simbolo
 
-
 class Asignacion(Instruccion):
     def __init__(self, identificador, expresion, fila, columna):
         self.identificador = identificador

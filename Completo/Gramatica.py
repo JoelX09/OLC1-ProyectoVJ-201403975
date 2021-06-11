@@ -17,6 +17,9 @@ reservadas = {
     'true'      : 'RTRUE',
     'false'     : 'RFALSE',
     'null'      : 'RNULL',
+    'if'        : 'RIF',
+    'else'      : 'RELSE',
+    'break'     : 'RBREAK',
     'print'     : 'RPRINT'
 }
 
@@ -24,6 +27,8 @@ tokens  = [
     'PTCOMA',
     'PARA',
     'PARC',
+    'LLAVEA',
+    'LLAVEC',
     'INC',
     'MAS',
     'DEC',
@@ -53,6 +58,8 @@ tokens  = [
 t_PTCOMA        = r';'
 t_PARA          = r'\('
 t_PARC          = r'\)'
+t_LLAVEA        = r'{'
+t_LLAVEC        = r'}'
 t_INC           = r'\+\+'
 t_MAS           = r'\+'
 t_DEC           = r'--'
@@ -148,6 +155,7 @@ from Expresiones.Identificador import Identificador
 from Instrucciones.Asignacion import Asignacion
 from Instrucciones.IncDec import Incdec
 from Instrucciones.Casteo import Casteo
+from Instrucciones.If import If
 
 # Presedencia
 precedence = (
@@ -195,6 +203,10 @@ def p_instruccion_imprimir(t) :
     'instruccion : imprimir ptc'
     t[0] = t[1]
 
+def p_instruccion_if(t):
+    'instruccion : if'
+    t[0] = t[1]
+
 def p_instruccion_error(t):
     'instruccion : error '
     errores.append(Excepcion("Sintáctico","Error Sintáctico." + str(t[1].value) , t.lineno(1), find_column(input, t.slice[1])))
@@ -220,8 +232,9 @@ def p_no_incdec(t):
 #-----------------------------Variables-----------------------------#
 def p_variables_soloDec(t):
     'variables : RVAR ID'
-    print('Se declaro la variable ' + str(t[2]))
-    t[0] = t[2]
+    #print('Se declaro la variable ' + str(t[2]))
+    varnula = Primitivos(TIPO.NULO, 'null', None, t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]), varnula) #Revisar <-------------
 
 def p_variables_decAsig(t):
     'variables : RVAR ID IGUAL expresion' 
@@ -243,11 +256,11 @@ def p_variables_asigCasteo(t):
     #print('A la variable ' + str(t[1]) + ' se le asigno el valor casteado ' + str(t[3]))
     t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
 
-#Pendiente
 def p_variables_asigNulo(t):
     'variables : ID IGUAL RNULL'
-    print('A la variable ' + str(t[1]) + ' se le asigno el valor null')
-    t[0] = t[1]
+    #print('A la variable ' + str(t[1]) + ' se le asigno el valor null')
+    varnula = Primitivos(TIPO.NULO, t[3].lower(), None, t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Asignacion(t[1], varnula, t.lineno(1), find_column(input, t.slice[1])) #Revisar <-------------
 
 def p_incdec_variable(t):
     'variables : ID incdec'
@@ -369,10 +382,37 @@ def p_primitivo_booleano_false(t):
     'expresion : RFALSE'
     t[0] = Primitivos(TIPO.BOOLEANO, False,  None, t.lineno(1), find_column(input, t.slice[1]))
 
-# Mejor aqui o la produccion
-# def p_primitivo_nulo(t):
-#     'expresion : RNULL'
-#     t[0] = Primitivos(TIPO.NULO, str(t[1]), t.lineno(1), find_column(input, t.slice[1]))
+
+#-----------------------Sentencias de Control-----------------------#
+#--------------------------------If---------------------------------#
+def p_if(t):
+    'if : RIF PARA expresion PARC LLAVEA instrucciones LLAVEC'
+    #print('Sentencia if por la expresion: ' + str(t[3]))
+    t[0] = If(t[3], t[6], None, None, t.lineno(1), find_column(input, t.slice[1]))
+
+def p_if_else(t):
+    'if : RIF PARA expresion PARC LLAVEA instrucciones LLAVEC RELSE LLAVEA instrucciones LLAVEC'
+    #print('Sentencia if con la expresion: ' + str(t[3]) + ' con opcion a else')
+    t[0] = If(t[3], t[6], t[10], None, t.lineno(1), find_column(input, t.slice[1]))
+
+def p_if_anidado(t):
+    'if : RIF PARA expresion PARC LLAVEA instrucciones LLAVEC RELSE if'
+    #print('Sentencia if con expresion: ' + str(t[3]) + ' seguido de if anidado')
+    t[0] = If(t[3], t[6], None, t[9], t.lineno(1), find_column(input, t.slice[1]))
+
+
+#--------------------Sentencias de Transferencia--------------------#
+#-------------------------------Break-------------------------------#
+# def p_break(t):
+#     '''
+#     break : RBREAK ptc
+#     '''
+#     #print('Se reconocio un break')
+#     t[0] = t[1]
+
+# def p_break1(t):
+#     'break : '
+#     t[0] = None
 
 
 #-----------------------------Imprimir------------------------------#

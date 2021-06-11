@@ -16,9 +16,9 @@ class TablaSimbolos:
 
     def getTabla(self, id): #Obtener una variable/Simbolo
         tablaActual = self
-        while tablaActual != None:
-            if id in self.tabla:
-                return self.tabla[id] #Retorna simbolo
+        while tablaActual.tabla != None:
+            if id in tablaActual.tabla:
+                return tablaActual.tabla[id] #Retorna simbolo
             else:
                 tablaActual = tablaActual.anterior
         return None #No existe el simbolo
@@ -26,10 +26,15 @@ class TablaSimbolos:
     def actualizarTabla(self, simbolo):
         tablaActual = self
         while tablaActual != None:
-            if simbolo.id in self.tabla :
-                if self.tabla[simbolo.id].getTipo() == simbolo.getTipo() or simbolo.getTipo() == TIPO.NULO: #Revisar si aqui lo agrego
-                    self.tabla[simbolo.id].setValor(simbolo.getValor())
-                    self.tabla[simbolo.id].setTipo(simbolo.getTipo())
+            idMinuscula = simbolo.id.lower()
+            if idMinuscula in tablaActual.tabla :
+                if tablaActual.tabla[idMinuscula].getTipo() == TIPO.NULO:
+                    tablaActual.tabla[idMinuscula].setValor(simbolo.getValor())
+                    tablaActual.tabla[idMinuscula].setTipo(simbolo.getTipo())
+                    return None             #VARIABLE ACTUALIZADA
+                elif tablaActual.tabla[idMinuscula].getTipo() == simbolo.getTipo() or simbolo.getTipo() == TIPO.NULO: #Revisar si aqui lo agrego
+                    tablaActual.tabla[idMinuscula].setValor(simbolo.getValor())
+                    tablaActual.tabla[idMinuscula].setTipo(simbolo.getTipo())
                     return None             #VARIABLE ACTUALIZADA
                 return Excepcion("Semantico", "Tipo de dato Diferente en Asignacion", simbolo.getFila(), simbolo.getColumna())
             else:
