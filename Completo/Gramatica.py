@@ -20,7 +20,9 @@ reservadas = {
     'if'        : 'RIF',
     'else'      : 'RELSE',
     'while'     : 'RWHILE',
+    'for'       : 'RFOR',
     'break'     : 'RBREAK',
+    'continue'  : 'RCONTINUE',
     'print'     : 'RPRINT'
 }
 
@@ -104,18 +106,21 @@ def t_ID(t):
      return t
 
 def t_CADENA(t):
-    r'(\".*?\")'
+    r'(\".*\")'
     t.value = t.value[1:-1] # remuevo las comillas
     return t
 
 def t_CHARACTER(t):
-    r'(\'.*?\')'
+    r'(\'.*\')'
     t.value = t.value[1:-1] # remuevo las comillas
     return t
 
-# Comentario simple // ...
+def t_COMENTARIO_MULTILINEA(t):
+    r'\#\*(.|\n)*?\*\#'
+    t.lexer.lineno += t.value.count('\n')
+
 def t_COMENTARIO_SIMPLE(t):
-    r'\#.*[^\r]' #Lo cambie
+    r'\#.*[^\n]' #Lo cambie -> ver si \n o \r
     t.lexer.lineno += 1
 
 # Caracteres ignorados
@@ -158,7 +163,9 @@ from Instrucciones.IncDec import Incdec
 from Instrucciones.Casteo import Casteo
 from Instrucciones.If import If
 from Instrucciones.While import While
+from Instrucciones.For import For
 from Instrucciones.Break import Break
+from Instrucciones.Continue import Continue
 
 # Presedencia
 precedence = (
@@ -198,24 +205,16 @@ def p_fin_instruccion(t):
     ptc : PTCOMA
         |
     '''
-def p_instruccion_variables(t) :
-    'instruccion : variables ptc'
-    t[0] = t[1]
-
-def p_instruccion_imprimir(t) :
-    'instruccion : imprimir ptc'
-    t[0] = t[1]
-
-def p_instruccion_if(t):
-    'instruccion : if'
-    t[0] = t[1]
-
-def p_instruccion_while(t):
-    'instruccion : while'
-    t[0] = t[1]
-
-def p_instruccion_break(t):
-    'instruccion : break ptc'
+def p_instruccion_instrucciones(t) :
+    '''
+    instruccion : variables ptc
+                | imprimir ptc
+                | if
+                | while
+                | for
+                | break ptc
+                | continue ptc
+    '''
     t[0] = t[1]
 
 def p_instruccion_error(t):
@@ -379,11 +378,11 @@ def p_primitivo_decimal(t):
 
 def p_primitivo_cadena(t):
     '''expresion : CADENA'''
-    t[0] = Primitivos(TIPO.CADENA, str(t[1]).replace('\\n', '\n'), None, t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Primitivos(TIPO.CADENA, str(t[1]).replace('\\n', '\n').replace('\\"', '\"').replace('\\\\', '\\').replace('\\t', '\t').replace('\\\'', '\''), None, t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_caracter(t):
     '''expresion : CHARACTER'''
-    t[0] = Primitivos(TIPO.CHARACTER, str(t[1]).replace('\\n', '\n'), None, t.lineno(1), find_column(input, t.slice[1]))
+    t[0] = Primitivos(TIPO.CHARACTER, str(t[1]).replace('\\n', '\n').replace('\\"', '\"').replace('\\\\', '\\').replace('\\t', '\t').replace('\\\'', '\''), None, t.lineno(1), find_column(input, t.slice[1]))
 
 def p_primitivo_booleano_true(t):
     'expresion : RTRUE'
@@ -412,11 +411,18 @@ def p_if_anidado(t):
     t[0] = If(t[3], t[6], None, t[9], t.lineno(1), find_column(input, t.slice[1]))
 
 
+#------------------------Sentencias ciclicas------------------------#
 #-------------------------------While-------------------------------#
 def p_while(t):
     'while : RWHILE PARA expresion PARC LLAVEA instrucciones LLAVEC'
     #print('Sentencia while por la expresion: ' + str(t[3]))
     t[0] = While(t[3], t[6], t.lineno(1), find_column(input, t.slice[1]))
+
+#--------------------------------For--------------------------------#
+def p_for(t):
+    'for : RFOR PARA variables PTCOMA expresion PTCOMA variables PARC LLAVEA instrucciones LLAVEC'
+    #print('Sentencia while por la expresion: ' + str(t[3]))
+    t[0] = For(t[3], t[5], t[7], t[10], t.lineno(1), find_column(input, t.slice[1]))
 
     
 #--------------------Sentencias de Transferencia--------------------#
@@ -425,6 +431,12 @@ def p_break(t):
     'break : RBREAK'
     #print('Se reconocio un break')
     t[0] = Break(t.lineno(1), find_column(input, t.slice[1]))
+
+#-----------------------------Continue------------------------------#
+def p_continue(t):
+    'continue : RCONTINUE'
+    #print('Se reconocio un continue')
+    t[0] = Continue(t.lineno(1), find_column(input, t.slice[1]))
 
 
 #-----------------------------Imprimir------------------------------#

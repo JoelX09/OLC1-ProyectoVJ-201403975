@@ -122,3 +122,28 @@ while(num < 10){
     }
     num = num + 1;
 }
+
+print("******************************************")
+for(var i = 0; i<3;i++){
+    print("i="+i)
+}
+print("******************************************")
+for(var x = 5; x>2;x=x-1){
+    print("x="+x)
+}
+print("******************************************")
+for(var j = 0; j<9;j=j+1){
+    if(j==5){
+        print("Me salgo del ciclo en el numero " + j);
+        break;
+    }
+    print("j="+j)
+}
+print("******************************************")
+for(var j = 0; j<9;j=j+1){
+    if(j==5){
+        print("Me salte el numero " + j);
+        continue;
+    }
+    print("j="+j)
+}

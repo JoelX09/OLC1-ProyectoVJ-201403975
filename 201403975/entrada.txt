@@ -1,40 +1,75 @@
 var variableSimple;
+print(variableSimple)
 var decVariable
-var expresion1 = 1 + 1;
-var expresion2 = 25 - 10.5
-var expresion3 = 36.8 * 'C';
-var expresion4 = 'e' / "hola"
-var expresion5 = 25 ** true;
-var expresion6 = false % 1
+print(decVariable);
+var expresion1 = 1+1;
+print(expresion1)
+var expresion2 = 25-10.5 
+print(expresion2);
+var expresion3 = 36.8*-25; #-920 #Tira -919.9999999999
+print(expresion3)
+var expresion4 = 40/20
+print(expresion4)
+var expresion5 = 5**3;
+print(expresion5)
+var expresion6 = 10%1
+print(expresion6)
 var expresion7 = -25.35;
-var expresion8 = false == false
-var expresion9 = true =! expresion8;
-var expresion10 = 55 > 35
-var expresion11 = 10< 2;
+print(expresion7)
+var expresion8 = false==false
+print(expresion8)
+var expresion9 = true=!expresion8;
+print(expresion9)
+var expresion10 = 55>35
+print(expresion10)
+var expresion11 = 10<2;
+print(expresion11)
 var expresion12 = !expresion9
-var expresion13 = 99 >= 99;
-var expresion14 = 85 <= 100
+print(expresion12)
+var expresion13 = 8 >= 810;
+print(expresion13)
+var expresion14 = 85 <= expresion5
+print(expresion14)
 var expresion15 = expresion10 && expresion11;
+print(expresion15)
 var expresion16 = true || false
+print(expresion16)
 var varCasteada1 = (int) 18.5;
-var varCasteada2 = (double) true
+print(varCasteada1)
+var varCasteada2 = (double) -580
+print(varCasteada2)
 var varCasteada3 = (string) 15;
-var varCasteada4 = (char) "F"
-var varCasteada5 = (double) 15.6++;
+print(varCasteada3)
+var varCasteada4 = (char) 70
+print(varCasteada4)
+var varCasteada5 = (double) varCasteada1++;
+print(varCasteada5)
 var varCasteada6 = (string) 9--
+print(varCasteada6)
 variableSimple = expresion1++;
+print(variableSimple)
 decVariable = expresion15 + "Hola"
+print(decVariable)
 decVariable = null;
-decVariable = (int) true
-expresion2++;
+print(decVariable)
+decVariable = (int) 25.810
+print(decVariable)
+expresion2++; 
+print(expresion2)
 decVariable--
+print(decVariable)
 expresion2 = null;
-expresion2 = 25 + (10* 4- 5) + 80** (20)
+print(expresion2)
+expresion2 = 25 + (10* 4- 5) + 8** (2)
+print(expresion2)
 variableSimple = null;
+print(variableSimple)
 variableSimple = 25++
-expresion11 = null;
-expresion11 = accesoArreglo1[3][2][1]
+print(variableSimple)
+#expresion11 = null;
+#expresion11 = accesoArreglo1[3][2][1]
 
+var x = 150
 if(x <50){
     print("Menor que 50");
 }
@@ -42,6 +77,7 @@ else {
     print("Mayor que 100");
 }
 
+x=35
 if(x >50){
     print("Mayor que 50");
 }
@@ -105,7 +141,7 @@ switch(x){
 }
 
 main(){
-    print("Hola soy un mensaje");
+    print("Hola soy un mensaje del main");
     #*muchas mas instrucciones*#
 }
 
@@ -157,18 +193,20 @@ if(i==1){
 
 #-------Declaracion de variables
 var numero; #null
+print(numero)
 var cadena  = "hola" #string
 var var_1 = 'a'; #char
 var verdadero; #null
 
 var numero; #null, en ejecucion error ya esta arriba
 numero = 4; #int
+print(numero)
 var verdadero; #null, ya existe
 verdadero = true; #boolean
 var valor = numero; #int 4
 valor = null #null
 valor = "cadena" #string cadena
-var cadena = "valor =" + valor; #cadena = "valor = cadena"
+var cadena = "valor =" + valor; #cadena = "valor = cadena" #Var ya existe
 
 #-------Casteos
 var edad = (int) 18.6; #Toma el valor entero de 18
