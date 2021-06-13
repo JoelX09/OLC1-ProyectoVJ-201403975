@@ -25,7 +25,8 @@ reservadas = {
     'for'       : 'RFOR',
     'break'     : 'RBREAK',
     'continue'  : 'RCONTINUE',
-    'print'     : 'RPRINT'
+    'print'     : 'RPRINT',
+    'main'      : 'RMAIN'
 }
 
 tokens  = [
@@ -173,6 +174,7 @@ from Instrucciones.Continue import Continue
 from Instrucciones.Default import Default
 from Instrucciones.Case import Case
 from Instrucciones.Switch import Switch
+from Instrucciones.Main import Main
 
 # Presedencia
 precedence = (
@@ -222,6 +224,7 @@ def p_instruccion_instrucciones(t) :
                 | for
                 | break ptc
                 | continue ptc
+                | main
     '''
     t[0] = t[1]
 
@@ -492,6 +495,12 @@ def p_imprimir(t):
     #print('Se ejecuto *print* ')# + str(t[3])) ###Revisar
     t[0] = Imprimir(t[3], t.lineno(1), find_column(input, t.slice[1]))
 
+
+#-------------------------------Main--------------------------------#
+def p_menu(t):
+    'main : RMAIN PARA PARC LLAVEA instrucciones LLAVEC'
+    #print('Se ejecuto el main')
+    t[0] = Main(t[5], t.lineno(1), find_column(input, t.slice[1]))
 
 import ply.yacc as yacc
 parser = yacc.yacc()

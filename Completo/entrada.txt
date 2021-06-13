@@ -1,3 +1,6 @@
+#* Completando
+    Fase 1?    *# 
+
 print(5 + "Hola");
 print(5 + 3+234+324+34+3);
 print(-(500 + 32 - 600));
@@ -166,4 +169,38 @@ switch(edadSwitch){
         print("No se que edad tengo.:");
         #mas sentencias
         break;
+}
+
+var color = "Verde";
+
+switch(color){
+    case "Rojo":
+        print("Red");
+        #mas sentencias
+        break;
+    case 18:
+        print("No es string no evalua?");
+        #mas sentencias
+    case "Amarillo":
+        print("Yellow");
+        #mas sentencias
+        break
+    case "Verde":
+        print("Green");
+        #mas sentencias
+        break
+}
+
+var x = true;
+
+switch(x){
+    Default:
+        print("Por defecto");
+        #mas sentencias
+        break;
+}
+
+main(){
+    print("Hola soy un mensaje del main");
+    #*muchas mas instrucciones*#
 }
