@@ -147,3 +147,23 @@ for(var j = 0; j<9;j=j+1){
     }
     print("j="+j)
 }
+print("******************************************")
+var edadSwitch = 18;
+
+switch(edadSwitch){
+    case 10:
+        print("Tengo 10 anios.");
+        #mas sentencias
+        break;
+    case 18:
+        print("Tengo 18 anios.");
+        #mas sentencias
+    case "25":
+        print("Tengo 25 anios en string.");
+        #mas sentencias
+        break
+    default:
+        print("No se que edad tengo.:");
+        #mas sentencias
+        break;
+}

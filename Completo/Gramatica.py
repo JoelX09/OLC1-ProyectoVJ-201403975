@@ -10,7 +10,6 @@ errores = []
 reservadas = {
     'int'       : 'RINT',
     'double'    : 'RDOUBLE',
-    'boolean'   : 'RBOOLEAN',
     'char'      : 'RCHAR',
     'string'    : 'RSTRING',
     'var'       : 'RVAR',
@@ -19,6 +18,9 @@ reservadas = {
     'null'      : 'RNULL',
     'if'        : 'RIF',
     'else'      : 'RELSE',
+    'switch'    : 'RSWITCH',
+    'case'      : 'RCASE',
+    'default'   : 'RDEFAULT',
     'while'     : 'RWHILE',
     'for'       : 'RFOR',
     'break'     : 'RBREAK',
@@ -28,6 +30,7 @@ reservadas = {
 
 tokens  = [
     'PTCOMA',
+    'DOSPT',
     'PARA',
     'PARC',
     'LLAVEA',
@@ -59,6 +62,7 @@ tokens  = [
 
 # Tokens
 t_PTCOMA        = r';'
+t_DOSPT         = r':'
 t_PARA          = r'\('
 t_PARC          = r'\)'
 t_LLAVEA        = r'{'
@@ -166,6 +170,9 @@ from Instrucciones.While import While
 from Instrucciones.For import For
 from Instrucciones.Break import Break
 from Instrucciones.Continue import Continue
+from Instrucciones.Default import Default
+from Instrucciones.Case import Case
+from Instrucciones.Switch import Switch
 
 # Presedencia
 precedence = (
@@ -210,6 +217,7 @@ def p_instruccion_instrucciones(t) :
     instruccion : variables ptc
                 | imprimir ptc
                 | if
+                | switch
                 | while
                 | for
                 | break ptc
@@ -410,6 +418,45 @@ def p_if_anidado(t):
     #print('Sentencia if con expresion: ' + str(t[3]) + ' seguido de if anidado')
     t[0] = If(t[3], t[6], None, t[9], t.lineno(1), find_column(input, t.slice[1]))
 
+#------------------------------Switch-------------------------------#
+def p_switch_case_default(t):
+    'switch : RSWITCH PARA expresion PARC LLAVEA caselist default LLAVEC'
+    #print("Switch recibe la expresion: " + str(t[3]) + ' y tiene case y default')
+    t[0] = Switch(t[3], t[6], t[7], t.lineno(1), find_column(input, t.slice[1]))
+
+def p_switch_case(t):
+    'switch : RSWITCH PARA expresion PARC LLAVEA caselist LLAVEC'
+    #print("Switch recibe la expresion: " + str(t[3]) + ' y tiene case')
+    t[0] = Switch(t[3], t[6], None, t.lineno(1), find_column(input, t.slice[1]))
+
+def p_switch_default(t):
+    'switch : RSWITCH PARA expresion PARC LLAVEA default LLAVEC'
+    #print("Switch recibe la expresion: " + str(t[3]) + ' y tiene default')
+    t[0] = Switch(t[3], None, t[6], t.lineno(1), find_column(input, t.slice[1]))
+
+def p_caselist_caselist(t):
+    'caselist : caselist case'
+    if t[2] != "":
+        t[1].append(t[2])
+    t[0] = t[1]
+
+def p_caselist_case(t):
+    'caselist : case'
+    if t[1] == "":
+        t[0] = []
+    else:    
+        t[0] = [t[1]]
+
+def p_case(t):
+    'case : RCASE expresion DOSPT instrucciones'
+    #print("Case evaluado con la expresion: " + str(t[2]))
+    t[0] = Case(t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
+
+def p_defaul(t):
+    'default : RDEFAULT DOSPT instrucciones'
+    #print("Se evaluo el default")
+    t[0] = Default(t[3], t.lineno(1), find_column(input, t.slice[1]))
+
 
 #------------------------Sentencias ciclicas------------------------#
 #-------------------------------While-------------------------------#
@@ -424,7 +471,7 @@ def p_for(t):
     #print('Sentencia while por la expresion: ' + str(t[3]))
     t[0] = For(t[3], t[5], t[7], t[10], t.lineno(1), find_column(input, t.slice[1]))
 
-    
+
 #--------------------Sentencias de Transferencia--------------------#
 #-------------------------------Break-------------------------------#
 def p_break(t):
