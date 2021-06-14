@@ -38,4 +38,4 @@ class For(Instruccion):
                 else:
                     break
             else:
-                return Excepcion("Semantico", "Tipo de dato no booleano en WHILE.", self.fila, self.columna)
+                return Excepcion("Semantico", "Tipo de dato no booleano en FOR.", self.fila, self.columna)

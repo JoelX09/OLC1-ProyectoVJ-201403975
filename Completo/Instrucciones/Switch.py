@@ -23,7 +23,7 @@ class Switch(Instruccion):
             for case in self.cases:
                 expresionCase = case.expresion.interpretar(tree, table) #EJECUTA INSTRUCCION ADENTRO DEL CASE
 
-                if isinstance(expresionCase, Excepcion) :  #Si hubo en un error en la expresion del case
+                if isinstance(expresionCase, Excepcion): #Si hubo en un error en la expresion del case
                     tree.getExcepciones().append(expresionCase)
                     tree.updateConsola(expresionCase.toString())
                     continue
@@ -37,7 +37,7 @@ class Switch(Instruccion):
                                 tree.getExcepciones().append(result)
                                 tree.updateConsola(result.toString())
                             if isinstance(result, Break): 
-                                cumple=True
+                                cumple = True
                                 return None
         
         if not cumple:

@@ -2,7 +2,6 @@ from Instrucciones.Continue import Continue
 from Instrucciones.Break import Break
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
-from TS.Tipo import TIPO
 from TS.TablaSimbolos import TablaSimbolos
 
 class Main(Instruccion):

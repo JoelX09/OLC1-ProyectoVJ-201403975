@@ -125,7 +125,7 @@ def t_COMENTARIO_MULTILINEA(t):
     t.lexer.lineno += t.value.count('\n')
 
 def t_COMENTARIO_SIMPLE(t):
-    r'\#.*[^\n]' #Lo cambie -> ver si \n o \r
+    r'\#.*[^\r]' #Lo cambie
     t.lexer.lineno += 1
 
 # Caracteres ignorados

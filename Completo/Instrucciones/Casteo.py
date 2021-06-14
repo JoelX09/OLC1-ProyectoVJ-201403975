@@ -3,7 +3,6 @@ from TS.Excepcion import Excepcion
 from Abstract.Instruccion import Instruccion
 from TS.Simbolo import Simbolo
 
-
 class Casteo(Instruccion):
     def __init__(self, tipo, expresion, fila, columna):
         self.tipo = tipo
@@ -42,4 +41,3 @@ class Casteo(Instruccion):
                 return chr(value)
             else:
                 return Excepcion("Semantico", "Tipo " + self.expresion.tipo + " no se puede castear a Double.", self.fila, self.columna)
-        

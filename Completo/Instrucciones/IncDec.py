@@ -1,8 +1,6 @@
 from TS.Excepcion import Excepcion
 from Abstract.Instruccion import Instruccion
-from TS.Simbolo import Simbolo
 from TS.Tipo import TIPO
-
 
 class Incdec(Instruccion):
     def __init__(self, identificador, incdec, fila, columna):

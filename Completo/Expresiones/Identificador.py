@@ -2,7 +2,6 @@ from TS.Tipo import TIPO
 from TS.Excepcion import Excepcion
 from Abstract.Instruccion import Instruccion
 
-
 class Identificador(Instruccion):
     def __init__(self, identificador, incdec, fila, columna):
         self.identificador = identificador
