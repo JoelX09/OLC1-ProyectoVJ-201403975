@@ -136,7 +136,7 @@ def t_newline(t):
     t.lexer.lineno += t.value.count("\n")
     
 def t_error(t):
-    errores.append(Excepcion("Lexico","Error léxico." + t.value[0] , t.lexer.lineno, find_column(input, t)))
+    errores.append(Excepcion("Lexico","Error lexico - " + t.value[0] , t.lexer.lineno, find_column(input, t)))
     t.lexer.skip(1)
 
 # Compute column.
@@ -528,8 +528,9 @@ entrada = f.read()
 
 from TS.Arbol import Arbol
 from TS.TablaSimbolos import TablaSimbolos
+from Reportes.Errores import Errores
 
-instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
+instrucciones = parse(entrada.lower()) #ARBOL AST -- Aqui se creo #Revisar el .lower()
 ast = Arbol(instrucciones)
 TSGlobal = TablaSimbolos()
 ast.setTSglobal(TSGlobal)
@@ -537,14 +538,41 @@ for error in errores: #CAPTURA DE ERRORES LEXICOS Y SINTACTICOS
     ast.getExcepciones().append(error)
     ast.updateConsola(error.toString())
 
-for instruccion in ast.getInstrucciones(): # REALIZAR LAS ACCIONES
-    value = instruccion.interpretar(ast,TSGlobal)
-    if isinstance(value, Excepcion) :
-        ast.getExcepciones().append(value)
-        ast.updateConsola(value.toString())
-    if isinstance(value, Break): 
-        err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
+for instruccion in ast.getInstrucciones(): # Primera pasada
+    if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion):
+        value = instruccion.interpretar(ast,TSGlobal)
+        if isinstance(value, Excepcion) :
+            ast.getExcepciones().append(value)
+            ast.updateConsola(value.toString())
+        if isinstance(value, Break): 
+            err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
+            ast.getExcepciones().append(err)
+            ast.updateConsola(err.toString())
+
+contador = 0
+for instruccion in ast.getInstrucciones(): # Segunda pasada
+    if isinstance(instruccion, Main):
+        contador += 1
+        if contador == 2:
+            err = Excepcion("Semantico", "Existe mas de una funcion Main", instruccion.fila, instruccion.columna)
+            ast.getExcepciones().append(err)
+            ast.updateConsola(err.toString())
+            break
+        value = instruccion.interpretar(ast,TSGlobal)
+        if isinstance(value, Excepcion) :
+            ast.getExcepciones().append(value)
+            ast.updateConsola(value.toString())
+        if isinstance(value, Break): 
+            err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
+            ast.getExcepciones().append(err)
+            ast.updateConsola(err.toString())
+
+for instruccion in ast.getInstrucciones():  # Tercera pasada  
+    if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion)):
+        err = Excepcion("Semantico", "Sentencias fuera de Main", instruccion.fila, instruccion.columna)
         ast.getExcepciones().append(err)
         ast.updateConsola(err.toString())
+
+Errores.generarReporte(ast.getExcepciones())
 
 print(ast.getConsola())
