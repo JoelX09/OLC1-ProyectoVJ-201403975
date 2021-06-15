@@ -1,3 +1,5 @@
+import os
+
 class Errores():
 
     def generarReporte(errores):
@@ -34,6 +36,11 @@ class Errores():
 </center></body>
 </html>"""
 
-        file = open("D:\\Escritorio\\Errores.html", "w+")
+        try:
+            os.stat("./Salidas")
+        except:
+            os.mkdir("./Salidas")
+
+        file = open("./Salidas/Errores.html", "w+")
         file.write(html)
         file.close()

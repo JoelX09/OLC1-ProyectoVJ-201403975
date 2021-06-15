@@ -521,58 +521,61 @@ def parse(inp) : #04/06/2021 <----------------Repasasr
     input = inp
     return parser.parse(inp)
 
+def getErrores():
+    return errores
+
 #INTERFAZ -- Debe estar en la interfaz
 
-f = open("./entrada.txt", "r")
-entrada = f.read()
+# f = open("./entrada.txt", "r")
+# entrada = f.read()
 
-from TS.Arbol import Arbol
-from TS.TablaSimbolos import TablaSimbolos
-from Reportes.Errores import Errores
+# from TS.Arbol import Arbol
+# from TS.TablaSimbolos import TablaSimbolos
+# from Reportes.Errores import Errores
 
-instrucciones = parse(entrada.lower()) #ARBOL AST -- Aqui se creo #Revisar el .lower()
-ast = Arbol(instrucciones)
-TSGlobal = TablaSimbolos()
-ast.setTSglobal(TSGlobal)
-for error in errores: #CAPTURA DE ERRORES LEXICOS Y SINTACTICOS
-    ast.getExcepciones().append(error)
-    ast.updateConsola(error.toString())
+# instrucciones = parse(entrada.lower()) #ARBOL AST -- Aqui se creo #Revisar el .lower()
+# ast = Arbol(instrucciones)
+# TSGlobal = TablaSimbolos()
+# ast.setTSglobal(TSGlobal)
+# for error in errores: #CAPTURA DE ERRORES LEXICOS Y SINTACTICOS
+#     ast.getExcepciones().append(error)
+#     ast.updateConsola(error.toString())
 
-for instruccion in ast.getInstrucciones(): # Primera pasada
-    if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion):
-        value = instruccion.interpretar(ast,TSGlobal)
-        if isinstance(value, Excepcion) :
-            ast.getExcepciones().append(value)
-            ast.updateConsola(value.toString())
-        if isinstance(value, Break): 
-            err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
-            ast.getExcepciones().append(err)
-            ast.updateConsola(err.toString())
+# for instruccion in ast.getInstrucciones(): # Primera pasada
+#     if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion):
+#         value = instruccion.interpretar(ast,TSGlobal)
+#         if isinstance(value, Excepcion) :
+#             ast.getExcepciones().append(value)
+#             ast.updateConsola(value.toString())
+#         if isinstance(value, Break): 
+#             err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
+#             ast.getExcepciones().append(err)
+#             ast.updateConsola(err.toString())
 
-contador = 0
-for instruccion in ast.getInstrucciones(): # Segunda pasada
-    if isinstance(instruccion, Main):
-        contador += 1
-        if contador == 2:
-            err = Excepcion("Semantico", "Existe mas de una funcion Main", instruccion.fila, instruccion.columna)
-            ast.getExcepciones().append(err)
-            ast.updateConsola(err.toString())
-            break
-        value = instruccion.interpretar(ast,TSGlobal)
-        if isinstance(value, Excepcion) :
-            ast.getExcepciones().append(value)
-            ast.updateConsola(value.toString())
-        if isinstance(value, Break): 
-            err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
-            ast.getExcepciones().append(err)
-            ast.updateConsola(err.toString())
+# contador = 0
+# for instruccion in ast.getInstrucciones(): # Segunda pasada
+#     if isinstance(instruccion, Main):
+#         contador += 1
+#         if contador == 2:
+#             err = Excepcion("Semantico", "Existe mas de una funcion Main", instruccion.fila, instruccion.columna)
+#             ast.getExcepciones().append(err)
+#             ast.updateConsola(err.toString())
+#             break
+#         value = instruccion.interpretar(ast,TSGlobal)
+#         if isinstance(value, Excepcion) :
+#             ast.getExcepciones().append(value)
+#             ast.updateConsola(value.toString())
+#         if isinstance(value, Break): 
+#             err = Excepcion("Semantico", "BREAK invalido en entorno Global", instruccion.fila, instruccion.columna)
+#             ast.getExcepciones().append(err)
+#             ast.updateConsola(err.toString())
 
-for instruccion in ast.getInstrucciones():  # Tercera pasada  
-    if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion)):
-        err = Excepcion("Semantico", "Sentencias fuera de Main", instruccion.fila, instruccion.columna)
-        ast.getExcepciones().append(err)
-        ast.updateConsola(err.toString())
+# for instruccion in ast.getInstrucciones():  # Tercera pasada  
+#     if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion)):
+#         err = Excepcion("Semantico", "Sentencias fuera de Main", instruccion.fila, instruccion.columna)
+#         ast.getExcepciones().append(err)
+#         ast.updateConsola(err.toString())
 
-Errores.generarReporte(ast.getExcepciones())
+# Errores.generarReporte(ast.getExcepciones())
 
-print(ast.getConsola())
+# print(ast.getConsola())
