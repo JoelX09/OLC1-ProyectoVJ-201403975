@@ -25,7 +25,7 @@ def nuevo():
 # Abrir archivo, Autor PUAC
 def abrir():
     global archivo
-    archivo = filedialog.askopenfilename(title = "Abrir Archivo", initialdir = "D:/")
+    archivo = filedialog.askopenfilename(title = "Abrir Archivo", initialdir = "D:/", filetypes = (("JPR","*.jpr"),("all files","*.*")))
 
     entrada = open(archivo)
     content = entrada.read()
@@ -71,6 +71,7 @@ def openErrores():
 def ejecutar():
     #f = open("./entrada.txt", "r")
     #entrada = f.read()
+    consola.delete(1.0, END)
     entrada = editor.get("1.0", END)
 
     from TS.Arbol import Arbol
@@ -83,7 +84,7 @@ def ejecutar():
     from Instrucciones.Break import Break
     from Instrucciones.Main import Main
 
-    instrucciones = parse(entrada.lower()) #ARBOL AST -- Aqui se creo #Revisar el .lower()
+    instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
     ast = Arbol(instrucciones)
     TSGlobal = TablaSimbolos()
     ast.setTSglobal(TSGlobal)
@@ -298,7 +299,7 @@ frameBottom.pack(side="bottom", fill = BOTH, expand = True)
 # Creando elementos visuales de la Ventana principal
 #iconPath = pkg_resources.resource_filename(__name__, 'icon/play.png')
 inconoEjecutar = PhotoImage(file='icon/play.png')
-btnEjecutar = Button(frameTop, text="Execute" , image= inconoEjecutar , compound=LEFT, command=ejecutar)
+btnEjecutar = Button(frameTop, text="Interpretar" , image= inconoEjecutar , compound=LEFT, command=ejecutar)
 labelfc = Label(frameTop, text='Linea: 1 | Columna: 1')  
 lines = Canvas(frameMiddle, width=40, height=8, bg="LightCyan2")
 #editor1 = Label(frameMiddle, width=3, height=8, font=("Consolas", 12), bg="LightCyan2", text= cont)
