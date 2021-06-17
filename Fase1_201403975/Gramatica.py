@@ -111,7 +111,7 @@ def t_ID(t):
      return t
 
 def t_CADENA(t):
-    r'(\".*\")'
+    r'\"(\\\'|\\"|[^\'])*?\"'
     t.value = t.value[1:-1] # remuevo las comillas
     return t
 
@@ -230,7 +230,7 @@ def p_instruccion_instrucciones(t) :
 
 def p_instruccion_error(t):
     'instruccion : error '
-    errores.append(Excepcion("Sintáctico","Error Sintáctico." + str(t[1].value) , t.lineno(1), find_column(input, t.slice[1])))
+    errores.append(Excepcion("Sintactico","Error Sintactico." + str(t[1].value) , t.lineno(1), find_column(input, t.slice[1])))
     t[0] = ""
 
 

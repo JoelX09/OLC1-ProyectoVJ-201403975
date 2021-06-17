@@ -50,7 +50,7 @@ class Casteo(Instruccion):
                 return Excepcion("Semantico", "Tipo " + tipo + " no se puede castear a Int.", self.fila, self.columna)
 
         elif self.tipo == TIPO.CADENA:
-            if self.expresion.tipo == TIPO.ENTERO or tipo == TIPO.DECIMAL:
+            if self.expresion.tipo == TIPO.ENTERO or self.expresion.tipo == TIPO.DECIMAL:
                 return str(value)
             else:
                 return Excepcion("Semantico", "Tipo " + tipo + " no se puede castear a String.", self.fila, self.columna)

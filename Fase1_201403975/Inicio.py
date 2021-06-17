@@ -27,7 +27,7 @@ def abrir():
     global archivo
     archivo = filedialog.askopenfilename(title = "Abrir Archivo", initialdir = "D:/", filetypes = (("JPR","*.jpr"),("all files","*.*")))
 
-    entrada = open(archivo)
+    entrada = open(archivo, encoding='utf-8')
     content = entrada.read()
 
     editor.delete(1.0, END)
@@ -159,7 +159,7 @@ def recorrerInput(i):
     counter = 0
 
     while counter < len(i):
-        if re.search(r"[a-zA-Z0-9]", i[counter]):
+        if re.search(r"[a-zA-Z_0-9]", i[counter]):
             val += i[counter]
 
         elif i[counter] == "#":
