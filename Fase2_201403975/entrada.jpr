@@ -1,0 +1,228 @@
+#13/06/2021
+#* Archivo
+    Fase1  *# 
+
+#Variables Globales
+print("*** Variables Globales ***") #Error entorno global
+var variable = 5 + 5;
+
+main(){
+    print("*** Probando las operaciones ***")
+    print(5 + "Hola");
+    print(5 + 3+234+324+34+3);
+    print(-(500 + 32 - 600));
+    print(-(500 - 600) == 100)
+    print(! "7" == 7 && (100 == 10 + 90) );
+    print("")
+
+    print("*** Probando case insensitive ***")
+    print(variable)
+    print(VaRiaBle)
+    print("")
+    
+    print("*** Variables Locales ***")
+    var cad1 = "Soy una cadena\nUn salto de linea."
+    var nueva = cad1 + " -> " + variable
+    print(nueva + cad1)
+    var cad2 = variable + cad1;
+    print(cad2)
+    print(cad2 + cad1);
+    print(cad2);
+    cad2 = "Cambio de Valor"
+    print(CAD2)
+    cad2 = cad2 + cad1;
+    print(cad2);
+    print(true || false)
+    print(false)
+    var perra = 100;
+    print(perra)
+    print("")
+    cad1++ #Error por el tipo
+
+    print("*** Incremento - Decremento ***")
+    var anio = 2020
+    print("anio "+ anio)
+    anio = 1 + anio ++
+    print("anio "+ anio)
+    anio = anio --
+    print("anio "+ anio)
+    print("")
+    var edad1 = 18.5
+    edad1++
+    print(edad1)
+    edad1--
+    print(edad1)
+    print("")
+    var miedad = 24;
+    print(miedad)
+    var nuevaedad = miedad++
+    print("Tengo " + miedad)
+    print("Cumplo " + nuevaedad )
+    print(miedad)
+    print(nuevaedad)
+    print("")
+
+    print("*** Casteos ***")
+    var edad = (INT) 18.6 #Puse lower()
+    print(edad)
+    var letra = (char) 70
+    print(letra)
+    var numero = (double) 16
+    print(numero)
+    print("")
+    var valor1 = 'F'
+    print(valor1)
+    var valor2 = 64
+    print(valor2)
+    valor1 = (char) valor2
+    print(valor1)
+    print("")
+    var string1 = "Cadena"
+    print(string1)
+    var numero1 = 16.9
+    print(numero1)
+    string1 = (int) numero1 #Error de asignacion de int a string
+    print("")
+
+    print("*** Probando Nulos y cambio de valor ***")
+    var probNula
+    print(probNula)
+    string1 = null
+    print(string1)
+    string1 = 20
+    print(string1)
+    probNula = "Ya no es nula"
+    print(probNula)
+    print("")
+
+    print("*** If ***")
+    var bandera = 100;
+    if((5+5)<(2+1)){
+        print("Entra al if");
+    }
+    else if(bandera + 50 > 300){
+        print("Entro al else if xd")
+    }
+    else if(false){
+        print("Entro al else if xddddd")
+    }
+    else if(bandera + 50 > 300){
+        print("Entro al else if xd")
+    }
+    else{
+        if(bandera - 100 == 0){
+            print("Entro a un if en un else que loko :0")
+            if(bandera - 100 == 0){
+                print("Entro a un if en un else que loko :0")
+                print(bandera)
+                print("Cambio de bandera")
+                var bandera = 50;
+                print(bandera)
+                if(bandera - 100 == 0){
+                    print("Entro a un if en un else que loko :0")
+                }
+            }
+            print("valor persistente")
+            print(bandera)
+        }
+        print("No entro a ningun if D:")
+    }
+    print("")
+    
+    print("*** While ***")
+    var num = 0;
+    while(num < 10){
+        print("Iteracion -> " + (num + 1))
+        if(num == 7){
+            break;
+        }
+        num = num + 1;
+    }
+    break; #Error, fuera de ciclo
+    num = 0;
+    while(num < 10){
+        print("Iteracion -> " + (num + 1))
+        if(num == 5){
+            break;
+        }
+        num = num + 1;
+    }
+    print("")
+
+    print("*** For ***")
+    for(var i = 0; i<3;i++){
+        print("i="+i)
+    }
+    print("**********")
+    for(var x = 5; x>2;x=x-1){
+        print("x="+x)
+    }
+    print("**********")
+    for(var j = 0; j<9;j=j+1){
+        if(j==5){
+            print("Me salgo del ciclo en el numero " + j);
+            break;
+        }
+        print("j="+j)@
+    }
+    print("**********")
+    for(var j = 0; j<9;j=j+1){
+        if(j==5){
+            print("Me salte el numero " + j);
+            continue;
+        }
+        print("j="+j)
+    }
+    print("")
+
+    print("*** Switch ***")
+    var edadSwitch = 18;
+
+    switch(edadSwitch){
+        case 10:
+            print("Tengo 10 anios.");
+            #mas sentencias
+            break;
+        case 18:
+            print("Tengo 18 anios.");
+            #mas sentencias
+        case "25":
+            print("Tengo 25 anios en string.");
+            #mas sentencias
+            break
+        default:
+            print("No se que edad tengo.:");
+            #mas sentencias
+            break;
+    }
+    print("**********")
+    var color = "Verde";
+
+    switch(color){
+        case "Rojo":
+            print("Red");
+            #mas sentencias
+            break;
+        case 18:
+            print("No es string no evalua?");
+            #mas sentencias
+        case "Amarillo":
+            print("Yellow");
+            #mas sentencias
+            break
+        case "Verde":
+            print("Green");
+            #mas sentencias
+            break
+    }
+    print("**********")
+    var x = true;
+
+    switch(x){
+        Default:
+            print("Por defecto");
+            #mas sentencias
+            break;
+    }
+}
+#Fin del archivo

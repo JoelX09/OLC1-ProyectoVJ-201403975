@@ -12,6 +12,7 @@ reservadas = {
     'double'    : 'RDOUBLE',
     'char'      : 'RCHAR',
     'string'    : 'RSTRING',
+    'boolean'   : 'RBOOLEAN',
     'var'       : 'RVAR',
     'true'      : 'RTRUE',
     'false'     : 'RFALSE',
@@ -26,12 +27,15 @@ reservadas = {
     'break'     : 'RBREAK',
     'continue'  : 'RCONTINUE',
     'print'     : 'RPRINT',
-    'main'      : 'RMAIN'
+    'main'      : 'RMAIN',
+    'func'      : 'RFUNC',
+    'return'    : 'RRETURN'
 }
 
 tokens  = [
     'PTCOMA',
     'DOSPT',
+    'COMA',
     'PARA',
     'PARC',
     'LLAVEA',
@@ -64,6 +68,7 @@ tokens  = [
 # Tokens
 t_PTCOMA        = r';'
 t_DOSPT         = r':'
+t_COMA          = r','
 t_PARA          = r'\('
 t_PARC          = r'\)'
 t_LLAVEA        = r'{'
@@ -175,6 +180,8 @@ from Instrucciones.Default import Default
 from Instrucciones.Case import Case
 from Instrucciones.Switch import Switch
 from Instrucciones.Main import Main
+from Instrucciones.Funcion import Funcion
+from Instrucciones.Llamada import Llamada
 
 # Presedencia
 precedence = (
@@ -225,6 +232,8 @@ def p_instruccion_instrucciones(t) :
                 | break ptc
                 | continue ptc
                 | main
+                | funcion
+                | llamada ptc
     '''
     t[0] = t[1]
 
@@ -300,6 +309,7 @@ def p_tipo(t):
             | RDOUBLE
             | RCHAR
             | RSTRING
+            | RBOOLEAN
     '''
     if t[1].lower() == 'int':
         t[0] = TIPO.ENTERO
@@ -309,6 +319,8 @@ def p_tipo(t):
         t[0] = TIPO.CHARACTER
     elif t[1].lower() == 'string':
         t[0] = TIPO.CADENA
+    elif t[1].lower() == 'boolean':
+        t[0] = TIPO.BOOLEANO
 
 
 #----------------------------Expresiones----------------------------#
@@ -475,6 +487,56 @@ def p_for(t):
     t[0] = For(t[3], t[5], t[7], t[10], t.lineno(1), find_column(input, t.slice[1]))
 
 
+#-----------------------------Funciones-----------------------------#
+#------------------------------Funcion------------------------------#
+def p_funciones(t):
+    'funcion : RFUNC ID PARA parametros PARC LLAVEA instrucciones LLAVEC'
+    #print('Sentencia while por la expresion: ' + str(t[3]))
+    t[0] = Funcion(t[2], t[4], t[7], t.lineno(1), find_column(input, t.slice[1]))
+
+def p_funciones_sin_params(t):
+    'funcion : RFUNC ID PARA PARC LLAVEA instrucciones LLAVEC'
+    #print('Sentencia while por la expresion: ' + str(t[3]))
+    t[0] = Funcion(t[2], [], t[6], t.lineno(1), find_column(input, t.slice[1]))
+
+#------------------------Parametros Funcion-------------------------#
+def p_parametros_lista_func(t) :
+    'parametros : parametros COMA parametro'
+    t[1].append(t[3])
+    t[0] = t[1]
+    
+def p_parametros_func(t) :
+    'parametros : parametro'
+    t[0] = [t[1]]
+
+def p_parametro_func(t) :
+    'parametro : tipo ID'
+    t[0] = {'tipo':t[1],'identificador':t[2]}
+
+#------------------------------Llamada------------------------------#
+def p_llamadas(t):
+    'llamada : ID PARA parametros_llamada PARC'
+    t[0] = Llamada(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
+
+def p_llamadas_sin_params(t):
+    'llamada : ID PARA PARC'
+    t[0] = Llamada(t[1], [], t.lineno(1), find_column(input, t.slice[1]))
+
+#------------------------Parametros Llamada-------------------------#
+def p_parametros_lista_llamada(t) :
+    'parametros_llamada : parametros_llamada COMA parametro_llamada'
+    t[1].append(t[3])
+    t[0] = t[1]
+    
+def p_parametros_llamada(t) :
+    'parametros_llamada : parametro_llamada'
+    t[0] = [t[1]]
+
+def p_parametro_llamada(t) :
+    'parametro_llamada : expresion'
+    t[0] = t[1]
+
+
 #--------------------Sentencias de Transferencia--------------------#
 #-------------------------------Break-------------------------------#
 def p_break(t):
@@ -520,9 +582,6 @@ def parse(inp) : #04/06/2021 <----------------Repasasr
     global input
     input = inp
     return parser.parse(inp)
-
-def getErrores():
-    return errores
 
 #INTERFAZ -- Debe estar en la interfaz
 
