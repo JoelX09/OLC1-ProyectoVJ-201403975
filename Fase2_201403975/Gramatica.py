@@ -182,6 +182,7 @@ from Instrucciones.Switch import Switch
 from Instrucciones.Main import Main
 from Instrucciones.Funcion import Funcion
 from Instrucciones.Llamada import Llamada
+from Instrucciones.Return import Return
 
 # Presedencia
 precedence = (
@@ -234,6 +235,7 @@ def p_instruccion_instrucciones(t) :
                 | main
                 | funcion
                 | llamada ptc
+                | return ptc
     '''
     t[0] = t[1]
 
@@ -386,6 +388,10 @@ def p_expresion_agrupacion(t):
     expresion : PARA expresion PARC
     '''
     t[0] = t[2]
+
+def p_expresion_llamada(t):
+    '''expresion : llamada'''
+    t[0] = t[1]
 
 def p_expresion_id(t):
     '''expresion : ID incdec'''
@@ -549,6 +555,11 @@ def p_continue(t):
     'continue : RCONTINUE'
     #print('Se reconocio un continue')
     t[0] = Continue(t.lineno(1), find_column(input, t.slice[1]))
+
+#------------------------------Return-------------------------------#
+def p_return(t):
+    'return : RRETURN expresion'
+    t[0] = Return(t[2], t.lineno(1), find_column(input, t.slice[1]))
 
 
 #-----------------------------Imprimir------------------------------#

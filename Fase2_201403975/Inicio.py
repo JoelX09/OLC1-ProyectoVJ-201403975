@@ -82,6 +82,8 @@ def ejecutar():
     from Instrucciones.Asignacion import Asignacion
     from TS.Excepcion import Excepcion
     from Instrucciones.Break import Break
+    from Instrucciones.Continue import Continue
+    from Instrucciones.Return import Return
     from Instrucciones.Main import Main
     from Instrucciones.Funcion import Funcion
 
@@ -121,6 +123,14 @@ def ejecutar():
                 ast.updateConsola(value.toString())
             if isinstance(value, Break): 
                 err = Excepcion("Semantico", "Sentencia BREAK fuera de ciclo", instruccion.fila, instruccion.columna)
+                ast.getExcepciones().append(err)
+                ast.updateConsola(err.toString())
+            if isinstance(value, Continue): 
+                err = Excepcion("Semantico", "Sentencia CONTINUE fuera de ciclo", instruccion.fila, instruccion.columna)
+                ast.getExcepciones().append(err)
+                ast.updateConsola(err.toString())
+            if isinstance(value, Return): 
+                err = Excepcion("Semantico", "Sentencia RETURN fuera de ciclo", instruccion.fila, instruccion.columna)
                 ast.getExcepciones().append(err)
                 ast.updateConsola(err.toString())
 
@@ -265,7 +275,7 @@ def recorrerInput(i):
         counter +=1
         
     for s in lista:
-        if s[1].lower() == 'func' or s[1].lower() == 'var' or s[1].lower() == 'true' or s[1].lower() == 'false' or s[1].lower() == 'print' or s[1].lower() == 'main' or s[1].lower() == 'null' or s[1].lower() == 'if' or s[1].lower() == 'else' or s[1].lower() == 'switch' or s[1].lower() == 'case' or s[1].lower() == 'default' or s[1].lower() == 'while' or s[1].lower() == 'for' or s[1].lower() == 'break' or s[1].lower() == 'continue':
+        if s[1].lower() == 'int' or s[1].lower() == 'double' or s[1].lower() == 'boolean' or s[1].lower() == 'string' or s[1].lower() == 'char' or s[1].lower() == 'func' or s[1].lower() == 'var' or s[1].lower() == 'true' or s[1].lower() == 'false' or s[1].lower() == 'print' or s[1].lower() == 'main' or s[1].lower() == 'null' or s[1].lower() == 'if' or s[1].lower() == 'else' or s[1].lower() == 'switch' or s[1].lower() == 'case' or s[1].lower() == 'default' or s[1].lower() == 'while' or s[1].lower() == 'for' or s[1].lower() == 'break' or s[1].lower() == 'continue' or s[1].lower() == 'return':
             s[0] = 'reservada'
         elif re.match(r"[0-9]+(\.[0-9])?", s[1]):
             s[0] = 'numeros'

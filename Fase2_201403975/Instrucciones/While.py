@@ -1,3 +1,4 @@
+from Instrucciones.Return import Return
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
@@ -27,6 +28,7 @@ class While(Instruccion):
                             tree.updateConsola(result.toString())
                         if isinstance(result, Break): return None #Return para que se salga definitivamente
                         if isinstance(result, Continue): break #Se salta las instrucciones
+                        if isinstance(result, Return): return result
                 else:
                     break
             else:

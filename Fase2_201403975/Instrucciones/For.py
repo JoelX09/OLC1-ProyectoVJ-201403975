@@ -1,3 +1,4 @@
+from Instrucciones.Return import Return
 from Instrucciones.Continue import Continue
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
@@ -33,6 +34,7 @@ class For(Instruccion):
                             tree.updateConsola(result.toString())
                         if isinstance(result, Break): return None #Return para que se salga definitivamente
                         if isinstance(result, Continue): break #Se salta las instrucciones
+                        if isinstance(result, Return): return result
                     actualizacion = self.actualizacion.interpretar(tree, nuevaTablaFor) #Actualizacion del ciclo
                     if isinstance(actualizacion, Excepcion): return actualizacion
                 else:
