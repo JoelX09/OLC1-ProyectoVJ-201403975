@@ -21,6 +21,9 @@ class Aritmetica(Instruccion):
 
 
         if self.operador == OperadorAritmetico.MAS: #SUMA
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede sumar un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) + self.obtenerVal(self.OperacionDer.tipo, der)
@@ -82,6 +85,9 @@ class Aritmetica(Instruccion):
         
         
         elif self.operador == OperadorAritmetico.MENOS: 
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede restar un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) - self.obtenerVal(self.OperacionDer.tipo, der)
@@ -109,6 +115,9 @@ class Aritmetica(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para -.", self.fila, self.columna)
         
         elif self.operador == OperadorAritmetico.POR: 
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede multiplicar un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) * self.obtenerVal(self.OperacionDer.tipo, der)
@@ -124,6 +133,9 @@ class Aritmetica(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para *.", self.fila, self.columna)
 
         elif self.operador == OperadorAritmetico.DIV: 
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede dividir un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) / self.obtenerVal(self.OperacionDer.tipo, der)
@@ -139,6 +151,9 @@ class Aritmetica(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para /.", self.fila, self.columna)
 
         elif self.operador == OperadorAritmetico.POT: 
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede realizar una potencia con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) ** self.obtenerVal(self.OperacionDer.tipo, der)
@@ -154,6 +169,9 @@ class Aritmetica(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para **.", self.fila, self.columna)
 
         elif self.operador == OperadorAritmetico.MOD: 
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede realizar el modulo con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) % self.obtenerVal(self.OperacionDer.tipo, der)
@@ -169,6 +187,9 @@ class Aritmetica(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para %.", self.fila, self.columna)
 
         elif self.operador == OperadorAritmetico.UMENOS: 
+            if self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede negar un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO:
                 self.tipo = TIPO.ENTERO
                 return - self.obtenerVal(self.OperacionIzq.tipo, izq)

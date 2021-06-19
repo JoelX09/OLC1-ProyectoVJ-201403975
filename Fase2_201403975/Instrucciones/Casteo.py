@@ -16,6 +16,9 @@ class Casteo(Instruccion):
 
         tipo = None
 
+        if self.expresion.tipo == TIPO.NULO:
+            return Excepcion("Semantico", "Valor nulo no se puede castear.", self.fila, self.columna)
+
         if self.expresion.tipo == TIPO.BOOLEANO:
             tipo = "Boolean"
         elif self.expresion.tipo == TIPO.CHARACTER:
@@ -35,6 +38,13 @@ class Casteo(Instruccion):
                     return Excepcion("Semantico", "Char incorrecto. El largo es mayor.", self.fila, self.columna)
                 else:
                     return float(ord(value))
+            elif self.expresion.tipo == TIPO.CADENA:
+                    try:
+                        float(value)
+                        return float(value)
+                    except ValueError:
+                        return Excepcion("Semantico", "La cadena " + value + " no se puede castear a Double.", self.fila, self.columna)
+
             else:
                 return Excepcion("Semantico", "Tipo " + tipo + " no se puede castear a Double.", self.fila, self.columna)
         
@@ -46,6 +56,11 @@ class Casteo(Instruccion):
                     return Excepcion("Semantico", "Char incorrecto. El largo es mayor.", self.fila, self.columna)
                 else:
                     return ord(value)
+            elif self.expresion.tipo == TIPO.CADENA:
+                if value.isdigit():
+                    return int(value)
+                else:
+                    return Excepcion("Semantico", "La cadena " + value + " no se puede castear a Int.", self.fila, self.columna)
             else:
                 return Excepcion("Semantico", "Tipo " + tipo + " no se puede castear a Int.", self.fila, self.columna)
 
@@ -60,3 +75,14 @@ class Casteo(Instruccion):
                 return chr(value)
             else:
                 return Excepcion("Semantico", "Tipo " + tipo + " no se puede castear a Char.", self.fila, self.columna)
+
+        elif self.tipo == TIPO.BOOLEANO:
+            if self.expresion.tipo == TIPO.CADENA:
+                if value.lower() == 'true':
+                    return True
+                elif value.lower() == 'false':
+                    return False
+                else: 
+                    return Excepcion("Semantico", "La cadena " + value + " no se puede castear a Boolean.", self.fila, self.columna)
+            else:
+                return Excepcion("Semantico", "Tipo " + tipo + " no se puede castear a Boolean.", self.fila, self.columna)

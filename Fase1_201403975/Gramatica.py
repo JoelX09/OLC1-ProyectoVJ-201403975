@@ -12,6 +12,7 @@ reservadas = {
     'double'    : 'RDOUBLE',
     'char'      : 'RCHAR',
     'string'    : 'RSTRING',
+    'boolean'   : 'RBOOLEAN',
     'var'       : 'RVAR',
     'true'      : 'RTRUE',
     'false'     : 'RFALSE',
@@ -300,6 +301,7 @@ def p_tipo(t):
             | RDOUBLE
             | RCHAR
             | RSTRING
+            | RBOOLEAN
     '''
     if t[1].lower() == 'int':
         t[0] = TIPO.ENTERO
@@ -309,6 +311,8 @@ def p_tipo(t):
         t[0] = TIPO.CHARACTER
     elif t[1].lower() == 'string':
         t[0] = TIPO.CADENA
+    elif t[1].lower() == 'boolean':
+        t[0] = TIPO.BOOLEANO
 
 
 #----------------------------Expresiones----------------------------#

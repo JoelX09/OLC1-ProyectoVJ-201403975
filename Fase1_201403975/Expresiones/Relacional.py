@@ -20,6 +20,9 @@ class Relacional(Instruccion):
 
 
         if self.operador == OperadorRelacional.MENORQUE:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un < con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) < self.obtenerVal(self.OperacionDer.tipo, der)
             elif self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.DECIMAL:
@@ -33,6 +36,9 @@ class Relacional(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para <.", self.fila, self.columna)
         
         elif self.operador == OperadorRelacional.MENORIGUAL:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un <= con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) <= self.obtenerVal(self.OperacionDer.tipo, der)
             elif self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.DECIMAL:
@@ -46,6 +52,9 @@ class Relacional(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para <=.", self.fila, self.columna)
         
         elif self.operador == OperadorRelacional.MAYORQUE:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un > con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) > self.obtenerVal(self.OperacionDer.tipo, der)
             elif self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.DECIMAL:
@@ -59,6 +68,9 @@ class Relacional(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para >.", self.fila, self.columna)
 
         elif self.operador == OperadorRelacional.MAYORIGUAL:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede oeprar un >= con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) >= self.obtenerVal(self.OperacionDer.tipo, der)
             elif self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.DECIMAL:
@@ -72,6 +84,9 @@ class Relacional(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para >=.", self.fila, self.columna)
 
         elif self.operador == OperadorRelacional.IGUALIGUAL:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un == con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) == self.obtenerVal(self.OperacionDer.tipo, der)
             elif self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.DECIMAL:
@@ -109,6 +124,9 @@ class Relacional(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para ==.", self.fila, self.columna)
 
         elif self.operador == OperadorRelacional.DIFERENTE:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un =! con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.ENTERO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) != self.obtenerVal(self.OperacionDer.tipo, der)
             elif self.OperacionIzq.tipo == TIPO.ENTERO and self.OperacionDer.tipo == TIPO.DECIMAL:

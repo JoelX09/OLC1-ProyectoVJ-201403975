@@ -20,16 +20,25 @@ class Logica(Instruccion):
             if isinstance(der, Excepcion): return der
 
         if self.operador == OperadorLogico.AND:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un && con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.BOOLEANO and self.OperacionDer.tipo == TIPO.BOOLEANO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) and self.obtenerVal(self.OperacionDer.tipo, der)
             return Excepcion("Semantico", "Tipo Erroneo de operacion para &&.", self.fila, self.columna)
         
         elif self.operador == OperadorLogico.OR:
+            if self.OperacionDer.tipo == TIPO.NULO or self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede operar un || con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.BOOLEANO and self.OperacionDer.tipo == TIPO.BOOLEANO:
                 return self.obtenerVal(self.OperacionIzq.tipo, izq) or self.obtenerVal(self.OperacionDer.tipo, der)
             return Excepcion("Semantico", "Tipo Erroneo de operacion para ||.", self.fila, self.columna)
         
         elif self.operador == OperadorLogico.NOT:
+            if self.OperacionIzq.tipo == TIPO.NULO: 
+                return Excepcion("Semantico", "No se puede negar ! con un valor nulo", self.fila, self.columna)
+
             if self.OperacionIzq.tipo == TIPO.BOOLEANO:
                 return not self.obtenerVal(self.OperacionIzq.tipo, izq)
             return Excepcion("Semantico", "Tipo Erroneo de operacion para !.", self.fila, self.columna)
