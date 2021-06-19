@@ -16,8 +16,8 @@ class TablaSimbolos:
     def getTabla(self, id): #Obtener una variable/Simbolo
         tablaActual = self
         while tablaActual != None:
-            if id in tablaActual.tabla:
-                return tablaActual.tabla[id] #Retorna simbolo
+            if id.lower() in tablaActual.tabla:
+                return tablaActual.tabla[id.lower()] #Retorna simbolo
             else:
                 tablaActual = tablaActual.anterior
         return None #No existe el simbolo

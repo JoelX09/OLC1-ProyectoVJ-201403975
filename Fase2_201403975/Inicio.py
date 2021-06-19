@@ -77,7 +77,7 @@ def ejecutar():
     from TS.Arbol import Arbol
     from TS.TablaSimbolos import TablaSimbolos
     from Reportes.Errores import Errores
-    from Gramatica import parse, getErrores
+    from Gramatica import parse, getErrores, crearNativas
     from Instrucciones.Declaracion import Declaracion
     from Instrucciones.Asignacion import Asignacion
     from TS.Excepcion import Excepcion
@@ -91,6 +91,7 @@ def ejecutar():
     ast = Arbol(instrucciones)
     TSGlobal = TablaSimbolos()
     ast.setTSglobal(TSGlobal)
+    crearNativas(ast)
     for error in getErrores(): #CAPTURA DE ERRORES LEXICOS Y SINTACTICOS
         ast.getExcepciones().append(error)
         ast.updateConsola(error.toString())
