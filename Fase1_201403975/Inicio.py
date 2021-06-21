@@ -44,19 +44,27 @@ def abrir():
 
 # Guardar Archivo, Autor PUAC
 def guardarArchivo(): 
+    val = editor.get("1.0", END)
+    editor.delete(1.0, END)
+    for s in recorrerInput(val):
+        editor.insert(INSERT, s[1], s[0])
     global archivo
     if archivo == "":
         guardarComo()
     else:
-        guardarc = open(archivo, "w")
+        guardarc = open(archivo, "w", encoding='utf-8')
         guardarc.write(editor.get(1.0, END))
         guardarc.close()
 
 # Guardar como, Autor PUAC
 def guardarComo():
+    val = editor.get("1.0", END)
+    editor.delete(1.0, END)
+    for s in recorrerInput(val):
+        editor.insert(INSERT, s[1], s[0])
     global archivo
-    guardar = filedialog.asksaveasfilename(title = "Guardar Archivo", initialdir = "D:/")
-    fguardar = open(guardar, "w+")
+    guardar = filedialog.asksaveasfilename(title = "Guardar Archivo", initialdir = "D:/", filetypes = (("JPR","*.jpr"),("all files","*.*")))
+    fguardar = open(guardar, "w+", encoding='utf-8')
     fguardar.write(editor.get(1.0, END))
     fguardar.close()
     archivo = guardar
@@ -73,6 +81,9 @@ def ejecutar():
     #entrada = f.read()
     consola.delete(1.0, END)
     entrada = editor.get("1.0", END)
+    editor.delete(1.0, END)
+    for s in recorrerInput(entrada):
+        editor.insert(INSERT, s[1], s[0])
 
     from TS.Arbol import Arbol
     from TS.TablaSimbolos import TablaSimbolos
