@@ -1,3 +1,4 @@
+from TS.Tipo import TIPO
 from TS.Simbolo import Simbolo
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
@@ -22,7 +23,52 @@ class Llamada(Instruccion):
                 resultExpresion = expresion.interpretar(tree, table)
                 if isinstance(resultExpresion, Excepcion): return resultExpresion
 
-                if result.parametros[contador]["tipo"] == expresion.tipo:  # VERIFICACION DE TIPO
+                if self.nombre.lower() == "length":
+                    if expresion.tipo != TIPO.CADENA and expresion.tipo != TIPO.ARREGLO:
+                        return Excepcion("Semantico", "Tipo de parametro de Length no es Cadena o Arreglo.", self.fila, self.columna)
+                    else:
+                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                        resultTabla = nuevaTabla.setTabla(simbolo)
+                        if isinstance(resultTabla, Excepcion): return resultTabla
+                
+                elif self.nombre.lower() == "truncate":
+                    if expresion.tipo != TIPO.ENTERO and expresion.tipo != TIPO.DECIMAL:
+                        return Excepcion("Semantico", "Tipo de parametro de Truncate no es Entero o Decimal.", self.fila, self.columna)
+                    else:
+                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                        resultTabla = nuevaTabla.setTabla(simbolo)
+                        if isinstance(resultTabla, Excepcion): return resultTabla
+
+                elif self.nombre.lower() == "round":
+                    if expresion.tipo != TIPO.DECIMAL:
+                        return Excepcion("Semantico", "Tipo de parametro de Round no es Decimal.", self.fila, self.columna)
+                    else:
+                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                        resultTabla = nuevaTabla.setTabla(simbolo)
+                        if isinstance(resultTabla, Excepcion): return resultTabla
+
+                elif self.nombre.lower() == "typeof":
+                    self.tipo = TIPO.CADENA
+                    val = "Nulo"
+
+                    if expresion.tipo == TIPO.ENTERO:
+                        val = "INT"
+                    elif expresion.tipo == TIPO.DECIMAL:
+                        val = "DOUBLE"
+                    elif expresion.tipo == TIPO.BOOLEANO:
+                        val = "BOOLEAN"
+                    elif expresion.tipo == TIPO.CADENA:
+                        val = "STRING"
+                    elif expresion.tipo == TIPO.CHARACTER:
+                        val = "CHAR"
+                    elif expresion.tipo == TIPO.ARREGLO:
+                        val = "ARREGLO->"
+
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, val)
+                    resultTabla = nuevaTabla.setTabla(simbolo)
+                    if isinstance(resultTabla, Excepcion): return resultTabla
+
+                elif result.parametros[contador]["tipo"] == expresion.tipo:  # VERIFICACION DE TIPO
                     # CREACION DE SIMBOLO E INGRESARLO A LA TABLA DE SIMBOLOS
                     simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
                     resultTabla = nuevaTabla.setTabla(simbolo)

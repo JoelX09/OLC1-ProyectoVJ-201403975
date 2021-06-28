@@ -185,6 +185,10 @@ from Instrucciones.Llamada import Llamada
 from Instrucciones.Return import Return
 from Nativas.ToLower import ToLower
 from Nativas.ToUpper import ToUpper
+from Nativas.Length import Length
+from Nativas.Truncate import Truncate
+from Nativas.Round import Round
+from Nativas.TypeOf import TypeOf
 
 # Presedencia
 precedence = (
@@ -577,6 +581,14 @@ def p_menu(t):
     #print('Se ejecuto el main')
     t[0] = Main(t[5], t.lineno(1), find_column(input, t.slice[1]))
 
+'''
+def p_error(t):
+    if t:
+        errores.append(Excepcion("Sintactico","Error Sintactico en: " + str(t.type) + ". - " + str(t.value) , t.lexer.lineno, find_column(input, t)))
+        parser.errok() #Descarta el token y se le dice al analizador que esta bien
+    else:
+        print("Syntax error at EOF")
+'''
 import ply.yacc as yacc
 parser = yacc.yacc()
 
@@ -603,12 +615,35 @@ def crearNativas(ast):          # CREACION Y DECLARACION DE LAS FUNCIONES NATIVA
     toUpper = ToUpper(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(toUpper)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
-    
     nombre = "tolower"
     parametros = [{'tipo':TIPO.CADENA,'identificador':'toLower##Param1'}]
     instrucciones = []
     toLower = ToLower(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(toLower)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
+
+    nombre = "length"
+    parametros = [{'tipo':TIPO.ENTERO,'identificador':'length##Param1'}]
+    instrucciones = []
+    length = Length(nombre, parametros, instrucciones, -1, -1)
+    ast.addFuncion(length)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
+
+    nombre = "truncate"
+    parametros = [{'tipo':TIPO.ENTERO,'identificador':'truncate##Param1'}]
+    instrucciones = []
+    truncate = Truncate(nombre, parametros, instrucciones, -1, -1)
+    ast.addFuncion(truncate)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
+
+    nombre = "round"
+    parametros = [{'tipo':TIPO.DECIMAL,'identificador':'round##Param1'}]
+    instrucciones = []
+    round = Round(nombre, parametros, instrucciones, -1, -1)
+    ast.addFuncion(round)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
+
+    nombre = "typeof"
+    parametros = [{'tipo':TIPO.CADENA,'identificador':'typeOf##Param1'}]
+    instrucciones = []
+    typeof = TypeOf(nombre, parametros, instrucciones, -1, -1)
+    ast.addFuncion(typeof)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
 #INTERFAZ -- Debe estar en la interfaz
 
