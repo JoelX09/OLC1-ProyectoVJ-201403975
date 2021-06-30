@@ -29,6 +29,7 @@ reservadas = {
     'print'     : 'RPRINT',
     'main'      : 'RMAIN',
     'func'      : 'RFUNC',
+    'read'      : 'RREAD',
     'return'    : 'RRETURN'
 }
 
@@ -189,6 +190,7 @@ from Nativas.Length import Length
 from Nativas.Truncate import Truncate
 from Nativas.Round import Round
 from Nativas.TypeOf import TypeOf
+from Expresiones.Read import Read
 
 # Presedencia
 precedence = (
@@ -279,20 +281,20 @@ def p_variables_decAsig(t):
     #print('Se declaro la var ' + str(t[2])) #Debugger 08/06 - 38:00
     t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]),t[4])
     
-def p_variables_decCasteo(t):
-    'variables : RVAR ID IGUAL casteo'
-    #print('Se declaro la variable ' + str(t[2]) + ' con el valor casteado ' + str(t[4]))
-    t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]),t[4])
+# def p_variables_decCasteo(t):
+#     'variables : RVAR ID IGUAL casteo'
+#     #print('Se declaro la variable ' + str(t[2]) + ' con el valor casteado ' + str(t[4]))
+#     t[0] = Declaracion(t[2], t.lineno(2), find_column(input, t.slice[2]),t[4])
 
 def p_variables_asig(t):
     'variables : ID IGUAL expresion'
     #print('A la variable ' + str(t[1]) + ' se le asigno el valor ')# + str(t[3].getVal()))
     t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
 
-def p_variables_asigCasteo(t):
-    'variables : ID IGUAL casteo'
-    #print('A la variable ' + str(t[1]) + ' se le asigno el valor casteado ' + str(t[3]))
-    t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
+# def p_variables_asigCasteo(t):
+#     'variables : ID IGUAL casteo'
+#     #print('A la variable ' + str(t[1]) + ' se le asigno el valor casteado ' + str(t[3]))
+#     t[0] = Asignacion(t[1], t[3], t.lineno(1), find_column(input, t.slice[1]))
 
 def p_variables_asigNulo(t):
     'variables : ID IGUAL RNULL'
@@ -307,11 +309,6 @@ def p_incdec_variable(t):
 
 
 #------------------------------Casteo-------------------------------#
-def p_casteo(t):
-    'casteo : PARA tipo PARC expresion'
-    #print('Se casteo a ' + str(t[2]) + ' la expresion ' + str(t[4]))
-    t[0] = Casteo(t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
-
 def p_tipo(t):
     '''tipo : RINT
             | RDOUBLE
@@ -426,6 +423,15 @@ def p_primitivo_booleano_true(t):
 def p_primitivo_booleano_false(t):
     'expresion : RFALSE'
     t[0] = Primitivos(TIPO.BOOLEANO, False,  None, t.lineno(1), find_column(input, t.slice[1]))
+
+def p_expresion_read(t):
+    'expresion : RREAD PARA PARC'
+    t[0] = Read(t.lineno(1), find_column(input, t.slice[1]))
+
+def p_expresion_casteo(t):
+    'expresion : PARA tipo PARC expresion'
+    #print('Se casteo a ' + str(t[2]) + ' la expresion ' + str(t[4]))
+    t[0] = Casteo(t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
 
 
 #-----------------------Sentencias de Control-----------------------#

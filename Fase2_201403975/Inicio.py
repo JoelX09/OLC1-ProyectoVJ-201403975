@@ -1,13 +1,12 @@
 from tkinter import Button, PhotoImage, Canvas, Frame, Label, Tk, Menu, messagebox, scrolledtext, filedialog
 from tkinter import BOTH, INSERT, END, LEFT
-import pkg_resources, os, re
+import os, re
 
 root = Tk()
 
 # Configuraciones de la Ventara principal
 root.title('JPR')
 root.geometry("1000x600")
-#iconPath = pkg_resources.resource_filename(__name__, 'icon/document.ico')
 root.iconbitmap('icon/document.ico')
 
 # Opciones del Menu, Autor PUAC
@@ -100,6 +99,7 @@ def ejecutar():
 
     instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
     ast = Arbol(instrucciones)
+    ast.ventana = root
     TSGlobal = TablaSimbolos()
     ast.setTSglobal(TSGlobal)
     crearNativas(ast)
@@ -322,13 +322,10 @@ frameMiddle.pack(fill = BOTH, expand = True)
 frameBottom.pack(side="bottom", fill = BOTH, expand = True)
 
 # Creando elementos visuales de la Ventana principal
-#iconPath = pkg_resources.resource_filename(__name__, 'icon/play.png')
 inconoEjecutar = PhotoImage(file='icon/play.png')
 btnEjecutar = Button(frameTop, text="Interpretar" , image= inconoEjecutar , compound=LEFT, command=ejecutar)
 labelfc = Label(frameTop, text='Linea: 1 | Columna: 1')  
 lines = Canvas(frameMiddle, width=40, height=8, bg="LightCyan2")
-#editor1 = Label(frameMiddle, width=3, height=8, font=("Consolas", 12), bg="LightCyan2", text= cont)
-#editor1 = scrolledtext.ScrolledText(frameMiddle, width=3, height=8, font=("Consolas", 12))
 editor = scrolledtext.ScrolledText(frameMiddle, undo=True, width=250, height=8, font=("Consolas", 12))
 consola = scrolledtext.ScrolledText(frameBottom, width=30, height=8, font=("Consolas", 12))
 
@@ -336,8 +333,6 @@ consola = scrolledtext.ScrolledText(frameBottom, width=30, height=8, font=("Cons
 btnEjecutar.pack(side='left')
 labelfc.pack(expand='no', fill=None, side='right', anchor='se', padx=20)
 lines.pack(side="left", fill=BOTH, expand=True, padx=12, pady=12)
-#editor1.pack(side = "left", fill=BOTH, expand = True, padx= 12, pady= 12)
-#editor1.pack(side = "left", fill=BOTH, expand = True, padx= 12, pady= 12)
 editor.pack(fill=BOTH, expand = True , padx= 12 , pady= 12)
 consola.pack(fill = BOTH, expand = True, padx = 12 , pady = 12)
 

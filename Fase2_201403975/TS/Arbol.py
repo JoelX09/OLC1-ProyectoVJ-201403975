@@ -5,6 +5,7 @@ class Arbol:
         self.excepciones = []
         self.consola = ""
         self.TSglobal = None
+        self.ventana = None
 
     def getInstrucciones(self):
         return self.instrucciones
