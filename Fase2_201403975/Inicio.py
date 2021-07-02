@@ -74,6 +74,17 @@ def openErrores():
     direcc = os.path.join(dirname, 'Salidas/Errores.html')
     os.startfile(direcc)
 
+# Abrir reporte de errores, Autor PUAC
+def openAST():
+    dirname = os.path.dirname(__file__)
+    # direcc = os.path.join(dirname, 'Salidas/AST.pdf')
+    # os.startfile(direcc)
+
+    import subprocess
+    chrome_path = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+    p = subprocess.Popen([chrome_path, dirname + "/Salidas/AST.pdf"]) 
+    p.wait() #This waits for the process to clos
+
 # Ejecucion del analizador
 def ejecutar():
     #f = open("./entrada.txt", "r")
@@ -96,6 +107,7 @@ def ejecutar():
     from Instrucciones.Return import Return
     from Instrucciones.Main import Main
     from Instrucciones.Funcion import Funcion
+    from Abstract.NodoAST import NodoAST
 
     instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
     ast = Arbol(instrucciones)
@@ -157,6 +169,25 @@ def ejecutar():
     print(ast.getConsola())
     consola.insert(1.0, ast.getConsola())
 
+    init = NodoAST("RAIZ")
+    instr = NodoAST("INSTRUCCIONES")
+
+    for instruccion in ast.getInstrucciones():
+        instr.agregarHijoNodo(instruccion.getNodo())
+
+    init.agregarHijoNodo(instr)
+    grafo = ast.getDot(init) #DEVUELVE EL CODIGO GRAPHVIZ DEL AST
+
+    # dirname = os.path.dirname(__file__)
+    # direcc = os.path.join(dirname, 'ast.dot')
+    arch = open("./Salidas/AST.dot", "w+")
+    arch.write(grafo)
+    arch.close()
+
+    #Path
+    os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
+    os.system('dot -T pdf -o ./Salidas/AST.pdf ./Salidas/AST.dot')
+
 # Menu desplegable
 menu = Menu(root)
 root.config(menu=menu)
@@ -171,6 +202,7 @@ menuArchivo.add_command(label='Guardar Como', command=guardarComo)
 menuReportes = Menu(menu)
 menu.add_cascade(label='Reportes', menu=menuReportes)
 menuReportes.add_command(label='Errores', command=openErrores)
+menuReportes.add_command(label='AST', command=openAST)
 
 menuAyuda = Menu(menu)
 menu.add_cascade(label='Ayuda', menu=menuAyuda)

@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 
 class Continue(Instruccion):
@@ -7,3 +8,7 @@ class Continue(Instruccion):
 
     def interpretar(self, tree, table):
         return self
+
+    def getNodo(self):
+        nodo = NodoAST("CONTINUE")
+        return nodo #Se va para arriba donde se llame

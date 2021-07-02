@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Instrucciones.Return import Return
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
@@ -56,3 +57,19 @@ class Switch(Instruccion):
                     if isinstance(result, Return): return result
 
         return None
+
+    def getNodo(self):
+        nodo = NodoAST("SWITCH")
+
+        if self.cases != None:
+            #cases = NodoAST("CASES")
+            for instr in self.cases:
+                nodo.agregarHijoNodo(instr.getNodo())
+            #nodo.agregarHijoNodo(cases)
+        
+        if self.default != None:
+            #default = NodoAST("DEFAULT")
+            nodo.agregarHijoNodo(self.default.getNodo())
+            #nodo.agregarHijoNodo(default)
+
+        return nodo

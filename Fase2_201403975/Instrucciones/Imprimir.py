@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
@@ -21,4 +22,11 @@ class Imprimir(Instruccion):
             return Excepcion("Semantico", "No se puede imprimir un tipo NULO", self.fila, self.columna)
         
         tree.updateConsola(value)
+        tree.textoRead = value
         return None
+
+    def getNodo(self):
+        nodo = NodoAST("IMPRIMIR")
+        if self.expresion.tipo != TIPO.NULO:
+            nodo.agregarHijoNodo(self.expresion.getNodo())
+        return nodo #Se va para arriba donde se llame

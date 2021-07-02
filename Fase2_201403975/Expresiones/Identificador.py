@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from TS.Tipo import TIPO
 from TS.Excepcion import Excepcion
 from Abstract.Instruccion import Instruccion
@@ -28,3 +29,13 @@ class Identificador(Instruccion):
                 return Excepcion("Semantico", "No se puede incrementar o decrementar la variable " + self.identificador + ", tipo incorrecto.", self.fila, self.columna)
         
         return simbolo.getValor()
+
+    def getNodo(self):
+        nodo = NodoAST("Identificador")
+        nodo.agregarHijo(str(self.identificador))
+        if self.incdec != None:
+            if self.incdec == 1:
+                nodo.agregarHijo("INCREMENTO")
+            elif self.incdec == 2:
+                nodo.agregarHijo("DECREMENTO")
+        return nodo #Se va para arriba donde se llame

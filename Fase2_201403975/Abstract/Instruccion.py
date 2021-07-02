@@ -9,3 +9,7 @@ class Instruccion(ABC): #Nos va a servir para poder heredar
     @abstractmethod
     def interpretar(self, tree, table): #Arbol y tabla de simbolos
         pass
+
+    @abstractmethod
+    def getNodo(self):
+        pass

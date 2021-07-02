@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Instrucciones.Return import Return
 from Instrucciones.Continue import Continue
 from Instrucciones.Break import Break
@@ -50,3 +51,22 @@ class If(Instruccion):
 
         else:
             return Excepcion("Semantico", "Tipo de dato no booleano en IF.", self.fila, self.columna)
+
+    def getNodo(self):
+        nodo = NodoAST("IF")
+
+        instruccionesIf = NodoAST("INSTRUCCIONES IF")
+        for instr in self.instruccionesIf:
+            instruccionesIf.agregarHijoNodo(instr.getNodo())
+        nodo.agregarHijoNodo(instruccionesIf)
+
+        if self.instruccionesElse != None:
+            instruccionesElse = NodoAST("INSTRUCCIONES ELSE")
+            for instr in self.instruccionesElse:
+                instruccionesElse.agregarHijoNodo(instr.getNodo())
+            nodo.agregarHijoNodo(instruccionesElse) 
+            
+        elif self.elseIf != None:
+            nodo.agregarHijoNodo(self.elseIf.getNodo())
+
+        return nodo

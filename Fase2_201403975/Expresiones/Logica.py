@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO, OperadorLogico
@@ -44,6 +45,27 @@ class Logica(Instruccion):
             return Excepcion("Semantico", "Tipo Erroneo de operacion para !.", self.fila, self.columna)
 
         return Excepcion("Semantico", "Tipo de operacion no especificada.", self.fila, self.columna)
+
+    def getNodo(self):
+        nodo = NodoAST("Logica")
+        
+        if self.OperacionDer != None: #Si no es operacion Unaria Ej !FALSE
+            nodo.agregarHijoNodo(self.OperacionIzq.getNodo())
+            nodo.agregarHijo(self.obtenerOperador(self.operador))
+            nodo.agregarHijoNodo(self.OperacionDer.getNodo())
+        else:
+            nodo.agregarHijo(self.obtenerOperador(self.operador))
+            nodo.agregarHijoNodo(self.OperacionIzq.getNodo())
+
+        return nodo
+
+    def obtenerOperador(self, op):
+        if op == OperadorLogico.NOT:
+            return "!"
+        elif op == OperadorLogico.AND:
+            return "&&"
+        elif op == OperadorLogico.OR:
+            return "||"
 
     def obtenerVal(self, tipo, val):
         if tipo == TIPO.ENTERO:

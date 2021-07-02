@@ -1,3 +1,5 @@
+from TS.Tipo import TIPO
+from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 
 class Primitivos(Instruccion): #Indico que heredo de Instruccion, esta clase es un nodo
@@ -16,5 +18,13 @@ class Primitivos(Instruccion): #Indico que heredo de Instruccion, esta clase es 
                 self.valor = self.valor - 1
         return self.valor
 
-    # def getVal(self): #La puse, es temporal
-    #     return self.valor
+    def getNodo(self):
+        nodo = NodoAST("Primitivo")
+        if self.tipo != TIPO.NULO:
+            nodo.agregarHijo(str(self.valor))
+            if self.incdec != None:
+                if self.incdec == 1:
+                    nodo.agregarHijo("INCREMENTO")
+                elif self.incdec == 2:
+                    nodo.agregarHijo("DECREMENTO")
+        return nodo #Se va para arriba donde se llame

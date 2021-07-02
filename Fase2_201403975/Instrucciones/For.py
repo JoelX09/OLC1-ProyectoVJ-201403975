@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Instrucciones.Return import Return
 from Instrucciones.Continue import Continue
 from Abstract.Instruccion import Instruccion
@@ -41,3 +42,13 @@ class For(Instruccion):
                     break
             else:
                 return Excepcion("Semantico", "Tipo de dato no booleano en FOR.", self.fila, self.columna)
+
+    def getNodo(self):
+        nodo = NodoAST("FOR")
+
+        instrucciones = NodoAST("INSTRUCCIONES FOR")
+        for instr in self.instrucciones:
+            instrucciones.agregarHijoNodo(instr.getNodo())
+        nodo.agregarHijoNodo(instrucciones)
+
+        return nodo

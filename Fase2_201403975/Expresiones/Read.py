@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 from TS.Tipo import TIPO
 from tkinter import *
@@ -16,22 +17,22 @@ class Read(Instruccion):
         # lectura = input() # OBTENERME EL VALOR INGRESADO
         # return lectura
         
-        self.w=Entrada(tree.ventana)
+        self.w=Entrada(tree.ventana, tree.textoRead)
         tree.ventana.wait_window(self.w.top)
 
         return self.w.value
 
-    # def getNodo(self):
-    #     nodo = NodoAST("READ")
-    #     return nodo
+    def getNodo(self):
+        nodo = NodoAST("READ")
+        return nodo
 
 
 class Entrada(object):
-    def __init__(self, ventana):
+    def __init__(self, ventana, texto):
         top=self.top=Toplevel(ventana)
         top.title('Entrada')
-        top.geometry("250x250")
-        self.l=Label(top,text="Ingrese un valor:")
+        top.geometry("500x250")
+        self.l=Label(top,text=str(texto))
         self.l.pack()
         self.e=Entry(top)
         self.e.pack()

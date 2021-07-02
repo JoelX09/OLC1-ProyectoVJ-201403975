@@ -1,3 +1,4 @@
+from Abstract.NodoAST import NodoAST
 from TS.Excepcion import Excepcion
 from Abstract.Instruccion import Instruccion
 from TS.Tipo import TIPO
@@ -28,3 +29,13 @@ class Incdec(Instruccion):
 
         if isinstance(result, Excepcion): return result
         return None
+
+    def getNodo(self):
+        if self.incdec != None:
+            if self.incdec == 1:
+                nodo = NodoAST("INCREMENTO")
+                nodo.agregarHijo(str(self.identificador))
+            elif self.incdec == 2:
+                nodo = NodoAST("DECREMENTO")
+                nodo.agregarHijo(str(self.identificador))
+        return nodo
