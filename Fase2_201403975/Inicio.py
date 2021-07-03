@@ -74,7 +74,7 @@ def openErrores():
     direcc = os.path.join(dirname, 'Salidas/Errores.html')
     os.startfile(direcc)
 
-# Abrir reporte de errores, Autor PUAC
+# Abrir reporte de AST, Autor PUAC
 def openAST():
     dirname = os.path.dirname(__file__)
     # direcc = os.path.join(dirname, 'Salidas/AST.pdf')
@@ -84,6 +84,12 @@ def openAST():
     chrome_path = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
     p = subprocess.Popen([chrome_path, dirname + "/Salidas/AST.pdf"]) 
     p.wait() #This waits for the process to clos
+
+# Abrir reporte TS, Autor PUAC
+def openTS():
+    dirname = os.path.dirname(__file__)
+    direcc = os.path.join(dirname, 'Salidas/TS.html')
+    os.startfile(direcc)
 
 # Ejecucion del analizador
 def ejecutar():
@@ -98,6 +104,7 @@ def ejecutar():
     from TS.Arbol import Arbol
     from TS.TablaSimbolos import TablaSimbolos
     from Reportes.Errores import Errores
+    from Reportes.TSimbolos import TSimbolos
     from Gramatica import parse, getErrores, crearNativas
     from Instrucciones.Declaracion import Declaracion
     from Instrucciones.Asignacion import Asignacion
@@ -120,6 +127,7 @@ def ejecutar():
         ast.updateConsola(error.toString())
 
     for instruccion in ast.getInstrucciones(): # Primera pasada
+        ast.entorno = "Global"
         if isinstance(instruccion, Funcion):
             ast.addFuncion(instruccion)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
         if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion):
@@ -134,6 +142,7 @@ def ejecutar():
 
     contador = 0
     for instruccion in ast.getInstrucciones(): # Segunda pasada
+        ast.entorno = "Global"
         if isinstance(instruccion, Main):
             contador += 1
             if contador == 2: # Duplicidad
@@ -165,6 +174,7 @@ def ejecutar():
             ast.updateConsola(err.toString())
 
     Errores.generarReporte(ast.getExcepciones())
+    TSimbolos.generarReporte(ast.getSimbolos())
 
     print(ast.getConsola())
     consola.insert(1.0, ast.getConsola())
@@ -203,6 +213,7 @@ menuReportes = Menu(menu)
 menu.add_cascade(label='Reportes', menu=menuReportes)
 menuReportes.add_command(label='Errores', command=openErrores)
 menuReportes.add_command(label='AST', command=openAST)
+menuReportes.add_command(label='Tabla de Simbolos', command=openTS)
 
 menuAyuda = Menu(menu)
 menu.add_cascade(label='Ayuda', menu=menuAyuda)
@@ -356,6 +367,7 @@ frameBottom.pack(side="bottom", fill = BOTH, expand = True)
 # Creando elementos visuales de la Ventana principal
 inconoEjecutar = PhotoImage(file='icon/play.png')
 btnEjecutar = Button(frameTop, text="Interpretar" , image= inconoEjecutar , compound=LEFT, command=ejecutar)
+btnDebugger = Button(frameTop, text="Debugger")
 labelfc = Label(frameTop, text='Linea: 1 | Columna: 1')  
 lines = Canvas(frameMiddle, width=40, height=8, bg="LightCyan2")
 editor = scrolledtext.ScrolledText(frameMiddle, undo=True, width=250, height=8, font=("Consolas", 12))
@@ -363,6 +375,7 @@ consola = scrolledtext.ScrolledText(frameBottom, width=30, height=8, font=("Cons
 
 # Asignando los elementos a cada frame
 btnEjecutar.pack(side='left')
+btnDebugger.pack(side='left', padx=10)
 labelfc.pack(expand='no', fill=None, side='right', anchor='se', padx=20)
 lines.pack(side="left", fill=BOTH, expand=True, padx=12, pady=12)
 editor.pack(fill=BOTH, expand = True , padx= 12 , pady= 12)

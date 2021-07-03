@@ -9,6 +9,25 @@ class Arbol:
         self.textoRead = "Read"
         self.dot = ""
         self.contador = 0
+        self.simbolos = {}
+        self.entorno = "Global"
+
+    def getSimbolos(self):
+        return self.simbolos
+
+    def addSimbolo(self, simbolo):
+        self.simbolos[simbolo.identificador.lower()] = simbolo
+
+    def addSimboloF(self, simbolo):
+        self.simbolos[str(simbolo.identificador.lower()) + "##Funcion"] = simbolo
+    
+    def updateSimbolo(self, identificador, tipo, valor):
+        self.simbolos[identificador.lower()].setTipo(tipo)
+        self.simbolos[identificador.lower()].setValor(valor)
+
+    def updateSimboloF(self, identificador, tipo, valor):
+        self.simbolos[str(identificador.lower()) + "##Funcion"].setTipo(tipo)
+        self.simbolos[str(identificador.lower()) + "##Funcion"].setValor(valor)
 
     def getInstrucciones(self):
         return self.instrucciones

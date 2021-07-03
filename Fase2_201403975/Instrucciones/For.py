@@ -17,13 +17,19 @@ class For(Instruccion):
         self.columna = columna
 
     def interpretar(self, tree, table):
+        anterior = tree.entorno
+        tree.entorno = "For"
         nuevaTablaFor = TablaSimbolos(table) #Creo el entorno del for
         decAsig = self.decAsig.interpretar(tree, nuevaTablaFor)
-        if isinstance(decAsig, Excepcion): return decAsig
+        if isinstance(decAsig, Excepcion): 
+            tree.entorno = anterior
+            return decAsig
 
         while True:
             condicion = self.condicion.interpretar(tree, nuevaTablaFor)
-            if isinstance(condicion, Excepcion): return condicion
+            if isinstance(condicion, Excepcion): 
+                tree.entorno = anterior
+                return condicion
 
             if self.condicion.tipo == TIPO.BOOLEANO:
                 if bool(condicion) == True:   # VERIFICA SI ES VERDADERA LA CONDICION
@@ -33,15 +39,23 @@ class For(Instruccion):
                         if isinstance(result, Excepcion) :
                             tree.getExcepciones().append(result)
                             tree.updateConsola(result.toString())
-                        if isinstance(result, Break): return None #Return para que se salga definitivamente
+                        if isinstance(result, Break): 
+                            tree.entorno = anterior
+                            return None #Return para que se salga definitivamente
                         if isinstance(result, Continue): break #Se salta las instrucciones
-                        if isinstance(result, Return): return result
+                        if isinstance(result, Return): 
+                            tree.entorno = anterior
+                            return result
                     actualizacion = self.actualizacion.interpretar(tree, nuevaTablaFor) #Actualizacion del ciclo
-                    if isinstance(actualizacion, Excepcion): return actualizacion
+                    if isinstance(actualizacion, Excepcion): 
+                        tree.entorno = anterior
+                        return actualizacion
                 else:
                     break
             else:
+                tree.entorno = anterior
                 return Excepcion("Semantico", "Tipo de dato no booleano en FOR.", self.fila, self.columna)
+        tree.entorno = anterior
 
     def getNodo(self):
         nodo = NodoAST("FOR")

@@ -14,8 +14,12 @@ class Switch(Instruccion):
         self.columna = columna
 
     def interpretar(self, tree, table):
+        anterior = tree.entorno
+        tree.entorno = "Switch"
         expresion = self.expresion.interpretar(tree, table) #Interpreto de de que tipo es la expresion, error | primitivo | logico | etc
-        if isinstance(expresion, Excepcion): return expresion #Siempre (?) despues de interpretar una condicion
+        if isinstance(expresion, Excepcion): 
+            tree.entorno = anterior
+            return expresion #Siempre (?) despues de interpretar una condicion
 
         #nuevaTablaSwitch = TablaSimbolos(table)       #NUEVO ENTORNO que es este switch, Preguntar
         cumple = False
@@ -40,9 +44,11 @@ class Switch(Instruccion):
                                 tree.updateConsola(result.toString())
                             if isinstance(result, Break): 
                                 cumple = True
+                                tree.entorno = anterior
                                 return None
                             if isinstance(result, Return): 
                                 cumple = True
+                                tree.entorno = anterior
                                 return result
         
         if not cumple:
@@ -53,9 +59,14 @@ class Switch(Instruccion):
                     if isinstance(result, Excepcion) : #Reporte el if y nos recuperamos dentro del if
                         tree.getExcepciones().append(result)
                         tree.updateConsola(result.toString())
-                    if isinstance(result, Break): return None #Return para que se salga definitivamente
-                    if isinstance(result, Return): return result
+                    if isinstance(result, Break): 
+                        tree.entorno = anterior
+                        return None #Return para que se salga definitivamente
+                    if isinstance(result, Return): 
+                        tree.entorno = anterior 
+                        return result
 
+        tree.entorno = anterior
         return None
 
     def getNodo(self):

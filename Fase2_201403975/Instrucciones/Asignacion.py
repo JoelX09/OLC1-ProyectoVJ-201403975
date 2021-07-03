@@ -20,6 +20,9 @@ class Asignacion(Instruccion):
         result = table.actualizarTabla(simbolo)
 
         if isinstance(result, Excepcion): return result
+        val = str(self.expresion.tipo)
+        val = val.split(".")
+        tree.updateSimbolo(self.identificador, val[1], value)
         return None
 
     def getNodo(self):

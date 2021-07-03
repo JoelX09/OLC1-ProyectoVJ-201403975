@@ -1,3 +1,4 @@
+from TS.TS import TS
 from TS.Tipo import TIPO
 from Abstract.NodoAST import NodoAST
 from TS.Excepcion import Excepcion
@@ -23,6 +24,9 @@ class Declaracion(Instruccion):
         result = table.setTabla(simbolo)
 
         if isinstance(result, Excepcion): return result
+        tipo = str(self.tipo)
+        tipo = tipo.split(".")
+        tree.addSimbolo(TS(str(self.identificador), "Variable", tipo[1], tree.entorno, value, self.fila, self.columna))
         return None
 
     def getNodo(self):

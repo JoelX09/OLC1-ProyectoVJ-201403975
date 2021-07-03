@@ -1,3 +1,4 @@
+from TS.TS import TS
 from Abstract.NodoAST import NodoAST
 from TS.Tipo import TIPO
 from Instrucciones.Return import Return
@@ -16,7 +17,12 @@ class Funcion(Instruccion):
         self.tipo = TIPO.NULO
     
     def interpretar(self, tree, table):
-        nuevaTabla = TablaSimbolos(table) 
+        nuevaTabla = TablaSimbolos(table)
+        anterior = tree.entorno
+        tree.entorno = "Funcion " + str(self.nombre)
+
+        tree.addSimboloF(TS(str(self.nombre), "Funcion", "--", "--", "--", self.fila, self.columna))
+
         for instruccion in self.instrucciones:      # REALIZAR LAS ACCIONES
             value = instruccion.interpretar(tree,nuevaTabla)
             if isinstance(value, Excepcion) :
@@ -28,8 +34,12 @@ class Funcion(Instruccion):
                 tree.updateConsola(err.toString())
             if isinstance(value, Return):
                 self.tipo = value.tipo
+                val = str(self.tipo)
+                val = val.split(".")
+                tree.updateSimboloF(self.nombre, val[1], "--")
+                tree.entorno = anterior
                 return value.result
-            
+        tree.entorno = anterior
         return None
 
     def getNodo(self):

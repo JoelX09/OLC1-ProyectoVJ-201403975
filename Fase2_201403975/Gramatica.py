@@ -30,7 +30,8 @@ reservadas = {
     'main'      : 'RMAIN',
     'func'      : 'RFUNC',
     'read'      : 'RREAD',
-    'return'    : 'RRETURN'
+    'return'    : 'RRETURN',
+    'new'       : 'RNEW'
 }
 
 tokens  = [
@@ -41,6 +42,8 @@ tokens  = [
     'PARC',
     'LLAVEA',
     'LLAVEC',
+    'CORA',
+    'CORC',
     'INC',
     'MAS',
     'DEC',
@@ -74,6 +77,8 @@ t_PARA          = r'\('
 t_PARC          = r'\)'
 t_LLAVEA        = r'{'
 t_LLAVEC        = r'}'
+t_CORA          = r'\['
+t_CORC          = r'\]'
 t_INC           = r'\+\+'
 t_MAS           = r'\+'
 t_DEC           = r'--'
@@ -433,6 +438,33 @@ def p_expresion_casteo(t):
     #print('Se casteo a ' + str(t[2]) + ' la expresion ' + str(t[4]))
     t[0] = Casteo(t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
 
+
+#-----------------------------Arreglos------------------------------#
+# def p_declArr(t) :
+#     '''declArr_instr     : tipo1'''
+#     t[0] = t[1]
+
+# def p_tipo1(t) :
+#     '''tipo1     : tipo lista_Dim ID IGUAL RNEW tipo lista_expresiones'''
+#     t[0] = DeclaracionArr1(t[1], t[2], t[3], t[6], t[7], t.lineno(3), find_column(input, t.slice[3]))
+
+# def p_lista_Dim1(t) :
+#     'lista_Dim     : lista_Dim CORA CORC'
+#     t[0] = t[1] + 1
+    
+# def p_lista_Dim2(t) :
+#     'lista_Dim    : CORA CORC'
+#     t[0] = 1
+
+# def p_lista_expresiones_1(t) :
+#     'lista_expresiones     : lista_expresiones CORA expresion CORC'
+#     t[1].append(t[3])
+#     t[0] = t[1]
+    
+# def p_lista_expresiones_2(t) :
+#     'lista_expresiones    : CORA expresion CORC'
+#     t[0] = [t[2]]
+    
 
 #-----------------------Sentencias de Control-----------------------#
 #--------------------------------If---------------------------------#

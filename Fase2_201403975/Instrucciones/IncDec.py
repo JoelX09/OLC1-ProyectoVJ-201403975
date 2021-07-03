@@ -28,6 +28,9 @@ class Incdec(Instruccion):
         result = table.actualizarTabla(simbolo)
 
         if isinstance(result, Excepcion): return result
+        val = str(simbolo.getTipo())
+        val = val.split(".")
+        tree.updateSimbolo(self.identificador, val[1], simbolo.getValor())
         return None
 
     def getNodo(self):

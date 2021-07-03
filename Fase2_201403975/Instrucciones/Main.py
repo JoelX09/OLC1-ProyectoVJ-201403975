@@ -12,6 +12,8 @@ class Main(Instruccion):
         self.columna = columna
 
     def interpretar(self, tree, table):
+        anterior = tree.entorno
+        tree.entorno = "Main"
         nuevaTabla = TablaSimbolos(table)       #NUEVO ENTORNO que es este Main
         for instruccion in self.instrucciones:
             result = instruccion.interpretar(tree, nuevaTabla) #EJECUTA INSTRUCCION ADENTRO DEL Main
@@ -26,6 +28,7 @@ class Main(Instruccion):
                 err = Excepcion("Semantico", "CONTINUE invalido en Main", instruccion.fila, instruccion.columna)
                 tree.getExcepciones().append(err)
                 tree.updateConsola(err.toString())
+        tree.entorno = anterior
 
     def getNodo(self):
         nodo = NodoAST("MAIN")

@@ -6,7 +6,7 @@ class Errores():
         html = """<!DOCTYPE HTML5>  
 <html>
 <head>
-    <title>OLC1 - Proyecto - JPR</title>
+    <title>JPR - Reporte de Errores</title>
     <meta charset=\"utf-8\">
     <meta name=\"author\" content=\"\">
     <meta name=\"description\" content=\"OLC1 - Proyecto 1\">
