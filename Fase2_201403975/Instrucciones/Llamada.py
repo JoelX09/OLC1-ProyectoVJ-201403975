@@ -11,6 +11,7 @@ class Llamada(Instruccion):
         self.parametros = parametros
         self.fila = fila
         self.columna = columna
+        self.arreglo = False
     
     def interpretar(self, tree, table):
         result = tree.getFuncion(self.nombre.lower()) ## OBTENER LA FUNCION
@@ -28,7 +29,7 @@ class Llamada(Instruccion):
                     if expresion.tipo != TIPO.CADENA and expresion.tipo != TIPO.ARREGLO:
                         return Excepcion("Semantico", "Tipo de parametro de Length no es Cadena o Arreglo.", self.fila, self.columna)
                     else:
-                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)
                         resultTabla = nuevaTabla.setTabla(simbolo)
                         if isinstance(resultTabla, Excepcion): return resultTabla
                 
@@ -36,7 +37,7 @@ class Llamada(Instruccion):
                     if expresion.tipo != TIPO.ENTERO and expresion.tipo != TIPO.DECIMAL:
                         return Excepcion("Semantico", "Tipo de parametro de Truncate no es Entero o Decimal.", self.fila, self.columna)
                     else:
-                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)
                         resultTabla = nuevaTabla.setTabla(simbolo)
                         if isinstance(resultTabla, Excepcion): return resultTabla
 
@@ -44,7 +45,7 @@ class Llamada(Instruccion):
                     if expresion.tipo != TIPO.DECIMAL:
                         return Excepcion("Semantico", "Tipo de parametro de Round no es Decimal.", self.fila, self.columna)
                     else:
-                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                        simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)
                         resultTabla = nuevaTabla.setTabla(simbolo)
                         if isinstance(resultTabla, Excepcion): return resultTabla
 
@@ -52,26 +53,36 @@ class Llamada(Instruccion):
                     self.tipo = TIPO.CADENA
                     val = "Nulo"
 
+                    s = table.getTabla(self.parametros[contador].identificador.lower())
+
                     if expresion.tipo == TIPO.ENTERO:
                         val = "INT"
+                        if s.getArreglo() == True:
+                            val = "ARREGLO->INT"
                     elif expresion.tipo == TIPO.DECIMAL:
                         val = "DOUBLE"
+                        if s.getArreglo() == True:
+                            val = "ARREGLO->DOUBLE"
                     elif expresion.tipo == TIPO.BOOLEANO:
                         val = "BOOLEAN"
+                        if s.getArreglo() == True:
+                            val = "ARREGLO->BOOLEAN"
                     elif expresion.tipo == TIPO.CADENA:
                         val = "STRING"
+                        if s.getArreglo() == True:
+                            val = "ARREGLO->STRING"
                     elif expresion.tipo == TIPO.CHARACTER:
                         val = "CHAR"
-                    elif expresion.tipo == TIPO.ARREGLO:
-                        val = "ARREGLO->"
+                        if s.getArreglo() == True:
+                            val = "ARREGLO->CHAR"
 
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, val)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, val)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): return resultTabla
 
                 elif result.parametros[contador]["tipo"] == expresion.tipo:  # VERIFICACION DE TIPO
                     # CREACION DE SIMBOLO E INGRESARLO A LA TABLA DE SIMBOLOS
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): return resultTabla
 

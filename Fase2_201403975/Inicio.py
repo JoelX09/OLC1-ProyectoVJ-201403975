@@ -115,6 +115,8 @@ def ejecutar():
     from Instrucciones.Main import Main
     from Instrucciones.Funcion import Funcion
     from Abstract.NodoAST import NodoAST
+    from Instrucciones.DeclaracionT1 import DeclaracionT1
+    from Instrucciones.ModificarArreglo import ModificarArreglo
 
     instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
     ast = Arbol(instrucciones)
@@ -130,7 +132,7 @@ def ejecutar():
         ast.entorno = "Global"
         if isinstance(instruccion, Funcion):
             ast.addFuncion(instruccion)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
-        if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion):
+        if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, DeclaracionT1) or isinstance(instruccion, ModificarArreglo):
             value = instruccion.interpretar(ast,TSGlobal)
             if isinstance(value, Excepcion) :
                 ast.getExcepciones().append(value)
@@ -168,7 +170,7 @@ def ejecutar():
                 ast.updateConsola(err.toString())
 
     for instruccion in ast.getInstrucciones():  # Tercera pasada  
-        if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, Funcion)):
+        if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, Funcion) or isinstance(instruccion, DeclaracionT1) or isinstance(instruccion, ModificarArreglo)):
             err = Excepcion("Semantico", "Sentencias fuera de Main", instruccion.fila, instruccion.columna)
             ast.getExcepciones().append(err)
             ast.updateConsola(err.toString())
@@ -330,7 +332,7 @@ def recorrerInput(i):
         counter +=1
         
     for s in lista:
-        if s[1].lower() == 'int' or s[1].lower() == 'double' or s[1].lower() == 'boolean' or s[1].lower() == 'string' or s[1].lower() == 'char' or s[1].lower() == 'func' or s[1].lower() == 'var' or s[1].lower() == 'true' or s[1].lower() == 'false' or s[1].lower() == 'print' or s[1].lower() == 'main' or s[1].lower() == 'null' or s[1].lower() == 'if' or s[1].lower() == 'else' or s[1].lower() == 'switch' or s[1].lower() == 'case' or s[1].lower() == 'default' or s[1].lower() == 'while' or s[1].lower() == 'for' or s[1].lower() == 'break' or s[1].lower() == 'continue' or s[1].lower() == 'return':
+        if s[1].lower() == 'new' or s[1].lower() == 'int' or s[1].lower() == 'double' or s[1].lower() == 'boolean' or s[1].lower() == 'string' or s[1].lower() == 'char' or s[1].lower() == 'func' or s[1].lower() == 'var' or s[1].lower() == 'true' or s[1].lower() == 'false' or s[1].lower() == 'print' or s[1].lower() == 'main' or s[1].lower() == 'null' or s[1].lower() == 'if' or s[1].lower() == 'else' or s[1].lower() == 'switch' or s[1].lower() == 'case' or s[1].lower() == 'default' or s[1].lower() == 'while' or s[1].lower() == 'for' or s[1].lower() == 'break' or s[1].lower() == 'continue' or s[1].lower() == 'return':
             s[0] = 'reservada'
         elif re.match(r"[0-9]+(\.[0-9])?", s[1]):
             s[0] = 'numeros'

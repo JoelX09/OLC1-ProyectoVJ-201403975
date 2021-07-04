@@ -1,7 +1,8 @@
 class Simbolo:
-    def __init__(self, identificador, tipo, fila, columna, valor): #Constructor
+    def __init__(self, identificador, tipo, arreglo, fila, columna, valor): #Constructor
         self.id = identificador
         self.tipo = tipo
+        self.arreglo = arreglo
         self.fila = fila
         self.columna = columna
         self.valor = valor
@@ -35,3 +36,6 @@ class Simbolo:
     
     def getColumna(self):
         return self.columna
+
+    def getArreglo(self):
+        return self.arreglo

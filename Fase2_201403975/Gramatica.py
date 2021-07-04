@@ -196,6 +196,9 @@ from Nativas.Truncate import Truncate
 from Nativas.Round import Round
 from Nativas.TypeOf import TypeOf
 from Expresiones.Read import Read
+from Instrucciones.DeclaracionT1 import DeclaracionT1
+from Expresiones.AccesoArreglo import AccesoArreglo
+from Instrucciones.ModificarArreglo import ModificarArreglo
 
 # Presedencia
 precedence = (
@@ -249,6 +252,8 @@ def p_instruccion_instrucciones(t) :
                 | funcion
                 | llamada ptc
                 | return ptc
+                | decArreglo ptc
+                | modArreglo ptc
     '''
     t[0] = t[1]
 
@@ -438,33 +443,43 @@ def p_expresion_casteo(t):
     #print('Se casteo a ' + str(t[2]) + ' la expresion ' + str(t[4]))
     t[0] = Casteo(t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
 
+def p_expresion_acceso_arreglo(t):
+    'expresion : ID lista_expresiones'
+    t[0] = AccesoArreglo(t[1], t[2], t.lineno(1), find_column(input, t.slice[1]))
+
 
 #-----------------------------Arreglos------------------------------#
-# def p_declArr(t) :
-#     '''declArr_instr     : tipo1'''
-#     t[0] = t[1]
+#------------------------Declaracion Arreglo------------------------#
+def p_declaracion_arreglo(t) :
+    '''decArreglo : tipo1'''
+    t[0] = t[1]
 
-# def p_tipo1(t) :
-#     '''tipo1     : tipo lista_Dim ID IGUAL RNEW tipo lista_expresiones'''
-#     t[0] = DeclaracionArr1(t[1], t[2], t[3], t[6], t[7], t.lineno(3), find_column(input, t.slice[3]))
+def p_declaracion_tipo1(t) :
+    'tipo1 : tipo lista_Dim ID IGUAL RNEW tipo lista_expresiones'
+    t[0] = DeclaracionT1(t[1], t[2], t[3], t[6], t[7], t.lineno(3), find_column(input, t.slice[3]))
 
-# def p_lista_Dim1(t) :
-#     'lista_Dim     : lista_Dim CORA CORC'
-#     t[0] = t[1] + 1
+def p_lista_dim1(t) :
+    'lista_Dim : lista_Dim CORA CORC'
+    t[0] = t[1] + 1
     
-# def p_lista_Dim2(t) :
-#     'lista_Dim    : CORA CORC'
-#     t[0] = 1
+def p_lista_dim2(t) :
+    'lista_Dim : CORA CORC'
+    t[0] = 1
 
-# def p_lista_expresiones_1(t) :
-#     'lista_expresiones     : lista_expresiones CORA expresion CORC'
-#     t[1].append(t[3])
-#     t[0] = t[1]
+def p_lista_expresiones_1(t) :
+    'lista_expresiones : lista_expresiones CORA expresion CORC'
+    t[1].append(t[3])
+    t[0] = t[1]
     
-# def p_lista_expresiones_2(t) :
-#     'lista_expresiones    : CORA expresion CORC'
-#     t[0] = [t[2]]
-    
+def p_lista_expresiones_2(t) :
+    'lista_expresiones : CORA expresion CORC'
+    t[0] = [t[2]]
+
+#-----------------------Modificacion Arreglo------------------------#
+def p_modificacion_arreglo(t) :
+    'modArreglo :  ID lista_expresiones IGUAL expresion'
+    t[0] = ModificarArreglo(t[1], t[2], t[4], t.lineno(1), find_column(input, t.slice[1]))
+
 
 #-----------------------Sentencias de Control-----------------------#
 #--------------------------------If---------------------------------#
