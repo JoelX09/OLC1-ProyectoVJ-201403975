@@ -2,6 +2,7 @@ from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
+from tkinter import END
 
 class Imprimir(Instruccion):
     def __init__(self, expresion, fila, columna):
@@ -23,6 +24,8 @@ class Imprimir(Instruccion):
         
         tree.updateConsola(value)
         tree.textoRead = value
+        tree.salida.delete(1.0, END)
+        tree.salida.insert(1.0, tree.getConsola())
         return None
 
     def getNodo(self):

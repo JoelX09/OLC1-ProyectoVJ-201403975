@@ -4,6 +4,7 @@ from TS.Simbolo import Simbolo
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.TablaSimbolos import TablaSimbolos
+from Expresiones.Primitivos import Primitivos
 
 class Llamada(Instruccion):
     def __init__(self, nombre, parametros, fila, columna):
@@ -52,28 +53,30 @@ class Llamada(Instruccion):
                 elif self.nombre.lower() == "typeof":
                     self.tipo = TIPO.CADENA
                     val = "Nulo"
-
-                    s = table.getTabla(self.parametros[contador].identificador.lower())
+                    
+                    s = None
+                    if not isinstance(self.parametros[contador], Primitivos):
+                        s = table.getTabla(self.parametros[contador].identificador.lower())
 
                     if expresion.tipo == TIPO.ENTERO:
                         val = "INT"
-                        if s.getArreglo() == True:
+                        if s != None and s.getArreglo() == True:
                             val = "ARREGLO->INT"
                     elif expresion.tipo == TIPO.DECIMAL:
                         val = "DOUBLE"
-                        if s.getArreglo() == True:
+                        if s != None and s.getArreglo() == True:
                             val = "ARREGLO->DOUBLE"
                     elif expresion.tipo == TIPO.BOOLEANO:
                         val = "BOOLEAN"
-                        if s.getArreglo() == True:
+                        if s != None and s.getArreglo() == True:
                             val = "ARREGLO->BOOLEAN"
                     elif expresion.tipo == TIPO.CADENA:
                         val = "STRING"
-                        if s.getArreglo() == True:
+                        if s != None and s.getArreglo() == True:
                             val = "ARREGLO->STRING"
                     elif expresion.tipo == TIPO.CHARACTER:
                         val = "CHAR"
-                        if s.getArreglo() == True:
+                        if s != None and s.getArreglo() == True:
                             val = "ARREGLO->CHAR"
 
                     simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, val)

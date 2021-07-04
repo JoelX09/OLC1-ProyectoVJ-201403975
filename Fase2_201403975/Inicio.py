@@ -121,6 +121,7 @@ def ejecutar():
     instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
     ast = Arbol(instrucciones)
     ast.ventana = root
+    ast.salida = consola
     TSGlobal = TablaSimbolos()
     ast.setTSglobal(TSGlobal)
     crearNativas(ast)
@@ -178,7 +179,8 @@ def ejecutar():
     Errores.generarReporte(ast.getExcepciones())
     TSimbolos.generarReporte(ast.getSimbolos())
 
-    print(ast.getConsola())
+    #print(ast.getConsola())
+    consola.delete(1.0, END)
     consola.insert(1.0, ast.getConsola())
 
     init = NodoAST("RAIZ")

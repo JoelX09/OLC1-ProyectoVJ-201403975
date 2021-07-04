@@ -6,6 +6,7 @@ class Arbol:
         self.consola = ""
         self.TSglobal = None
         self.ventana = None
+        self.salida = None
         self.textoRead = "Read"
         self.dot = ""
         self.contador = 0

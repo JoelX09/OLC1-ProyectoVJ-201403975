@@ -4,6 +4,8 @@ Vacaciones Junio 2021
 '''
 
 from TS.Excepcion import Excepcion
+import sys
+sys.setrecursionlimit(3000)
 
 errores = []
 
