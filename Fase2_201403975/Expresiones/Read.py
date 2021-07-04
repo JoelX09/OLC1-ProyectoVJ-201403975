@@ -19,7 +19,7 @@ class Read(Instruccion):
         
         self.w=Entrada(tree.ventana, tree.textoRead)
         tree.ventana.wait_window(self.w.top)
-
+        tree.updateConsola(self.w.value)
         return self.w.value
 
     def getNodo(self):

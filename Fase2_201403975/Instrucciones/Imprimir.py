@@ -1,3 +1,4 @@
+from Expresiones.Primitivos import Primitivos
 from Abstract.NodoAST import NodoAST
 from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
@@ -21,6 +22,9 @@ class Imprimir(Instruccion):
 
         if self.expresion.tipo == TIPO.NULO:
             return Excepcion("Semantico", "No se puede imprimir un tipo NULO", self.fila, self.columna)
+
+        if isinstance(value, Primitivos):
+            value = value.interpretar(tree, table)
         
         tree.updateConsola(value)
         tree.textoRead = value

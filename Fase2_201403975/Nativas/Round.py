@@ -1,3 +1,4 @@
+from Expresiones.Primitivos import Primitivos
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
 from Instrucciones.Funcion import Funcion
@@ -16,5 +17,10 @@ class Round(Funcion):
         if simbolo == None : return Excepcion("Semantico", "No se encontro el parametro de Round", self.fila, self.columna)
 
         self.tipo = TIPO.ENTERO
+
+        val = simbolo.getValor()
+
+        if isinstance(val, Primitivos):
+            val = val.interpretar(tree, table)
         
-        return round(simbolo.getValor())
+        return round(val)

@@ -1,6 +1,7 @@
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
 from Instrucciones.Funcion import Funcion
+from Expresiones.Primitivos import Primitivos
 
 class ToLower(Funcion):
     def __init__(self, nombre, parametros, instrucciones, fila, columna):
@@ -18,5 +19,10 @@ class ToLower(Funcion):
         if simbolo.getTipo() != TIPO.CADENA:
             return Excepcion("Semantico", "Tipo de parametro de ToLower no es cadena.", self.fila, self.columna)
 
+        val = simbolo.getValor()
+
+        if isinstance(val, Primitivos):
+            val = val.interpretar(tree, table)
+
         self.tipo = simbolo.getTipo()
-        return simbolo.getValor().lower()
+        return val.lower()

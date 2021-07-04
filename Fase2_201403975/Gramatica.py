@@ -129,7 +129,7 @@ def t_CADENA(t):
     return t
 
 def t_CHARACTER(t):
-    r'(\'.*\')'
+    r'\'(\\\'|\\"|\\t|\\n|\\\\|[^\'\\])\''
     t.value = t.value[1:-1] # remuevo las comillas
     return t
 
@@ -199,6 +199,7 @@ from Nativas.Round import Round
 from Nativas.TypeOf import TypeOf
 from Expresiones.Read import Read
 from Instrucciones.DeclaracionT1 import DeclaracionT1
+from Instrucciones.Tipo2 import DeclaracionT2
 from Expresiones.AccesoArreglo import AccesoArreglo
 from Instrucciones.ModificarArreglo import ModificarArreglo
 
@@ -453,7 +454,10 @@ def p_expresion_acceso_arreglo(t):
 #-----------------------------Arreglos------------------------------#
 #------------------------Declaracion Arreglo------------------------#
 def p_declaracion_arreglo(t) :
-    '''decArreglo : tipo1'''
+    '''
+    decArreglo : tipo1
+                | tipo2
+    '''
     t[0] = t[1]
 
 def p_declaracion_tipo1(t) :
@@ -476,6 +480,32 @@ def p_lista_expresiones_1(t) :
 def p_lista_expresiones_2(t) :
     'lista_expresiones : CORA expresion CORC'
     t[0] = [t[2]]
+
+def p_declaracion_tipo2(t):
+    'tipo2 : tipo lista_Dim ID IGUAL dimension'
+    t[0] = DeclaracionT2(t[1], t[2], t[3], t[5], t.lineno(3), find_column(input, t.slice[3]))
+
+def p_dimension(t):
+    'dimension : LLAVEA lista_valores LLAVEC'
+    t[0] = t[2]
+
+def p_lista_valores(t):
+    'lista_valores : lista_valores COMA expDim'
+    t[1].append(t[3])
+    t[0] = t[1]
+
+def p_lista_valores_1(t):
+    'lista_valores : expDim'
+    t[0] = [t[1]]
+
+def p_expdim_dim(t):
+    'expDim : dimension'
+    t[0] = t[1]
+
+def p_expdim_exp(t):
+    'expDim : expresion'
+    t[0] = t[1]
+
 
 #-----------------------Modificacion Arreglo------------------------#
 def p_modificacion_arreglo(t) :

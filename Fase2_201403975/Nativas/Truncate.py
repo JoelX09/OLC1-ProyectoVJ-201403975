@@ -1,3 +1,4 @@
+from Expresiones.Primitivos import Primitivos
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
 from Instrucciones.Funcion import Funcion
@@ -17,6 +18,11 @@ class Truncate(Funcion):
         
         self.tipo = TIPO.ENTERO
        
-        val = str(simbolo.getValor())
+        val = simbolo.getValor()
+
+        if isinstance(val, Primitivos):
+            val = val.interpretar(tree, table)
+
+        val = str(val)
         val = val.split(".")
         return val[0]

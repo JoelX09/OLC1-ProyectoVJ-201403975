@@ -1,3 +1,4 @@
+from Expresiones.Primitivos import Primitivos
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
 from Instrucciones.Funcion import Funcion
@@ -17,4 +18,9 @@ class Length(Funcion):
 
         self.tipo = TIPO.ENTERO
 
-        return len(simbolo.getValor())
+        val = simbolo.getValor()
+
+        if isinstance(val, Primitivos):
+            val = val.interpretar(tree, table)
+
+        return len(val)

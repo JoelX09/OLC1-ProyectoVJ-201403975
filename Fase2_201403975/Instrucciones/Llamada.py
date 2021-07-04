@@ -27,7 +27,11 @@ class Llamada(Instruccion):
                 if isinstance(resultExpresion, Excepcion): return resultExpresion
 
                 if self.nombre.lower() == "length":
-                    if expresion.tipo != TIPO.CADENA and expresion.tipo != TIPO.ARREGLO:
+                    s = None
+                    if not isinstance(self.parametros[contador], Primitivos):
+                        s = table.getTabla(self.parametros[contador].identificador.lower())
+
+                    if expresion.tipo != TIPO.CADENA and s.getArreglo() != True:
                         return Excepcion("Semantico", "Tipo de parametro de Length no es Cadena o Arreglo.", self.fila, self.columna)
                     else:
                         simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)

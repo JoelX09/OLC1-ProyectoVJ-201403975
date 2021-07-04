@@ -116,6 +116,7 @@ def ejecutar():
     from Instrucciones.Funcion import Funcion
     from Abstract.NodoAST import NodoAST
     from Instrucciones.DeclaracionT1 import DeclaracionT1
+    from Instrucciones.Tipo2 import DeclaracionT2
     from Instrucciones.ModificarArreglo import ModificarArreglo
 
     instrucciones = parse(entrada) #ARBOL AST -- Aqui se creo
@@ -133,7 +134,7 @@ def ejecutar():
         ast.entorno = "Global"
         if isinstance(instruccion, Funcion):
             ast.addFuncion(instruccion)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
-        if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, DeclaracionT1) or isinstance(instruccion, ModificarArreglo):
+        if isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, DeclaracionT1) or isinstance(instruccion, ModificarArreglo) or isinstance(instruccion, DeclaracionT2):
             value = instruccion.interpretar(ast,TSGlobal)
             if isinstance(value, Excepcion) :
                 ast.getExcepciones().append(value)
@@ -171,7 +172,7 @@ def ejecutar():
                 ast.updateConsola(err.toString())
 
     for instruccion in ast.getInstrucciones():  # Tercera pasada  
-        if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, Funcion) or isinstance(instruccion, DeclaracionT1) or isinstance(instruccion, ModificarArreglo)):
+        if not (isinstance(instruccion, Main) or isinstance(instruccion, Declaracion) or isinstance(instruccion, Asignacion) or isinstance(instruccion, Funcion) or isinstance(instruccion, DeclaracionT1) or isinstance(instruccion, ModificarArreglo) or isinstance(instruccion, DeclaracionT2)):
             err = Excepcion("Semantico", "Sentencias fuera de Main", instruccion.fila, instruccion.columna)
             ast.getExcepciones().append(err)
             ast.updateConsola(err.toString())

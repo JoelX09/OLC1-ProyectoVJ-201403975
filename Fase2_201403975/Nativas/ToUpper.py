@@ -1,3 +1,4 @@
+from Expresiones.Primitivos import Primitivos
 from TS.Excepcion import Excepcion
 from TS.Tipo import TIPO
 from Instrucciones.Funcion import Funcion
@@ -18,5 +19,10 @@ class ToUpper(Funcion):
         if simbolo.getTipo() != TIPO.CADENA:
             return Excepcion("Semantico", "Tipo de parametro de ToUpper no es cadena.", self.fila, self.columna)
 
+        val = simbolo.getValor()
+
+        if isinstance(val, Primitivos):
+            val = val.interpretar(tree, table)
+            
         self.tipo = simbolo.getTipo()
-        return simbolo.getValor().upper()
+        return val.upper()
