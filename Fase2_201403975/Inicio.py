@@ -85,6 +85,21 @@ def openAST():
     p = subprocess.Popen([chrome_path, dirname + "/Salidas/AST.pdf"]) 
     p.wait() #This waits for the process to clos
 
+def openUsuario():
+    dirname = os.path.dirname(__file__)
+    direcc = os.path.join(dirname, 'Manuales/Usuario.pdf')
+    os.startfile(direcc)
+
+def openTecnico():
+    dirname = os.path.dirname(__file__)
+    direcc = os.path.join(dirname, 'Manuales/Tecnico.pdf')
+    os.startfile(direcc)
+
+def openGramatica():
+    dirname = os.path.dirname(__file__)
+    direcc = os.path.join(dirname, 'Manuales/Gramatica.pdf')
+    os.startfile(direcc)
+
 # Abrir reporte TS, Autor PUAC
 def openTS():
     dirname = os.path.dirname(__file__)
@@ -196,7 +211,7 @@ def ejecutar():
 
     # dirname = os.path.dirname(__file__)
     # direcc = os.path.join(dirname, 'ast.dot')
-    arch = open("./Salidas/AST.dot", "w+")
+    arch = open("./Salidas/AST.dot", "w+", encoding="utf-8")
     arch.write(grafo)
     arch.close()
 
@@ -223,6 +238,9 @@ menuReportes.add_command(label='Tabla de Simbolos', command=openTS)
 
 menuAyuda = Menu(menu)
 menu.add_cascade(label='Ayuda', menu=menuAyuda)
+menuAyuda.add_command(label='Manual de Usuario', command= openUsuario)
+menuAyuda.add_command(label='Manual Tecnico', command= openTecnico)
+menuAyuda.add_command(label='Gramatica', command= openGramatica)
 menuAyuda.add_command(label='Acerca de...', command= lambda: messagebox.showinfo("Información", "Joel Obdulio Xicará Ríos\n201403975"))
 
 # Funcion para obtener palabrvas reservadas, signos, numeros, etc, Autor PUAC
