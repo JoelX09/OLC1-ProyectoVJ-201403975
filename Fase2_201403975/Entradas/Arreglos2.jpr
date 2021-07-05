@@ -1,0 +1,20 @@
+string[][] Alumnos = new String[30][5]; #30 alumnos con 5 atributos cada uno
+
+func agregarAlumno(string[][] arreglo, int indice, String nombre, String cui, String carnet, String edad, String nota){
+    print("Agregando a alumno #" + indice);
+    arreglo[indice][0] = nombre;    # agregando el nombre al alumno 
+    arreglo[indice][1] = cui;       # agregando el cui al alumno 
+    arreglo[indice][2] = carnet;    # agregando el carnet al alumno 
+    arreglo[indice][3] = edad;      # agregando la edad al alumno 
+    arreglo[indice][4] = nota;      # agregando la nota al alumno 
+}
+
+main(){
+    agregarAlumno(Alumnos, 0, "PruebaNombre", "1234567890101", "200012345", "20", "100")
+    print("El nombre del alumno es: " + Alumnos[0][0])  # imprimiendo el nombre del alumno 
+    print("El cui del alumno es: " + Alumnos[0][1])     # imprimiendo el cui del alumno 
+    print("El carnet del alumno es: " + Alumnos[0][2])  # imprimiendo el carnet del alumno 
+    print("La edad del alumno es: " + Alumnos[0][3])    # imprimiendo la edad del alumno 
+    print("La nota del alumno es: " + Alumnos[0][4])    # imprimiendo la nota del alumno 
+}
+

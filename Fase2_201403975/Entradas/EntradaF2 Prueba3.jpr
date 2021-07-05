@@ -1,0 +1,255 @@
+#*
+   DECLARAMOS UN VECTOR DE 15 POSICIONES
+   SE IMPRIMRÁ Y POSTERIORMENTE SE ORDENARÁ
+*#
+int[] vectorNumeros = new int[15];
+
+var indiceFrase = 0;
+string[] frase = new string[25]
+
+func Hanoi(int discos, int origen, int auxiliar, int destino) {
+    if (discos == 1) {
+        print("Mover disco de " + origen + " a " + destino);
+    } else {
+        Hanoi(discos - 1, origen, destino, auxiliar);
+        print("Mover disco de " + origen + " a " + destino);
+        Hanoi(discos - 1, auxiliar, origen, destino);
+    }
+}
+
+func imprimirVector(int[] miVector){
+    for (var i = 0; i < length(miVector); i++) {
+        print("vectorNumeros[" + i + "] = " + miVector[i]);
+    }
+}
+
+func BubbleSort(int[] miVector){
+    for (var i = 0; i < length(miVector); i++)
+    {
+        for (var j = 0; j < length(miVector) - i - 1; j++)
+        {
+            if (miVector[j] > miVector[j + 1]) {
+                var temp;
+                temp = miVector[j];
+                miVector[j] = miVector[j + 1];
+                miVector[j + 1] = temp;
+            }
+        }
+    }
+}
+
+func agregarValorLista(string letra){
+   frase[indiceFrase] = letra    
+   indiceFrase++
+}
+
+func mensajeVolteado(string[] miLista){
+    var mensaje="";
+    for(var i=length(miLista)-1;i>=0;i--){
+        if(typeof(miLista[i]) =! "NULL"){
+		mensaje=mensaje+miLista[i];
+        }
+    }
+    return mensaje;
+}
+
+main(){
+    Archivo3();
+}
+
+func ParoImpar(int a) {
+    if (par(a) == 1) { # El número es Par
+        print("El numero \'" + a + "\'" + " es Par");
+    } else { # El número es impar
+        print("El numero \'" + a + "\'" + " es Impar");
+    }
+}
+
+func par(int nump) {
+    if (nump == 0) {
+        return 1;
+    }
+    return impar(nump - 1);
+}
+
+func impar(int numi) {
+    if (numi == 0) {
+        return 0;
+    }
+    return par(numi - 1);
+}
+
+func ackermanPuntosMenos(int m, int n)
+{
+    if (m == 0) {
+        return n + 1;
+    } else if (m > 0 && n == 0) {
+        return ackermanPuntosMenos(m - 1, 1);
+    } else {
+        return ackermanPuntosMenos(m - 1, ackermanPuntosMenos(m, n - 1));
+    }
+}
+
+func Archivo3(){
+    print("====================ARCHIVO 3====================");
+    print("**************SECCION DE VECTORES****************");
+
+    vectorNumeros[0] = 200;
+    vectorNumeros[1] = 26;
+    vectorNumeros[2] = 1;
+    vectorNumeros[3] = 15;
+    vectorNumeros[4] = 167;
+    vectorNumeros[5] = 0;
+    vectorNumeros[6] = 76;
+    vectorNumeros[7] = 94;
+    vectorNumeros[8] = 25;
+    vectorNumeros[9] = 44;
+    vectorNumeros[10] = 5;
+    vectorNumeros[11] = 59;
+    vectorNumeros[12] = 95;
+    vectorNumeros[13] = 10;
+    vectorNumeros[14] = 23;
+
+    print("---Vector Desordenado---");
+    imprimirVector(vectorNumeros);
+    BubbleSort(vectorNumeros);
+    print("-----Vector Ordenado----");
+    imprimirVector(vectorNumeros);
+    print("************FIN DE SECCION VECTORES***************");
+    print("****************SECCION DE LISTAS****************");
+    #agregamos valores a la lista
+    agregarValorLista(")");
+    agregarValorLista(":");
+    agregarValorLista(" ");
+    agregarValorLista("1");
+    agregarValorLista("I");
+    agregarValorLista("P");
+    agregarValorLista("M");
+    agregarValorLista("O");
+    agregarValorLista("C");
+    agregarValorLista(" ");
+    agregarValorLista("E");
+    agregarValorLista("L");
+    agregarValorLista("A");
+    agregarValorLista("S");
+    agregarValorLista(" ");
+    agregarValorLista("I");
+    agregarValorLista("S");
+    print("El mensaje es:");
+    print(mensajeVolteado(frase));
+    print("************FIN DE SECCION DE LISTAS**************");
+    print("**************SECCION DE CASTEOS***************");
+    Casteos();
+    print("************FIN DE SECCION DE CASTEOS*************");
+    print("**************SECCION DE NATIVAS***************");
+    FuncionesEspecialesNativas();
+    print("************FIN DE SECCION DE NATIVAS*************");
+    print("***********SECCION DE RECURSIVIDAD***************");
+    print("---------------FUNCION FIBONACCI-----------------");
+    imprimir_fibonacci(20);
+    print("-------------------------------------------------");
+    print("---------------FUNCION PAR-IMPAR-----------------");
+    ParoImpar(71);
+    print("-------------------------------------------------");
+    print("----------------TORRES DE HANOI------------------");
+    var discos = 3;
+    var origen = 1;
+    var auxiliar = 2;
+    var destino = 3;
+    Hanoi(discos, origen, auxiliar, destino);
+    print("-------------------------------------------------");
+    print("---------------FUNCION ACKERMANN-----------------");
+    var m = 3; #(3,5)
+    var n = 4;
+    print("Funcion de Ackerman (" + m + ", " + n + ") = " + ackerman(m, n));
+    #print("Funcion de Ackerman Puntos Menos (" + m + ", " + n + ") = " + ackermanPuntosMenos(m, n));
+    print("-------------------------------------------------");
+    print("*************FIN DE RECURSIVIDAD*****************");
+    print("=================================================");
+}
+
+func Casteos(){
+    print("int a "+typeof((double) 1789));
+    print("double a "+ typeof((int) 258.2));
+    print("char  a "+ typeof((double) 'F'));
+    print("int a "+typeof((char) 98));
+    print("double a "+typeof((string)2589.97));
+}
+
+func FuncionesEspecialesNativas(){
+    print("------------------LENGTH-------------------");
+    print("vectorNumero es de "+length(vectorNumeros)+" elementos");
+    var a = 15;
+    print("------------------TOLOWER-------------------");
+    print("SIN TOLOWER");
+    print(toLower("CON TOLOWER"));
+    print("------------------TOUPPER-------------------");
+    print("sin toupper");
+    print(toUpper("con toupper"));
+    print("------------------TRUNCATE------------------");
+    var b=17.8;
+    print("sin truncate: "+b);
+    var tempB=b
+    b=null
+    b=truncate(tempB);
+    print("con truncate "+b);
+    print("------------------ROUND-------------------");
+    var c=26.6;
+    print("sin round: "+c);
+    var tempC=c
+    c=null
+    c=round(tempC);
+    print("con round "+c);
+    var cc=26.4;
+    print("sin round: "+cc);
+    var tempCC=cc
+    cc=null
+    cc=round(tempCC);
+    print("con round "+cc);
+    print("-----------------TYPEOF--------------------");
+    var x="soy una cadena";
+    var y = 50;
+    var z = 78.5;
+    var xx = 'a';
+    var yy = true;
+    print("tipo: "+typeof(x));
+    print("tipo: "+typeof(y));
+    print("tipo: "+typeof(z));
+    print("tipo: "+typeof(xx));
+    print("tipo: "+typeof(yy));
+    print("------------------LENGTH-------------------");
+    var cadena="soy una cadena";
+    print("tamaño: "+length(cadena));
+    print("------------------TOSTRING-------------------");
+    var numero=105;
+    print("tipo: "+typeof(numero));
+    print("tipo: "+typeof((string)(numero)));
+}
+
+func imprimir_fibonacci(int valor) {
+    print("Resultado de fibonacci(" + valor + ") = " + fibonacci(valor));
+}
+
+func fibonacci(int n) {
+    if (n > 1) {
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    } else if (n == 1) {
+        return 1;
+    } else if (n == 0) {
+        return 0;
+    } else {
+        print("error");
+        return 0;
+    }
+}
+
+func ackerman(int m, int n){
+    if (m == 0){
+        return n + 1;
+    } else if (m > 0 && n == 0){
+        return ackerman(m-1, 1)
+    } else{
+        return ackerman(m-1, ackerman(m, n-1))
+    }
+}
+

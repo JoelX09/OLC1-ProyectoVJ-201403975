@@ -1,0 +1,45 @@
+func imprimirVector(int[] miVector){
+    for (var i = 0; i < length(miVector); i++) {
+        print("vectorNumeros[" + i + "] = " + miVector[i]);
+    }
+}
+
+func BubbleSort(int[] miVector){
+    for (var i = 0; i < length(miVector); i++)
+    {
+        for (var j = 0; j < length(miVector) - i - 1; j++)
+        {
+            if (miVector[j] > miVector[j + 1]) {
+                var temp;
+                temp = miVector[j];
+                miVector[j] = miVector[j + 1];
+                miVector[j + 1] = temp;
+            }
+        }
+    }
+}
+
+main(){
+    int[] vectorNumeros = new int[15];
+    vectorNumeros[0] = 200;
+    vectorNumeros[1] = 26;
+    vectorNumeros[2] = 1;
+    vectorNumeros[3] = 15;
+    vectorNumeros[4] = 167;
+    vectorNumeros[5] = 0;
+    vectorNumeros[6] = 76;
+    vectorNumeros[7] = 94;
+    vectorNumeros[8] = 25;
+    vectorNumeros[9] = 44;
+    vectorNumeros[10] = 5;
+    vectorNumeros[11] = 59;
+    vectorNumeros[12] = 95;
+    vectorNumeros[13] = 10;
+    vectorNumeros[14] = 23;
+
+    print("============VECTOR DESORDENADO================");
+    imprimirVector(vectorNumeros);
+    BubbleSort(vectorNumeros);
+    print("============VECTOR ORDENADO================");
+    imprimirVector(vectorNumeros);
+}

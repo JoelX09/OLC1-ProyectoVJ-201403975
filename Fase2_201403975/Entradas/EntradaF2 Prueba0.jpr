@@ -1,0 +1,348 @@
+#13/06/2021
+#* Completando
+    Fase 1?    *# 
+
+#Variables Globales
+print("*** Variables Globales ***") #Error entorno global
+var variable = 5 + 5;
+var contadorA = 0
+
+#Funciones
+func suma(int a, int b) {
+    return a+b
+}
+
+func factorial(int num){
+    if(num == 0){
+        return 1;
+    }
+    else{
+        return num * factorial(num-1)
+    }   
+}
+
+func par(int nump) {
+    if (nump == 0) {
+        return true;
+    }
+    return impar(nump - 1);
+}
+
+func impar(int numi) {
+    if (numi == 0) {
+        return false;
+    }
+    return par(numi - 1);
+}
+
+int[ ][] [  ] arr1 = new int[4][2][6];
+arr1[1][1][1] = 0
+arr1[arr1[1][1][1]][arr1[1][1][1]][arr1[1][1][1]] = 1000 
+
+int[] arr = new int[4]
+int[][] matriz = new int[2][2]
+#int[][] matriz2 = matriz <-------------------- Pendiente
+
+string[] arr2 = new string[2]
+arr2[0] = "OLC1"
+arr2[1] = "Vacaciones 1er Semestre 2021"
+
+main(){
+    var nombre = read()
+    print("-----------Bienvenido  \""+nombre+"\". Iniciando Programa-----------")
+    print("-----------" + arr2[0] + " - " + arr2[1] + "-----------")
+    print("")
+    print("*** Probando los arreglos ***")
+    print(arr1[1][1][1])
+    print("Posicion del arreglo 1 en la [0][0][0]: " + arr1[0][0][0]);
+    print("Posicion del arreglo 1 en la [1][1][1]: " + arr1[1][1][1]);
+    print("")
+    print("*** Probando las funciones ***")
+    print(suma(500, 100));
+    print("La suma de 500 + 100 es igual a: " + suma(500, 100));
+    var suma = Suma5(1, 2, 3, 4, 5)
+    print(suma)
+    holamundo2("Compi 1 :D");
+    print(factorial(5))
+    print("Funcion par")
+    #print(par(9))
+    print("Funcion impar")
+    #print(impar(151))
+    print("Funcion Ackermann")
+    print(ackermann(3,5))
+    print(contadora)
+    print("ToUpper")
+    var cad_1 = ToUpper("hOla MunDo");
+    var cad_2 = ToUpper("RESUlTADO = " + 100);
+    print(cad_1)
+    print(cad_2)
+    print("ToLower")
+    var cad_3 = ToLower("hOla MunDo");
+    var cad_4 = ToLower("RESUlTADO = " + 100);
+    print(cad_3)
+    print(cad_4)
+    print("Length")
+    var cad_5 = length(cad_1)
+    var cad_6 = length(cad_4)
+    print(cad_5)
+    print(cad_6)
+    print("Truncate")
+    var nuevoValor = truncate(3.53)
+    var otroValor = truncate(10)
+    var decimal = 15.4654849;
+    var entero = truncate(decimal)
+    print(nuevovalor)
+    print(otrovaloR)
+    print(EnTeRo)
+    print("Round")
+    var val01 = round(5.8)
+    var val02 = round(5.4)
+    var val03 = round(otrovaloR)
+    print(val01)
+    print(val02)
+    print(val03)
+    print("TypeOf")
+    print(typeof(variable))
+    print(typeof(cad_1))
+
+    print("")
+
+    print("*** Probando las operaciones ***")
+    print(5 + "Hola");
+    print(5 + 3+234+324+34+3);
+    print(-(500 + 32 - 600));
+    print(-(500 - 600) == 100)
+    print(! "7" == 7 && (100 == 10 + 90) );
+    print("")
+
+    print("*** Probando case insensitive ***")
+    print(variable)
+    print(VaRiaBle)
+    print("")
+    
+    print("*** Variables Locales ***")
+    var cad1 = "Soy una cadena\nUn salto de linea."
+    var nueva = cad1 + " -> " + variable
+    print(nueva + cad1)
+    var cad2 = variable + cad1;
+    print(cad2)
+    print(cad2 + cad1);
+    print(cad2);
+    cad2 = "Cambio de Valor"
+    print(CAD2)
+    cad2 = cad2 + cad1;
+    print(cad2);
+    print(true || false)
+    print(false)
+    var perra = 100;
+    print(perra)
+    print("")
+    cad1++ #Error por el tipo
+
+    print("*** Incremento - Decremento ***")
+    var anio = 2020
+    print("anio "+ anio)
+    anio = 1 + anio ++
+    print("anio "+ anio)
+    anio = anio --
+    print("anio "+ anio)
+    print("")
+    var edad1 = 18.5
+    edad1++
+    print(edad1)
+    edad1--
+    print(edad1)
+    print("")
+    var miedad = 24;
+    print(miedad)
+    var nuevaedad = miedad++
+    print("Tengo " + miedad)
+    print("Cumplo " + nuevaedad )
+    print(miedad)
+    print(nuevaedad)
+    print("")
+
+    print("*** Casteos ***")
+    var edad = (INT) 18.6 #Puse lower()
+    print(edad)
+    var letra = (char) 70
+    print(letra)
+    var numero = (double) 16
+    print(numero)
+    print("")
+    var valor1 = 'F'
+    print(valor1)
+    var valor2 = 64
+    print(valor2)
+    valor1 = (char) valor2
+    print(valor1)
+    print("")
+    var string1 = "Cadena"
+    print(string1)
+    var numero1 = 16.9
+    print(numero1)
+    string1 = (int) numero1 #Error de asignacion de int a string
+    print("")
+
+    print("*** Probando Nulos y cambio de valor ***")
+    var probNula
+    print(probNula)
+    string1 = null
+    print(string1)
+    string1 = 20
+    print(string1)
+    probNula = "Ya no es nula"
+    print(probNula)
+    print("")
+
+    print("*** If ***")
+    var bandera = 100;
+    if((5+5)<(2+1)){
+        print("Entra al if");
+    }
+    else if(bandera + 50 > 300){
+        print("Entro al else if xd")
+    }
+    else if(false){
+        print("Entro al else if xddddd")
+    }
+    else if(bandera + 50 > 300){
+        print("Entro al else if xd")
+    }
+    else{
+        if(bandera - 100 == 0){
+            print("Entro a un if en un else que loko :0")
+            if(bandera - 100 == 0){
+                print("Entro a un if en un else que loko :0")
+                print(bandera)
+                print("Cambio de bandera")
+                var bandera = 50;
+                print(bandera)
+                if(bandera - 100 == 0){
+                    print("Entro a un if en un else que loko :0")
+                }
+            }
+            print("valor persistente")
+            print(bandera)
+        }
+        print("No entro a ningun if D:")
+    }
+    print("")
+    
+    print("*** While ***")
+    var num = 0;
+    while(num < 10){
+        print("Iteracion -> " + (num + 1))
+        if(num == 7){
+            break;
+        }
+        num = num + 1;
+    }
+    break; #Error, fuera de ciclo
+    num = 0;
+    while(num < 10){
+        print("Iteracion -> " + (num + 1))
+        if(num == 5){
+            break;
+        }
+        num = num + 1;
+    }
+    print("")
+
+    print("*** For ***")
+    for(var i = 0; i<3;i++){
+        print("i="+i)
+    }
+    print("**********")
+    for(var x = 5; x>2;x=x-1){
+        print("x="+x)
+    }
+    print("**********")
+    for(var j = 0; j<9;j=j+1){
+        if(j==5){
+            print("Me salgo del ciclo en el numero " + j);
+            break;
+        }
+        print("j="+j)@
+    }
+    print("**********")
+    for(var j = 0; j<9;j=j+1){
+        if(j==5){
+            print("Me salte el numero " + j);
+            continue;
+        }
+        print("j="+j)
+    }
+    print("")
+
+    print("*** Switch ***")
+    var edadSwitch = 18;
+
+    switch(edadSwitch){
+        case 10:
+            print("Tengo 10 anios.");
+            #mas sentencias
+            break;
+        case 18:
+            print("Tengo 18 anios.");
+            #mas sentencias
+        case "25":
+            print("Tengo 25 anios en string.");
+            #mas sentencias
+            break
+        default:
+            print("No se que edad tengo.:");
+            #mas sentencias
+            break;
+    }
+    print("**********")
+    var color = "Verde";
+
+    switch(color){
+        case "Rojo":
+            print("Red");
+            #mas sentencias
+            break;
+        case 18:
+            print("No es string no evalua?");
+            #mas sentencias
+        case "Amarillo":
+            print("Yellow");
+            #mas sentencias
+            break
+        case "Verde":
+            print("Green");
+            #mas sentencias
+            break
+    }
+    print("**********")
+    var x = true;
+
+    switch(x){
+        Default:
+            print("Por defecto");
+            #mas sentencias
+            break;
+    }
+}
+
+func holamundo2(string val) {
+    print("Hola mundo -> " + val)
+}
+
+func Suma5(int a, int b, int c, int d, int e){
+    return a+b+c+d+e
+}
+
+func ackermann(int m, int n){
+    contadorA ++;
+    if (m == 0){
+        return n + 1;
+    } else if (m > 0 && n == 0){
+        return ackermann(m-1, 1)
+    } else{
+        return ackermann(m-1, ackermann(m, n-1))
+    }
+}
+
+#Fin del archivo

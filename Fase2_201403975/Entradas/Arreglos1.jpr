@@ -1,0 +1,43 @@
+int[ ][] [  ] arr1 = new int[4][2][6];
+arr1[1][1][1] = 0
+arr1[arr1[1][1][1]][arr1[1][1][1]][arr1[1][1][1]] = 1000 
+
+int[] arr = new int[4]
+int[][] matriz = new int[2][2]
+int[][] matriz2 = matriz #<-------------------- Pendiente
+
+string[] arr2 = new string[2]
+arr2[0] = "OLC1"
+arr2[1] = "Vacaciones 1er Semestre 2021"
+
+string[] arr1Tipo2 = {"hola","mundo"}
+int[][] arr2Tipo2 = {{11,12},{21,22}}
+char[][][] cubo = {{{'a','b'},{'c','d'}},{{'e','f'},{'g','h'}},{{'i','j'},{'k','l'}}}
+char[][][] cubo2 = {{{'a','b'},{'c','d'},{'c','d'}},{{'e','f'},{'g','h'},{'g','h'}},{{'i','j'},{'k','l'},{'k','l'}},{{'a', 'b'},{'c','d'},{'c','d'}}}
+
+main(){
+    var cad = "Lily Bowman"
+    print(arr1[1][1][1])
+    print("Posicion del arreglo 1 en la [0][0][0]: " + arr1[0][0][0]);
+    print("Posicion del arreglo 1 en la [1][1][1]: " + arr1[1][1][1]);
+    print("-----------" + arr2[0] + " - " + arr2[1] + "-----------")
+    print("")
+    print("------ TypeOf Tipo1 ------")
+    print(typeof(arr1))
+    print(typeof(arr2))
+    print("------ TypeOf Tipo2 ------")
+    print(typeof(arr1Tipo2))
+    print(typeof(arr2Tipo2))
+    print(typeof(cubo2))
+    print("------ Length ------")
+    print(length(cad))
+    print(length(arr1))
+    print(length(cubo))
+    print("")
+    print(arr1Tipo2[0])
+    print(arr1Tipo2[1])
+    print("Mi primer \"" + ToUpper(arr1Tipo2[0]) + " " + ToUpper(arr1Tipo2[1]) + "\" :D")
+    print("Asignacion de una matriz a otra")
+    matriz2[0][0] = 25
+    print(matriz[0][0])
+}

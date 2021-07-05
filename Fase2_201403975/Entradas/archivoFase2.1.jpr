@@ -1,0 +1,303 @@
+string[][] Clases = new String[4][5]; 
+string[][] Clases2 = new String[4][5]; 
+
+func agregarAlumno(string[][] arreglo, int alumno, String nombre, String carnet, String edad, String nota){
+    arreglo[alumno][0] = nombre;    # agregando el nombre al alumno 
+    arreglo[alumno][2] = carnet;    # agregando el carnet al alumno 
+    arreglo[alumno][3] = edad;      # agregando la edad al alumno 
+    arreglo[alumno][4] = nota;      # agregando la nota al alumno 
+}
+
+main(){
+    print("INICIO DEL PROGRAMA")
+    print("Ingrese su nombre: ");
+    var nombre = Read();
+    print("Bienvenido " + nombre);
+
+    CasteosYMas();
+
+    
+    
+    print("=============CALCULADORA==============");
+    while(true){
+        if(!calculadoraCALI()){
+            break;
+        }
+    }
+    print("Calculadora finalizada correctamente");
+
+    
+    print("=============RECURSIVIDAD==============");
+    var punteoRecursividad = 0;
+    if(factorialCALI(20) == 362880){
+        print("Bien factorial");
+        punteoRecursividad++;
+    }
+    if(parCALI(202)){
+        print("Bien par");
+        punteoRecursividad++;
+    }
+    if(!imparCALI(202)){
+        print("Bien impar");
+        punteoRecursividad++;
+    }
+    if(ackermannCALI(3,4) == 125){
+        print("Bien ackermann");
+        punteoRecursividad++;
+    }
+    var discos = 3;
+    var origen = 1;
+    var auxiliar = 2;
+    var destino = 3;
+    HanoiCALI(discos, origen, auxiliar, destino);
+    #*
+    Mover disco de 1 a 3
+    Mover disco de 1 a 2
+    Mover disco de 3 a 2
+    Mover disco de 1 a 3
+    Mover disco de 2 a 1
+    Mover disco de 2 a 3
+    Mover disco de 1 a 3
+    *#
+
+    print("=============ARREGLOS==============");
+
+    int[] vectorNumeros = new int[15];
+    vectorNumeros[0] = 8;
+    vectorNumeros[1] = 76;
+    vectorNumeros[2] = 17;
+    vectorNumeros[3] = 165;
+    vectorNumeros[4] = 15;
+    vectorNumeros[5] = 0;
+    vectorNumeros[6] = 726;
+    vectorNumeros[7] = 84;
+    vectorNumeros[8] = 7;
+    vectorNumeros[9] = 444;
+    vectorNumeros[10] = 51;
+    vectorNumeros[11] = 10;
+    vectorNumeros[12] = 945;
+    vectorNumeros[13] = 9;
+    vectorNumeros[14] = 63;
+
+    print("============VECTOR DESORDENADO================");
+    imprimirVector1(vectorNumeros);
+    BubbleSort(vectorNumeros);
+    print("============VECTOR ORDENADO================");
+    imprimirVector1(vectorNumeros);
+
+    #Clase 1
+    agregarAlumno(Clases, 0, "JUAN PEDRO DE LEON MORO", "200915385", "22", "92")
+    agregarAlumno(Clases, 1, "CATHERINE DAYANA ESCOBAR LARIOS", "201602567", "19", "100")
+    agregarAlumno(Clases, 2, "ANA ISABEL CULAJAY GONZÁLEZ", "201602790", "25", "85")
+    agregarAlumno(Clases, 3, "ALDAIR ESTRADA GARCÍA", "201503855", "24", "97")
+
+    agregarAlumno(Clases2, 0, "ELIAN SAUL ESTRADA URBINA", "201806838", "21", "87")
+    agregarAlumno(Clases2, 1, "DYLLAN JOSÉ RODRIGO GARCÍA MEJÍA", "201907774", "19", "76")
+    agregarAlumno(Clases2, 2, "JAMES GRAMAJO", "3517278170922", "27", "95")
+    agregarAlumno(Clases2, 3, "ERIKSSON JOSÉ HERNÁNDEZ LÓPEZ", "2927191591415", "23", "86")
+
+    
+    # IMPRIMIENDO CLASES
+
+    for(var j = 0; j < 4; j ++){
+        print("El nombre del alumno es: " + Clases[j][0])  # imprimiendo el nombre del alumno 
+        print("El carnet del alumno es: " + Clases[j][2])  # imprimiendo el carnet del alumno 
+        print("La edad del alumno es: " + Clases[j][3])    # imprimiendo la edad del alumno 
+        print("La nota del alumno es: " + Clases[j][4])    # imprimiendo la nota del alumno 
+    }
+
+    print("===================================")
+
+    #imprimiendo Clases 2
+
+    imprimirClase(Clases2);
+    
+
+    #TIPO 2
+    InT[][][] ArregloCubo = {{{2,4,6,8},{10,12,14,16}},{{18,22,24,26},{28,30,32,34}},{{36,38,40,42},{44,46,48,50}}} #[3][2][4]
+    print("CUBO")
+    for(var i = 0; i < 3;i++){
+        print("Dimension i = " + i)
+        for(var j = 0; j < 2; j++){
+            print("Dimension j = " + j)
+            for(var k = 0; k < 4; k++){
+                print(ArregloCubo[i][j][k])
+            }
+        }
+        print("=====================================");
+    }
+
+}
+
+func imprimirClase(string[][] clase){
+    for(var j = 0; j < 4; j ++){
+        print("El nombre del alumno es: " + clase[j][0])  # imprimiendo el nombre del alumno 
+        print("El carnet del alumno es: " + clase[j][2])  # imprimiendo el carnet del alumno 
+        print("La edad del alumno es: " + clase[j][3])    # imprimiendo la edad del alumno 
+        print("La nota del alumno es: " + clase[j][4])    # imprimiendo la nota del alumno 
+    }
+}
+
+func CasteosYMas(){
+    print("Validando Continue")
+    var cont = 1
+    while(cont < 11){
+        if(cont == 6){
+            print("Se salta esta iteracion")
+            cont ++
+            continue
+        }
+        print("El valor del ciclo con continue es: " + cont)
+        cont ++
+    }
+
+    print("CASTEOS");
+    var num500 = 97;
+    var double501 = 97.4
+    var char502 = 'd'
+    var string503 = "50"
+    var string504 = "50.4"
+    var string505 = "FalSe"
+
+    print(typeof((double)num500));
+    print(typeof((string)num500));
+    print(typeof((char)num500));
+    print((char)num500)
+
+    print(typeof((int)double501));
+    print((int)double501)
+    print(typeof((string)double501));
+
+    print(typeof((int)char502));
+    print((int)char502))
+    print(typeof((double)char502));
+
+    print(typeof((int)string503));
+    print(typeof((double)string504));
+    print(typeof((boolean)string505));
+
+    print("======================")
+
+    print("Funciones Nativas")
+
+    var nativaNUM = 555.8;
+    var nativaSTRING = "Animos, Ya caSi Termina El CURso :)";
+    print("nativaNUM = " + nativaNUM);
+    print("Truncate = " + Truncate(nativaNUM))
+    print("Round = " + Round(nativaNUM))
+    print("=============================")
+    print("nativaSTRING = " + nativaSTRING)
+    print("ToLower = " + ToLower(nativaSTRING))
+    print("ToUpper = " + ToUpper(nativaSTRING))
+    print("Length = " + Length(nativaSTRING))
+}
+
+func calculadoraCALI(){
+    var numero1;
+    var numero2;
+    var operacion;
+    print("Ingrese el primer número:\n")
+    numero1 = (int) read();
+    print("Ingrese el segundo número:\n")
+    numero2 = (int) read();
+
+    print("Ingrese la operación que desea realizar: (+,-,*,/,**,%)\n");
+    operacion =  ReAd()
+
+    switch(operacion){
+        case "+":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 + numero2) );
+            break;
+        case "-":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 - numero2) );
+            break;
+        case "*":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 * numero2) );
+            break;
+        case "/":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 / numero2) );
+            break;
+        case "**":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 ** numero2) );
+            break;
+        case "%":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 % numero2) );
+            break;
+        case "+":
+            print("El resultado de " + numero1 + operacion + numero2 + " es igual a " + ( numero1 + numero2) );
+            break;
+        default:
+            print("Operación no válida");
+            break;
+    }
+
+    print("¿Desea realizar otra operación? (true, false)\n");
+    if((boolean)Read()){
+        return true;
+    }
+    return false
+}
+
+func factorialCALI(int num){
+    if(num == 0){
+        return 1;
+    }
+    else{
+        return num * factorialCALI(num-1)
+    }   
+}
+
+func parCALI(int nump) {
+    if (nump == 0) {
+        return true;
+    }
+    return imparCALI(nump - 1);
+}
+
+func imparCALI(int numi) {
+    if (numi == 0) {
+        return false;
+    }
+    return parCALI(numi - 1);
+}
+
+func ackermannCALI(int m, int n){
+    if (m == 0){
+        return n + 1;
+    } else if (m > 0 && n == 0){
+        return ackermannCALI(m-1, 1)
+    } else{
+        return ackermannCALI(m-1, ackermannCALI(m, n-1))
+    }
+}
+
+func HanoiCALI(int discos, int origen, int auxiliar, int destino) {
+    if (discos == 1) {
+        print("Mover disco de " + origen + " a " + destino);
+    } else {
+        HanoiCALI(discos - 1, origen, destino, auxiliar);
+        print("Mover disco de " + origen + " a " + destino);
+        HanoiCALI(discos - 1, auxiliar, origen, destino);
+    }
+}
+
+func imprimirVector1(int[] miVector){
+    for (var i = 0; i < length(miVector); i++) {
+        print("vectorNumeros[" + i + "] = " + miVector[i]);
+    }
+}
+
+func BubbleSort(int[] miVector){
+    for (var i = 0; i < length(miVector); i++)
+    {
+        for (var j = 0; j < length(miVector) - i - 1; j++)
+        {
+            if (miVector[j] > miVector[j + 1]) {
+                var temp;
+                temp = miVector[j];
+                miVector[j] = miVector[j + 1];
+                miVector[j + 1] = temp;
+            }
+        }
+    }
+}
