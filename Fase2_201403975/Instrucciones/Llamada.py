@@ -5,6 +5,7 @@ from Abstract.Instruccion import Instruccion
 from TS.Excepcion import Excepcion
 from TS.TablaSimbolos import TablaSimbolos
 from Expresiones.Primitivos import Primitivos
+from Instrucciones.Casteo import Casteo
 
 class Llamada(Instruccion):
     def __init__(self, nombre, parametros, fila, columna):
@@ -28,10 +29,10 @@ class Llamada(Instruccion):
 
                 if self.nombre.lower() == "length":
                     s = None
-                    if not isinstance(self.parametros[contador], Primitivos):
+                    if not isinstance(self.parametros[contador], Primitivos) and not isinstance(self.parametros[contador], Casteo):
                         s = table.getTabla(self.parametros[contador].identificador.lower())
-
-                    if expresion.tipo != TIPO.CADENA and s.getArreglo() != True:
+                    
+                    if expresion.tipo != TIPO.CADENA and bool(s.getArreglo()) != True:
                         return Excepcion("Semantico", "Tipo de parametro de Length no es Cadena o Arreglo.", self.fila, self.columna)
                     else:
                         simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)
@@ -59,28 +60,28 @@ class Llamada(Instruccion):
                     val = "Nulo"
                     
                     s = None
-                    if not isinstance(self.parametros[contador], Primitivos):
+                    if not isinstance(self.parametros[contador], Primitivos) and not isinstance(self.parametros[contador], Casteo):
                         s = table.getTabla(self.parametros[contador].identificador.lower())
 
                     if expresion.tipo == TIPO.ENTERO:
                         val = "INT"
-                        if s != None and s.getArreglo() == True:
+                        if s != None and bool(s.getArreglo()) == True:
                             val = "ARREGLO->INT"
                     elif expresion.tipo == TIPO.DECIMAL:
                         val = "DOUBLE"
-                        if s != None and s.getArreglo() == True:
+                        if s != None and bool(s.getArreglo()) == True:
                             val = "ARREGLO->DOUBLE"
                     elif expresion.tipo == TIPO.BOOLEANO:
                         val = "BOOLEAN"
-                        if s != None and s.getArreglo() == True:
+                        if s != None and bool(s.getArreglo()) == True:
                             val = "ARREGLO->BOOLEAN"
                     elif expresion.tipo == TIPO.CADENA:
                         val = "STRING"
-                        if s != None and s.getArreglo() == True:
+                        if s != None and bool(s.getArreglo()) == True:
                             val = "ARREGLO->STRING"
                     elif expresion.tipo == TIPO.CHARACTER:
                         val = "CHAR"
-                        if s != None and s.getArreglo() == True:
+                        if s != None and bool(s.getArreglo()) == True:
                             val = "ARREGLO->CHAR"
 
                     simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, val)
@@ -89,7 +90,7 @@ class Llamada(Instruccion):
 
                 elif result.parametros[contador]["tipo"] == expresion.tipo:  # VERIFICACION DE TIPO
                     # CREACION DE SIMBOLO E INGRESARLO A LA TABLA DE SIMBOLOS
-                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], self.arreglo, self.fila, self.columna, resultExpresion)
+                    simbolo = Simbolo(str(result.parametros[contador]['identificador']), result.parametros[contador]['tipo'], str(result.parametros[contador]['arreglo']), self.fila, self.columna, resultExpresion)
                     resultTabla = nuevaTabla.setTabla(simbolo)
                     if isinstance(resultTabla, Excepcion): return resultTabla
 

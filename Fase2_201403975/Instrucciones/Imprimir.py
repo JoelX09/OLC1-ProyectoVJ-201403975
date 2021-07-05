@@ -34,6 +34,6 @@ class Imprimir(Instruccion):
 
     def getNodo(self):
         nodo = NodoAST("IMPRIMIR")
-        if self.expresion.tipo != TIPO.NULO:
-            nodo.agregarHijoNodo(self.expresion.getNodo())
+        #if self.expresion.tipo != TIPO.NULO:
+        nodo.agregarHijoNodo(self.expresion.getNodo())
         return nodo #Se va para arriba donde se llame

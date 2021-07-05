@@ -29,6 +29,6 @@ class Asignacion(Instruccion):
     def getNodo(self):
         nodo = NodoAST("ASIGNACION")
         nodo.agregarHijo(str(self.identificador))
-        if self.expresion.tipo != TIPO.NULO:
-            nodo.agregarHijoNodo(self.expresion.getNodo())
+        #if self.expresion.tipo != TIPO.NULO:
+        nodo.agregarHijoNodo(self.expresion.getNodo())
         return nodo #Se va para arriba donde se llame

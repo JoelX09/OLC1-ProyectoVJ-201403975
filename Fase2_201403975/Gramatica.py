@@ -202,6 +202,7 @@ from Instrucciones.DeclaracionT1 import DeclaracionT1
 from Instrucciones.Tipo2 import DeclaracionT2
 from Expresiones.AccesoArreglo import AccesoArreglo
 from Instrucciones.ModificarArreglo import ModificarArreglo
+from Instrucciones.Tipo3 import DeclaracionT3
 
 # Presedencia
 precedence = (
@@ -457,6 +458,7 @@ def p_declaracion_arreglo(t) :
     '''
     decArreglo : tipo1
                 | tipo2
+                | tipo3
     '''
     t[0] = t[1]
 
@@ -506,6 +508,9 @@ def p_expdim_exp(t):
     'expDim : expresion'
     t[0] = t[1]
 
+def p_declaracion_tipo3(t) :
+    'tipo3 : tipo lista_Dim ID IGUAL ID'
+    t[0] = DeclaracionT3(t[1], t[2], t[3], t[5], t.lineno(3), find_column(input, t.slice[3]))
 
 #-----------------------Modificacion Arreglo------------------------#
 def p_modificacion_arreglo(t) :
@@ -607,8 +612,19 @@ def p_parametros_func(t) :
     t[0] = [t[1]]
 
 def p_parametro_func(t) :
-    'parametro : tipo ID'
-    t[0] = {'tipo':t[1],'identificador':t[2]}
+    'parametro : tipo listaArr ID'
+    if t[2] != None:
+        t[0] = {'tipo':t[1],'identificador':t[3],'arreglo':True}
+    else:
+        t[0] = {'tipo':t[1],'identificador':t[3],'arreglo':False}    
+
+def p_parametro_arreglo(t):
+    'listaArr : lista_Dim'
+    t[0] = ''
+
+def p_no_parametro_arreglo(t):
+    'listaArr : '
+    t[0] = None
 
 #------------------------------Llamada------------------------------#
 def p_llamadas(t):
@@ -695,37 +711,37 @@ def parse(inp) : #04/06/2021 <----------------Repasasr
 
 def crearNativas(ast):          # CREACION Y DECLARACION DE LAS FUNCIONES NATIVAS
     nombre = "toupper"
-    parametros = [{'tipo':TIPO.CADENA,'identificador':'toUpper##Param1'}]
+    parametros = [{'tipo':TIPO.CADENA,'identificador':'toUpper##Param1','arreglo':False}]
     instrucciones = []
     toUpper = ToUpper(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(toUpper)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
     nombre = "tolower"
-    parametros = [{'tipo':TIPO.CADENA,'identificador':'toLower##Param1'}]
+    parametros = [{'tipo':TIPO.CADENA,'identificador':'toLower##Param1','arreglo':False}]
     instrucciones = []
     toLower = ToLower(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(toLower)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
     nombre = "length"
-    parametros = [{'tipo':TIPO.ENTERO,'identificador':'length##Param1'}]
+    parametros = [{'tipo':TIPO.ENTERO,'identificador':'length##Param1','arreglo':False}]
     instrucciones = []
     length = Length(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(length)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
     nombre = "truncate"
-    parametros = [{'tipo':TIPO.ENTERO,'identificador':'truncate##Param1'}]
+    parametros = [{'tipo':TIPO.ENTERO,'identificador':'truncate##Param1','arreglo':False}]
     instrucciones = []
     truncate = Truncate(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(truncate)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
     nombre = "round"
-    parametros = [{'tipo':TIPO.DECIMAL,'identificador':'round##Param1'}]
+    parametros = [{'tipo':TIPO.DECIMAL,'identificador':'round##Param1','arreglo':False}]
     instrucciones = []
     round = Round(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(round)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)
 
     nombre = "typeof"
-    parametros = [{'tipo':TIPO.CADENA,'identificador':'typeOf##Param1'}]
+    parametros = [{'tipo':TIPO.CADENA,'identificador':'typeOf##Param1','arreglo':False}]
     instrucciones = []
     typeof = TypeOf(nombre, parametros, instrucciones, -1, -1)
     ast.addFuncion(typeof)     # GUARDAR LA FUNCION EN "MEMORIA" (EN EL ARBOL)

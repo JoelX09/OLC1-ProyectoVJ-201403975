@@ -10,6 +10,7 @@ class Identificador(Instruccion):
         self.columna = columna
         self.tipo = None
         self.incdec = incdec
+        self.arreglo = False
 
     def interpretar(self, tree, table):
         simbolo = table.getTabla(self.identificador.lower())
@@ -17,6 +18,7 @@ class Identificador(Instruccion):
         if simbolo == None:
             return Excepcion("Semantico", "Variable " + self.identificador + " no encontrada.", self.fila, self.columna)
 
+        self.arreglo = simbolo.getArreglo()
         self.tipo = simbolo.getTipo()
 
         if self.incdec != None:
